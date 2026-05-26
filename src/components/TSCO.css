@@ -744,6 +744,16 @@ html, body {
   box-shadow: 0 15px 40px rgba(0,0,0,0.1);
 }
 
+/* CARD IMAGE */
+.card-image {
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
 /* SMALL TAG */
 .card-tag {
   color: #cf040b;

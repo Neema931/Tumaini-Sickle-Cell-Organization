@@ -9,9 +9,9 @@ import { Link } from "react-router-dom";
 
 import hero1 from "../assets/h1.jpg";
 import hero2 from "../assets/h5.jpg";
-
+import noela from "../assets/noela.jpg";
 import h4 from "../assets/h4.jpg";
-
+import h6 from "../assets/h6.jpg";
 
 import "./TSCO.css";
 
@@ -102,6 +102,12 @@ function HomeAbout() {
 
             {/* CARD 1 */}
             <div className="home-card">
+                <div
+                  className="card-image"
+                  style={{
+                    backgroundImage: `url(${noela})`,
+                  }}
+                ></div>
                 <p className="card-tag">About us</p>
 
                 <h2>Who we are</h2>
@@ -113,6 +119,12 @@ function HomeAbout() {
 
               {/* CARD 2 */}
               <div className="home-card">
+                <div
+                  className="card-image"
+                  style={{
+                    backgroundImage: `url(${h6})`,
+                  }}
+                ></div>
                 <p className="card-tag">About</p>
 
                 <h2>What We Do</h2>
