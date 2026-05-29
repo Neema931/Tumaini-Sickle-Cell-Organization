@@ -11,7 +11,7 @@ import hero1 from "../assets/h1.jpg";
 import hero2 from "../assets/h5.jpg";
 import noela from "../assets/noela.jpg";
 import h4 from "../assets/h4.jpg";
-import h6 from "../assets/h6.jpg";
+import hero3 from "../assets/hero3.jpg";
 
 import "./TSCO.css";
 
@@ -108,7 +108,6 @@ function HomeAbout() {
                     backgroundImage: `url(${noela})`,
                   }}
                 ></div>
-                <p className="card-tag">About us</p>
 
                 <h2>Who we are</h2>
                 <p>Tumaini Sickle Cell Organization in an NGO based in western kenya.....</p>
@@ -122,10 +121,10 @@ function HomeAbout() {
                 <div
                   className="card-image"
                   style={{
-                    backgroundImage: `url(${h6})`,
+                    backgroundImage: `url(${hero3})`,
                   }}
                 ></div>
-                <p className="card-tag">About</p>
+                
 
                 <h2>What We Do</h2>
                 <p>We are a dedicated initiative that aims to make significant in the lives of individuals affected by sickle cell disease.</p>
