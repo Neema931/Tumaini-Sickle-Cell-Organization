@@ -168,11 +168,11 @@ function HomePrograms() {
             We offer:
           </p>
             <ul>
-              <li>Healthcare Support →</li>
-              <li>Educational Workshops → </li>
-              <li>Community Outreach →</li>
-                <li>Advocacy →</li>
-                <li>Research Initiatives →</li>
+              <li><Link to="/programs">Healthcare Support →</Link></li>
+              <li><Link to="/programs">Educational Workshops →</Link></li>
+              <li><Link to="/programs">Community Outreach →</Link></li>
+              <li><Link to="/programs">Advocacy →</Link></li>
+              <li><Link to="/programs">Research Initiatives →</Link></li>
             </ul>
 
           <Link to="/programs" className="card-link">
@@ -226,7 +226,7 @@ function CTA() {
         <div className="cta-buttons">
 
           <Link to="/donate">
-            <button className="cta-primary">
+            <button className="cta-secondary">
               Donate Now
             </button>
           </Link>
@@ -268,6 +268,9 @@ function Footer() {
           <Link to="/about">About</Link>
           <Link to="/programs">Programs</Link>
           <Link to="/contact">Contact</Link>
+          <Link to ="/Blogs">Blogs</Link>
+          <Link to="/Gallery">Gallery</Link>
+          <Link to ="/Events">Events</Link>
 
         </div>
 
