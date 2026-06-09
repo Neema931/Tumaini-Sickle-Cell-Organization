@@ -1,66 +1,125 @@
 import bloodImg from "../assets/blood.jpg";
 import loveImg from "../assets/love.jpg";
-import voiceImg from "../assets/voice.jpg";
+import directorImg from "../assets/director.jpg";
+
 import "./TSCO.css";
 
 function About() {
-    return (
-        <section className="about-section">
+  return (
+    <main className="about-page">
 
-          {/* Left - Text */}
-          <div className="about-text">
-            <h2>About Us</h2>
+      {/* Director Section */}
+      <section className="director-section">
+        <article className="director-card">
 
-            <p>
-              We are a dedicated initiative that aims to make a significant impact in the lives 
-              of individuals affected by sickle cell disease (SCD). Our organization was founded
-               with a profound commitment to collaborate with esteemed medical agencies, accomplished
-            medical professionals, esteemed research institutions, and other crucial stakeholders.
-            </p>
+          <div className="director-image">
+            <img
+              src={directorImg}
+              alt="Director of Tumaini Sickle Cell Organization"
+            />
+          </div>
 
-            <p>
-                Sickle cell disease is a complex and challenging genetic disorder that affects countless lives worldwide. Our goal is to create a lasting positive impact by championing comprehensive, multi-disciplinary, state-of-the-art treatment options and groundbreaking research for SCD. We firmly believe that through strategic partnerships and collective efforts, we can improve the quality of life for those living with this condition and eventually pave the way for innovative breakthroughs that could change the landscape of SCD management.
-            </p>
+          <div className="director-content">
+            <span className="director-role">
+              Executive Director
+            </span>
 
-            <p>
-             Your contribution, no matter the size, will play a pivotal role in enabling us to carry out our initiatives effectively. It will directly aid in funding critical research, enhancing patient care, spreading awareness, and providing support to families and individuals affected by SCD. Your generosity will not only provide much-needed resources but also signify your commitment to making a tangible difference in the lives of those who often face uphill battles due to this disease.
-            </p>
-
-            <p>
-               We invite you to join us in our mission to bring hope, relief, and progress to the SCD community. Your support will be deeply appreciated and acknowledged. Together, we can turn the tide against sickle cell disease and pave the way for a brighter, healthier future.
-            </p>
+            <h2>Message from the Director</h2>
 
             <p>
-                    Thank you.
+              Welcome to Tumaini Sickle Cell Organization (TSCO).
+              Our mission is to improve the quality of life for
+              individuals and families affected by sickle cell disease
+              through advocacy, education, research partnerships,
+              and community support.
             </p>
 
-            <p style={{ fontWeight: 'bold', color: 'black' }}>
-                    HOW TO DONATE VIA M-PESA
-            </p>
+            <blockquote>
+              “Together we can create a future where every sickle cell
+              warrior receives the care, dignity, and opportunity they deserve.”
+            </blockquote>
+          </div>
 
-            <p style={{ fontWeight: 'bold', color: 'black' }}>
-                TUMAINI SICKLE CELL ORGANIZATION
-            </p>
+        </article>
+      </section>
 
-            <p><strong> PAYBILL -</strong> 4118759 </p>
-            <p><strong> ACCOUNT NUMBER -</strong>  Donation </p>
-              
-            </div> 
+      {/* About Section */}
+      <section className="about-content">
 
-            {/* Right - Image */} 
-            <div className="about-image">
-                <div className="about-image-card">
-                  <img src={bloodImg} alt="Blood" />
-                </div>
-                <div className="about-image-card">
-                  <img src={loveImg} alt="Love" />
-                </div>
+        <div className="about-text">
+
+          <h2>About TSCO</h2>
+
+          <p>
+            Tumaini Sickle Cell Organization is a non-profit organization
+            dedicated to improving the lives of individuals affected by
+            sickle cell disease through awareness, advocacy, education,
+            support programs, and strategic partnerships.
+          </p>
+
+          <p>
+            We work closely with healthcare providers, researchers,
+            government agencies, and community stakeholders to promote
+            comprehensive care and improve access to services for
+            individuals living with sickle cell disease.
+          </p>
+
+          <p>
+            Through awareness campaigns, educational workshops,
+            support groups, and advocacy initiatives, we empower
+            warriors and caregivers with knowledge, resources,
+            and hope.
+          </p>
+
+        </div>
+
+        <div className="about-gallery">
+
+          <div className="gallery-card">
+            <img src={bloodImg} alt="Blood donation awareness" />
+          </div>
+
+          <div className="gallery-card">
+            <img src={loveImg} alt="Community support" />
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* Donation Section */}
+      <section className="donation-section">
+
+        <div className="donation-card">
+
+          <h2>Support Our Mission</h2>
+
+          <p>
+            Your contribution helps fund awareness programs,
+            patient support initiatives, advocacy campaigns,
+            and community outreach activities.
+          </p>
+
+          <div className="donation-details">
+
+            <div className="detail">
+              <span>Paybill</span>
+              <strong>4118759</strong>
             </div>
 
-        </section>
+            <div className="detail">
+              <span>Account Number</span>
+              <strong>Donation</strong>
+            </div>
 
-    );
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+  );
 }
 
 export default About;
-

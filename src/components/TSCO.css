@@ -15,144 +15,247 @@ html, body {
 /*----------------------------*/
 /*-----------ABOUT------------*/
 /*----------------------------*/
-.about-section {
+/* =========================
+   ABOUT PAGE
+========================= */
+
+.about-page {
+  background: #f8f9fa;
+}
+
+/* =========================
+   DIRECTOR SECTION
+========================= */
+
+.director-section {
+  padding: 80px 10%;
+}
+
+.director-card {
+  background: #ffffff;
+
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding: 50px 8%;
-  background-color: #f9f9f9;
-  gap: 40px;
+  align-items: center;
+  gap: 3rem;
+
+  padding: 2.5rem;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.08);
+
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Text side */
-.about-text {
+.director-image {
+  flex: 0 0 320px;
+}
+
+.director-image img {
+  width: 100%;
+  height: 400px;
+
+  object-fit: cover;
+
+  border-radius: 16px;
+}
+
+.director-content {
   flex: 1;
-  max-width: 620px;
 }
 
-.about-text h2 {
+.director-role {
+  display: inline-block;
 
-  font-size: 32px;
+  color: #b71c1c;
+
   font-weight: 700;
-  margin-bottom: 16px;
-  color: black;
-  line-height: 1.2;
+
+  margin-bottom: 1rem;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.about-text p {
-  font-size: 16px;
-  line-height: 1.65;
-  margin-bottom: 14px;
+.director-content h2 {
+  font-size: 2.5rem;
+
+  margin-bottom: 1rem;
+
+  color: #222;
+}
+
+.director-content p {
+  line-height: 1.8;
   color: #555;
 }
 
-.about-text p:last-child {
-  margin-bottom: 0;
+.director-content blockquote {
+  margin-top: 1.5rem;
+
+  padding-left: 1rem;
+
+  border-left: 4px solid #c62828;
+
+  font-style: italic;
+
+  color: #444;
 }
 
-/* Image side */
-.about-image {
-  flex: 0.9;
+/* =========================
+   ABOUT CONTENT
+========================= */
+
+.about-content {
+  padding: 0 10% 80px;
+
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+
+  align-items: center;
+}
+
+.about-text h2 {
+  font-size: 2.2rem;
+
+  margin-bottom: 1.5rem;
+
+  color: #222;
+}
+
+.about-text p {
+  line-height: 1.9;
+
+  color: #555;
+
+  margin-bottom: 1.25rem;
+}
+
+/* =========================
+   GALLERY
+========================= */
+
+.about-gallery {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 24px;
-  min-height: 480px;
-  max-width: 420px;
+  gap: 1.5rem;
 }
 
-.about-image-card {
-  flex: 1;
+.gallery-card {
   overflow: hidden;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  min-height: 200px;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.08);
 }
 
-.about-image-card img {
+.gallery-card img {
   width: 100%;
-  height: 100%;
+  height: 250px;
+
   object-fit: cover;
+
   display: block;
+
   transition: transform 0.4s ease;
 }
 
-.about-image-card img:hover {
-  transform: scale(1.02);
+.gallery-card:hover img {
+  transform: scale(1.05);
 }
 
-/* Responsive About */
-@media (max-width: 1024px) {
-  .about-section {
-    gap: 30px;
-    padding: 50px 8%;
-  }
+/* =========================
+   DONATION SECTION
+========================= */
 
-  .about-text h2 {
-    font-size: 28px;
-  }
-
-  .about-text p {
-    font-size: 16px;
-  }
+.donation-section {
+  padding: 0 10% 100px;
 }
 
-@media (max-width: 768px) {
-  .about-section {
+.donation-card {
+  background: linear-gradient(
+    135deg,
+    rgb(6, 147, 227),
+    rgb(6, 147, 227)
+  );
+
+  color: white;
+
+  padding: 3rem;
+
+  border-radius: 20px;
+
+  text-align: center;
+
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.donation-card h2 {
+  font-size: 2rem;
+
+  margin-bottom: 1rem;
+}
+
+.donation-card p {
+  max-width: 700px;
+
+  margin: 0 auto 2rem;
+
+  line-height: 1.8;
+}
+
+.donation-details {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+
+  flex-wrap: wrap;
+}
+
+.detail {
+  background: rgba(255,255,255,0.15);
+
+  padding: 1rem 2rem;
+
+  border-radius: 12px;
+}
+
+.detail span {
+  display: block;
+
+  margin-bottom: 0.5rem;
+
+  font-size: 0.9rem;
+}
+
+.detail strong {
+  font-size: 1.2rem;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+  .director-card {
     flex-direction: column;
-    padding: 40px 5%;
-    gap: 20px;
+    text-align: center;
   }
 
-  .about-text, .about-image {
-    flex: none;
-    width: 100%;
+  .about-content {
+    grid-template-columns: 1fr;
   }
 
-  .about-text h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-  }
-
-  .about-text p {
-    font-size: 14px;
-    margin-bottom: 15px;
-  }
-
-  .about-image {
-    flex-direction: column;
-    min-height: auto;
-  }
-
-  .about-image-card {
-    min-height: 200px;
-  }
-
-  .about-image-card img {
-    max-height: none;
+  .director-content h2 {
+    font-size: 2rem;
   }
 }
-
-@media (max-width: 480px) {
-  .about-section {
-    padding: 30px 4%;
-  }
-
-  .about-text h2 {
-    font-size: 20px;
-    margin-bottom: 12px;
-  }
-
-  .about-text p {
-    font-size: 13px;
-    margin-bottom: 12px;
-  }
-
-  .about-image img {
-    max-width: 100%;
-  }
-}
-
 
 /*-------------------------------------*/
 /*-----------NAVBAR STYLES-----------*/
@@ -408,11 +511,11 @@ html, body {
 }
 
 .mobile-menu a:hover {
-  color: #cf040b;
+  color: #4507f0;
 }
 
 .nav-links a:hover {
-  color: #cf040b;
+  color: #1607eb;
 }
 
 /* Responsive Navbar */
