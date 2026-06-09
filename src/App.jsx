@@ -14,6 +14,8 @@ import Events from "./components/Events";
 import Contact from "./components/Contact";
 import Donate from "./pages/Donate";
 import { Routes, Route } from "react-router-dom";
+import CTA from "./components/CTA";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -36,6 +38,10 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/donate" element={<Donate />} />
       </Routes>
+
+      <CTA />
+      <Footer />
+
     </>
   );
 }
