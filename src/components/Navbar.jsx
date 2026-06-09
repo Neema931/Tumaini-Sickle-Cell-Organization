@@ -8,6 +8,7 @@ import "./TSCO.css";
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const handleLinkClick = () => setIsOpen(false);
 
     return (
         <nav className="navbar">
@@ -31,13 +32,13 @@ function Navbar() {
 
             <div className="navbar-bottom">
                 <ul className="nav-links">
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/about">About</Link></li>
-                    <li><Link to="/gallery">Gallery</Link></li>
-                    <li><Link to="/programs">Programs</Link></li>
-                    <li><Link to="/blogs">Blogs</Link></li>
-                    <li><Link to="/events">Events</Link></li>
-                    <li><Link to="/contact">Contact</Link></li>
+                    <li><Link to="/" onClick={handleLinkClick}>Home</Link></li>
+                    <li><Link to="/about" onClick={handleLinkClick}>About</Link></li>
+                    <li><Link to="/gallery" onClick={handleLinkClick}>Gallery</Link></li>
+                    <li><Link to="/programs" onClick={handleLinkClick}>Programs</Link></li>
+                    <li><Link to="/blogs" onClick={handleLinkClick}>Blogs</Link></li>
+                    <li><Link to="/events" onClick={handleLinkClick}>Events</Link></li>
+                    <li><Link to="/contact" onClick={handleLinkClick}>Contact</Link></li>
                 </ul>
 
                 <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
@@ -47,13 +48,13 @@ function Navbar() {
 
             {isOpen && (
                 <div className="mobile-menu">
-                    <Link to="/">Home</Link>
-                    <Link to="/about">About</Link>
-                    <Link to="/gallery">Gallery</Link>
-                    <Link to="/programs">Programs</Link>
-                    <Link to="/blogs">Blogs</Link>
-                    <Link to="/events">Events</Link>
-                    <Link to="/contact">Contact</Link>
+                    <Link to="/" onClick={handleLinkClick}>Home</Link>
+                    <Link to="/about" onClick={handleLinkClick}>About</Link>
+                    <Link to="/gallery" onClick={handleLinkClick}>Gallery</Link>
+                    <Link to="/programs" onClick={handleLinkClick}>Programs</Link>
+                    <Link to="/blogs" onClick={handleLinkClick}>Blogs</Link>
+                    <Link to="/events" onClick={handleLinkClick}>Events</Link>
+                    <Link to="/contact" onClick={handleLinkClick}>Contact</Link>
                 </div>
             )}
         </nav>
