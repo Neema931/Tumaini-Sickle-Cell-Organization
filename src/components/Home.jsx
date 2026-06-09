@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 import hero1 from "../assets/h1.jpg";
 import hero2 from "../assets/h5.jpg";
-import noela from "../assets/noela.jpg";
+import noela from "../assets/t2.jpg";
 import h4 from "../assets/h4.jpg";
 import hero3 from "../assets/hero3.jpg";
 

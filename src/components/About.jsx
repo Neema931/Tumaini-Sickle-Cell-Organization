@@ -1,5 +1,5 @@
-import bloodImg from "../assets/blood.jpg";
-import loveImg from "../assets/love.jpg";
+import bloodImg from "../assets/t1.jpg";
+import loveImg from "../assets/t3.jpg";
 import directorImg from "../assets/director.jpg";
 
 import "./TSCO.css";

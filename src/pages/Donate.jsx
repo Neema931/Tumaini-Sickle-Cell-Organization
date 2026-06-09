@@ -34,7 +34,7 @@ function Donate() {
                 <p><strong>Account</strong> Donation</p>
             </div>
 
-            <button className="primary-btn">Donate Now</button>
+            {/* <button className="primary-btn">Donate Now</button> */}
         </div>
     );
 }
