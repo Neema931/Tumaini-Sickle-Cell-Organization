@@ -13,9 +13,8 @@ import noela from "../assets/noela.jpg";
 import h4 from "../assets/h4.jpg";
 import hero3 from "../assets/hero3.jpg";
 
+
 import "./TSCO.css";
-import CTA from "./CTA";
-import Footer from "./Footer";
 
 function Home() {
   return (
@@ -92,8 +91,6 @@ function Home() {
       <HomeAbout />
       <HomePrograms />
       <HomeStatistics />
-      <CTA />
-      <Footer />
     </>
   );
 }
