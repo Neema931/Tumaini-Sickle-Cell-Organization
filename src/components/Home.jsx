@@ -74,13 +74,6 @@ function Home() {
               <p className="hero-subtitle">
                 Join our mission to improve health outcomes, educate communities, and support every patient.
               </p>
-              <div className="hero-buttons">
-                <Link to="/learnMore">
-                  <button className="primary-button">
-                    Learn More
-                  </button>
-                </Link>
-              </div>
             </div>
           </div>
         </section>

@@ -783,9 +783,8 @@ html, body {
 
 /* BUTTONS */
 .hero-buttons {
-  position: absolute;
-  left: 6%;
-  bottom: 40px;
+  position: static;
+  margin-top: 2rem;
   display: flex;
   justify-content: flex-start;
   gap: 16px;
