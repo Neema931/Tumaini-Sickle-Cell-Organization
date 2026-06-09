@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { MdPhone, MdEmail } from "react-icons/md";
 import logoImg from "../assets/logo.jpg";
 import "./TSCO.css";
+
+
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +15,18 @@ function Navbar() {
                 <Link to="/" className="logo">
                     <img src={logoImg} alt="TSCO Logo" />
                 </Link>
+
+                    <div className="top-cta">
+                        <a className="call-link" href="tel:0715873713">
+                            <MdPhone className="call-icon" />
+                            <span className="call-number">0715873713</span>
+                        </a>
+
+                        <a className="email-link" href="mailto:info@tumainisicklecell.org">
+                            <MdEmail className="email-icon" />
+                            <span className="email-text">info@tumainisicklecell.org</span>
+                        </a>
+                    </div>
             </div>
 
             <div className="navbar-bottom">

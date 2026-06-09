@@ -2,9 +2,6 @@ import bloodImg from "../assets/blood.jpg";
 import loveImg from "../assets/love.jpg";
 import directorImg from "../assets/director.jpg";
 
-import CTA from "./CTA";
-import Footer from "./Footer";
-
 import "./TSCO.css";
 
 function About() {

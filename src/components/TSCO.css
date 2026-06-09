@@ -293,6 +293,62 @@ html, body {
   display: none;
 }
 
+.top-cta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.call-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #0b214b;
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(6,147,227,0.08);
+  font-weight: 700;
+}
+
+.call-icon {
+  color: #cf040b;
+  font-size: 20px;
+}
+
+.call-number {
+  font-size: 16px;
+}
+
+.email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #0b214b;
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(6,147,227,0.08);
+  font-weight: 700;
+}
+
+.email-icon {
+  color: #0b214b;
+  font-size: 18px;
+}
+
+.email-text {
+  font-size: 14px;
+}
+
+@media (max-width: 800px) {
+  .email-text {
+    display: none;
+  }
+}
+
 /* Menu icon */
 .menu-icon {
   display: none;
