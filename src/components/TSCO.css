@@ -28,34 +28,48 @@ html, body {
    ABOUT PAGE
 ========================= */
 
-.about-page {
-  background: #f8f9fa;
+.gallery-card {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 1.25rem 2rem;
+  align-items: start;
+  padding: 1rem;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 16px 45px rgba(15, 40, 80, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* =========================
-   DIRECTOR SECTION
-========================= */
-
-.director-section {
-  padding: 80px 10%;
+.gallery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 55px rgba(15, 40, 80, 0.12);
 }
 
-.director-card {
-  background: #ffffff;
+.gallery-card .card-image {
+  grid-column: 1 / 2;
+  width: 100%;
+  border-radius: 12px;
+}
 
-  display: flex;
-  align-items: center;
-  gap: 3rem;
+.gallery-card .card-content {
+  grid-column: 2 / -1;
+}
 
-  padding: 2.5rem;
+.gallery-card .card-image + .card-image {
+  margin-top: 0.85rem;
+}
 
-  border-radius: 20px;
+.gallery-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  transition: transform 0.35s ease;
+}
 
-  box-shadow:
-    0 10px 30px rgba(0,0,0,0.08);
-
-  max-width: 1200px;
-  margin: 0 auto;
+.gallery-card:hover img {
+  transform: scale(1.03);
 }
 
 .director-image {
@@ -152,11 +166,33 @@ html, body {
   gap: 1.5rem;
 }
 
+.gallery-page {
+  padding: 80px 1.5rem 100px;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.gallery-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
 .gallery-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
   overflow: hidden;
-  border-radius: 22px;
-  background: #ffffff;
+  border-radius: 24px;
+  background: #fff;
   box-shadow: 0 16px 45px rgba(15, 40, 80, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 55px rgba(15, 40, 80, 0.12);
 }
 
 .gallery-card img {
@@ -164,15 +200,12 @@ html, body {
   aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
+  border-radius: 18px;
   transition: transform 0.35s ease;
 }
 
 .gallery-card:hover img {
-  transform: scale(1.05);
-}
-
-.gallery-page {
-  padding: 80px 0 100px;
+  transform: scale(1.03);
 }
 
 .gallery-header {
@@ -194,10 +227,64 @@ html, body {
   font-size: 1rem;
 }
 
-.gallery-grid {
-  display: grid;
-  gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+/* Card content spacing */
+.gallery-card p {
+  grid-column: 1 / -1;
+  margin: 0.75rem 0 0.5rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+.card-link {
+  grid-column: 1 / -1;
+  margin-top: 0.5rem;
+}
+
+.card-link a {
+  display: inline-block;
+  padding: 0.5rem 0.9rem;
+  background: #0b63d6;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Card image wrapper for background images */
+.card-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(12,24,48,0.06);
+}
+
+/* Ensure images are spaced vertically on small screens */
+@media (max-width: 640px) {
+  .gallery-card {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .card-image {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 900px) {
+  .gallery-page {
+    padding: 60px 1rem 80px;
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery-grid {
+    gap: 1rem;
+  }
+
+  .gallery-card {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 900px) {
