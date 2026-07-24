@@ -1,30 +1,30 @@
-import react from 'react';
-import "./TSCO.css";
+import React from 'react';
+import "../../components/TSCO.css";
 
-import img1 from "../assets/H (1).jpg";
-import img2 from "../assets/H (2).jpg";
-import img3 from "../assets/H (3).jpg";
-import img4 from "../assets/H (4).jpg";
-import img5 from "../assets/H (5).jpg";
-import img6 from "../assets/H (6).jpg";
-import img7 from "../assets/H (7).jpg";
-import img8 from "../assets/H (8).jpg";
-import img9 from "../assets/H (9).jpg";
-import img10 from "../assets/H (10).jpg";
-import img11 from "../assets/H (11).jpg";
-import img12 from "../assets/H (12).jpg";
-import img13 from "../assets/H (13).jpg";
-import img14 from "../assets/H (14).jpg";
-import img15 from "../assets/H (15).jpg";
-import img16 from "../assets/H (16).jpg";
-import img17 from "../assets/H (17).jpg";
-import img18 from "../assets/H (18).jpg";
-import img19 from "../assets/H (19).jpg";
-import img20 from "../assets/H (20).jpg";
-import img21 from "../assets/H (21).jpg";
-import img22 from "../assets/H (22).jpg";
-import img23 from "../assets/H (23).jpg";
-import img24 from "../assets/H (24).jpg";
+import img1 from "../../assets/H (1).jpg";
+import img2 from "../../assets/H (2).jpg";
+import img3 from "../../assets/H (3).jpg";
+import img4 from "../../assets/H (4).jpg";
+import img5 from "../../assets/H (5).jpg";
+import img6 from "../../assets/H (6).jpg";
+import img7 from "../../assets/H (7).jpg";
+import img8 from "../../assets/H (8).jpg";
+import img9 from "../../assets/H (9).jpg";
+import img10 from "../../assets/H (10).jpg";
+import img11 from "../../assets/H (11).jpg";
+import img12 from "../../assets/H (12).jpg";
+import img13 from "../../assets/H (13).jpg";
+import img14 from "../../assets/H (14).jpg";
+import img15 from "../../assets/H (15).jpg";
+import img16 from "../../assets/H (16).jpg";
+import img17 from "../../assets/H (17).jpg";
+import img18 from "../../assets/H (18).jpg";
+import img19 from "../../assets/H (19).jpg";
+import img20 from "../../assets/H (20).jpg";
+import img21 from "../../assets/H (21).jpg";
+import img22 from "../../assets/H (22).jpg";
+import img23 from "../../assets/H (23).jpg";
+import img24 from "../../assets/H (24).jpg";
 
 function H() {
     return (
@@ -51,8 +51,8 @@ function H() {
             <img src={img20} alt="Gallery Image 20" />
             <img src={img21} alt="Gallery Image 21" />
             <img src={img22} alt="Gallery Image 22" />
-            < img src={ img23 } alt="Gallery Image 23" / >
-            < img src={ img24 } alt="Gallery Image 24" / >
+            <img src={img23} alt="Gallery Image 23" />
+            <img src={img24} alt="Gallery Image 24" />
 
             <p>Today marked a powerful moment of collaboration and impact at 𝐒𝐚𝐰𝐚𝐠𝐨𝐧𝐠𝐨 𝐇𝐢𝐠𝐡 𝐒𝐜𝐡𝐨𝐨𝐥 in Siaya County.
 𝐓𝐮𝐦𝐚𝐢𝐧𝐢 𝐒𝐢𝐜𝐤𝐥𝐞 𝐂𝐞𝐥𝐥 𝐎𝐫𝐠𝐚𝐧𝐢𝐳𝐚𝐭𝐢𝐨𝐧 was honored to join a multi-sectoral medical camp organized by the 𝐃𝐫. 𝐉𝐨𝐬𝐞𝐩𝐡 𝐀𝐥𝐮𝐨𝐜𝐡 𝐅𝐨𝐮𝐧𝐝𝐚𝐭𝐢𝐨𝐧 in partnership with 𝐊𝐞𝐧𝐲𝐚 𝐌𝐞𝐝𝐢𝐜𝐚𝐥 𝐀𝐬𝐬𝐨𝐜𝐢𝐚𝐭𝐢𝐨𝐧. The camp brought together an incredible network of health facilities, media houses, NGOs in the health sector, financial institutions, and pharmaceutical partners — all united by one goal: 𝘪𝘮𝘱𝘳𝘰𝘷𝘪𝘯𝘨 𝘢𝘤𝘤𝘦𝘴𝘴 𝘵𝘰 𝘲𝘶𝘢𝘭𝘪𝘵𝘺 𝘩𝘦𝘢𝘭𝘵𝘩𝘤𝘢𝘳𝘦 𝘧𝘰𝘳 𝘤𝘰𝘮𝘮𝘶𝘯𝘪𝘵𝘪𝘦𝘴.

@@ -1,24 +1,24 @@
-import react from "react";
-import "./TSCO.css";
+import React from "react";
+import "../../components/TSCO.css";
 
-import img1 from "../assets/I (1).jpg";
-import img2 from "../assets/I (2).jpg";
-import img3 from "../assets/I (3).jpg";
-import img4 from "../assets/I (4).jpg";
-import img5 from "../assets/I (5).jpg";
-import img6 from "../assets/I (6).jpg";
-import img7 from "../assets/I (7).jpg";
-import img8 from "../assets/I (8).jpg";
-import img9 from "../assets/I (9).jpg";
-import img10 from "../assets/I (10).jpg";
-import img11 from "../assets/I (11).jpg";
-import img12 from "../assets/I (12).jpg";
-import img13 from "../assets/I (13).jpg";
-import img14 from "../assets/I (14).jpg";
-import img15 from "../assets/I (15).jpg";
-import img16 from "../assets/I (16).jpg";
-import img17 from "../assets/I (17).jpg";
-import img18 from "../assets/I (18).jpg";
+import img1 from "../../assets/I (1).jpg";
+import img2 from "../../assets/I (2).jpg";
+import img3 from "../../assets/I (3).jpg";
+import img4 from "../../assets/I (4).jpg";
+import img5 from "../../assets/I (5).jpg";
+import img6 from "../../assets/I (6).jpg";
+import img7 from "../../assets/I (7).jpg";
+import img8 from "../../assets/I (8).jpg";
+import img9 from "../../assets/I (9).jpg";
+import img10 from "../../assets/I (10).jpg";
+import img11 from "../../assets/I (11).jpg";
+import img12 from "../../assets/I (12).jpg";
+import img13 from "../../assets/I (13).jpg";
+import img14 from "../../assets/I (14).jpg";
+import img15 from "../../assets/I (15).jpg";
+import img16 from "../../assets/I (16).jpg";
+import img17 from "../../assets/I (17).jpg";
+import img18 from "../../assets/I (18).jpg";
 
 function I() {
     return (

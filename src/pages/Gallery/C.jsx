@@ -1,30 +1,30 @@
-import react from 'react';
-import "./TSCO.css";
+import React from 'react';
+import "../../components/TSCO.css";
 
-import img1 from "../assets/C (1).jpg";
-import img2 from "../assets/C (2).jpg";
-import img3 from "../assets/C (3).jpg";
-import img4 from "../assets/C (4).jpg";
-import img5 from "../assets/C (5).jpg";
-import img6 from "../assets/C (6).jpg";
-import img7 from "../assets/C (7).jpg";
-import img8 from "../assets/C (8).jpg";
-import img9 from "../assets/C (9).jpg";
-import img10 from "../assets/C (10).jpg";
-import img11 from "../assets/C (11).jpg";
-import img12 from "../assets/C (12).jpg";
-import img13 from "../assets/C (13).jpg";
-import img14 from "../assets/C (14).jpg";
-import img15 from "../assets/C (15).jpg";
-import img16 from "../assets/C (16).jpg";
-import img17 from "../assets/C (17).jpg";
-import img18 from "../assets/C (18).jpg";
-import img19 from "../assets/C (19).jpg";
-import img20 from "../assets/C (20).jpg";
-import img21 from "../assets/C (21).jpg";
-import img22 from "../assets/C (22).jpg";
-import img23 from "../assets/C (23).jpg";
-import img24 from "../assets/C (24).jpg";
+import img1 from "../../assets/C (1).jpg";
+import img2 from "../../assets/C (2).jpg";
+import img3 from "../../assets/C (3).jpg";
+import img4 from "../../assets/C (4).jpg";
+import img5 from "../../assets/C (5).jpg";
+import img6 from "../../assets/C (6).jpg";
+import img7 from "../../assets/C (7).jpg";
+import img8 from "../../assets/C (8).jpg";
+import img9 from "../../assets/C (9).jpg";
+import img10 from "../../assets/C (10).jpg";
+import img11 from "../../assets/C (11).jpg";
+import img12 from "../../assets/C (12).jpg";
+import img13 from "../../assets/C (13).jpg";
+import img14 from "../../assets/C (14).jpg";
+import img15 from "../../assets/C (15).jpg";
+import img16 from "../../assets/C (16).jpg";
+import img17 from "../../assets/C (17).jpg";
+import img18 from "../../assets/C (18).jpg";
+import img19 from "../../assets/C (19).jpg";
+import img20 from "../../assets/C (20).jpg";
+import img21 from "../../assets/C (21).jpg";
+import img22 from "../../assets/C (22).jpg";
+import img23 from "../../assets/C (23).jpg";
+import img24 from "../../assets/C (24).jpg";
 
 function C() {
     return (

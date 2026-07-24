@@ -1,22 +1,22 @@
-import react from 'react';
-import "./TSCO.css";
+import React from 'react';
+import "../../components/TSCO.css";
 
-import img1 from "../assets/B (1).jpg";
-import img2 from "../assets/B (2).jpg";
-import img3 from "../assets/B (3).jpg";
-import img4 from "../assets/B (4).jpg";
-import img5 from "../assets/B (5).jpg";
-import img6 from "../assets/B (6).jpg";
-import img7 from "../assets/B (7).jpg";
-import img8 from "../assets/B (8).jpg";
-import img9 from "../assets/B (9).jpg";
-import img10 from "../assets/B (10).jpg";
-import img11 from "../assets/B (11).jpg";
-import img12 from "../assets/B (12).jpg";
-import img13 from "../assets/B (13).jpg";
-import img14 from "../assets/B (14).jpg";
+import img1 from "../../assets/B (1).jpg";
+import img2 from "../../assets/B (2).jpg";
+import img3 from "../../assets/B (3).jpg";
+import img4 from "../../assets/B (4).jpg";
+import img5 from "../../assets/B (5).jpg";
+import img6 from "../../assets/B (6).jpg";
+import img7 from "../../assets/B (7).jpg";
+import img8 from "../../assets/B (8).jpg";
+import img9 from "../../assets/B (9).jpg";
+import img10 from "../../assets/B (10).jpg";
+import img11 from "../../assets/B (11).jpg";
+import img12 from "../../assets/B (12).jpg";
+import img13 from "../../assets/B (13).jpg";
+import img14 from "../../assets/B (14).jpg";
 
-function A() {
+function B() {
     return (
         <section className="gallery-card">
             <img src={img1} alt="Gallery Image 1" />

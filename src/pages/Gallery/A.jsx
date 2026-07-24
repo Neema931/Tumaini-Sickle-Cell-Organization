@@ -1,15 +1,15 @@
-import react from 'react';
-import "./TSCO.css";
+import React from 'react';
+import "../../components/TSCO.css";
 
-import img1 from "../assets/A (1).jpg";
-import img2 from "../assets/A (2).jpg";
-import img3 from "../assets/A (3).jpg";
-import img4 from "../assets/A (4).jpg";
-import img5 from "../assets/A (5).jpg";
-import img6 from "../assets/A (6).jpg";
-import img7 from "../assets/A (7).jpg";
-import img8 from "../assets/A (8).jpg";
-import img9 from "../assets/A (9).jpg";
+import img1 from "../../assets/A (1).jpg";
+import img2 from "../../assets/A (2).jpg";
+import img3 from "../../assets/A (3).jpg";
+import img4 from "../../assets/A (4).jpg";
+import img5 from "../../assets/A (5).jpg";
+import img6 from "../../assets/A (6).jpg";
+import img7 from "../../assets/A (7).jpg";
+import img8 from "../../assets/A (8).jpg";
+import img9 from "../../assets/A (9).jpg";
 
 function A() {
     return (

@@ -1,15 +1,15 @@
-import react from "react";
-import "./TSCO.css";
+import React from "react";
+import "../../components/TSCO.css";
 
-import img1 from "../assets/D (1).jpg";
-import img2 from "../assets/D (2).jpg";
-import img3 from "../assets/D (3).jpg";
-import img4 from "../assets/D (4).jpg";
-import img5 from "../assets/D (5).jpg";
-import img6 from "../assets/D (6).jpg";
-import img7 from "../assets/D (7).jpg";
-import img8 from "../assets/D (8).jpg";
-import img9 from "../assets/D (9).jpg";
+import img1 from "../../assets/D (1).jpg";
+import img2 from "../../assets/D (2).jpg";
+import img3 from "../../assets/D (3).jpg";
+import img4 from "../../assets/D (4).jpg";
+import img5 from "../../assets/D (5).jpg";
+import img6 from "../../assets/D (6).jpg";
+import img7 from "../../assets/D (7).jpg";
+import img8 from "../../assets/D (8).jpg";
+import img9 from "../../assets/D (9).jpg";
 
 function D() {
     return (
