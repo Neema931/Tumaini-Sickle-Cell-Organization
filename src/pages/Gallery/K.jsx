@@ -1,6 +1,5 @@
-import React from "react";
-import "../../components/TSCO.css";
-
+﻿import React from 'react';
+import "../../components/gallery.css";
 import img1 from "../../assets/K (1).jpg";
 import img2 from "../../assets/K (2).jpg";
 import img3 from "../../assets/K (3).jpg";
@@ -17,25 +16,34 @@ import img13 from "../../assets/K (13).jpg";
 
 function K() {
     return (
-        <section className="gallery-card">
-            <img src={img1} alt="Gallery Image 1" />
-            <img src={img2} alt="Gallery Image 2" />
-            <img src={img3} alt="Gallery Image 3" />
-            <img src={img4} alt="Gallery Image 4" />
-            <img src={img5} alt="Gallery Image 5" />
-            <img src={img6} alt="Gallery Image 6" />
-            <img src={img7} alt="Gallery Image 7" />
-            <img src={img8} alt="Gallery Image 8" />
-            <img src={img9} alt="Gallery Image 9" />
-            <img src={img10} alt="Gallery Image 10" />
-            <img src={img11} alt="Gallery Image 11" />
-            <img src={img12} alt="Gallery Image 12" />
-            <img src={img13} alt="Gallery Image 13" />
-       
-       <p>Today, Tumaini Sickle Cell Organization, in partnership with the Regional Blood Bank and Kenya Red Cross Society, hosted a successful blood donation drive at Great Lakes University
+        <section className="gallery-card single-gallery">
+            <div className="gallery-card-header">
+                <h2>BLOOD DONATION DRIVE</h2>
+            </div>
+
+            <div className="gallery-image">
+                <img src={img1} alt="Gallery Image 1" />
+                <img src={img2} alt="Gallery Image 2" />
+                <img src={img3} alt="Gallery Image 3" />
+                <img src={img4} alt="Gallery Image 4" />
+                <img src={img5} alt="Gallery Image 5" />
+                <img src={img6} alt="Gallery Image 6" />
+                <img src={img7} alt="Gallery Image 7" />
+                <img src={img8} alt="Gallery Image 8" />
+                <img src={img9} alt="Gallery Image 9" />
+                <img src={img10} alt="Gallery Image 10" />
+                <img src={img11} alt="Gallery Image 11" />
+                <img src={img12} alt="Gallery Image 12" />
+                <img src={img13} alt="Gallery Image 13" />
+            </div>
+
+            <div className="card-content">
+                <p>Today, Tumaini Sickle Cell Organization, in partnership with the Regional Blood Bank and Kenya Red Cross Society, hosted a successful blood donation drive at Great Lakes University
 Students and staff actively participated in donating blood to save lives, while also benefiting from free SCD genotype screening.
-A huge thank you to everyone who volunteered and supported this life-saving initiative. 
-#BloodDonation #SickleCellAwareness #GreatLakesUniversity #KenyaRedCross #SaveLives #CommunitySupport</p>
+A huge thank you to everyone who volunteered and supported this life-saving initiative. </p>
+
+<p style={{color:"blue"}}>#BloodDonation #SickleCellAwareness #GreatLakesUniversity #KenyaRedCross #SaveLives #CommunitySupport</p>
+            </div>
         </section>
     );
 }

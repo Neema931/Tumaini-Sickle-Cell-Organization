@@ -70,6 +70,7 @@ function Gallery() {
           </div>
 
           <div className="card-content">
+            <h2>THE KENYA SICKLE CELL SYMPOSIUM</h2>
             <p>We joined MOH and Sickle Cell Federation of Kenya during the
              𝐊𝐞𝐧𝐲𝐚 𝐒𝐢𝐜𝐤𝐥𝐞 𝐂𝐞𝐥𝐥 𝐒𝐲𝐦𝐩𝐨𝐬𝐢𝐮𝐦 held on 16 July 2026 at Gertrude’s 
              Children’s Hospital, Muthaiga, Nairobi. The symposium brought
@@ -92,6 +93,7 @@ function Gallery() {
           </div>
 
           <div className="card-content">
+            <h2>3RD NATIONAL COMMUNITY SYSTEMS STRENGHETHING KNOWLEDGE DISSEMINATION FORUM</h2>
             <p>Honored to have served as a member of the Planning Committee and Lead Rapporteur during the 𝟑𝐫𝐝 
             𝐍𝐚𝐭𝐢𝐨𝐧𝐚𝐥 𝐂𝐨𝐦𝐦𝐮𝐧𝐢𝐭𝐲 𝐒𝐲𝐬𝐭𝐞𝐦𝐬 𝐒𝐭𝐫𝐞𝐧𝐠𝐭𝐡𝐞𝐧𝐢𝐧𝐠 𝐊𝐧𝐨𝐰𝐥𝐞𝐝𝐠𝐞 𝐃𝐢𝐬𝐬𝐞𝐦𝐢𝐧𝐚𝐭𝐢𝐨𝐧 𝐅𝐨𝐫𝐮𝐦 held in Naivasha from 23rd–25th
              June 2026.</p>
@@ -110,7 +112,7 @@ function Gallery() {
             <img src={img12} alt="Gallery Image 12" />
           </div>
           <div className="card-content">
-            <p>🌍 𝐖𝐎𝐑𝐋𝐃 𝐒𝐈𝐂𝐊𝐋𝐄 𝐂𝐄𝐋𝐋 𝐃𝐀𝐘 𝟐𝟎𝟐𝟔: 𝐂𝐋𝐎𝐒𝐈𝐍𝐆 𝐓𝐇𝐄 𝐒𝐔𝐑𝐕𝐈𝐕𝐀𝐋 𝐆𝐀𝐏 – 𝐄𝐐𝐔𝐈𝐓𝐘 𝐈𝐍 𝐒𝐈𝐂𝐊𝐋𝐄 𝐂𝐄𝐋𝐋 𝐃𝐈𝐒𝐄𝐀𝐒𝐄</p>
+            <h2> 𝐖𝐎𝐑𝐋𝐃 𝐒𝐈𝐂𝐊𝐋𝐄 𝐂𝐄𝐋𝐋 𝐃𝐀𝐘 𝟐𝟎𝟐𝟔: 𝐂𝐋𝐎𝐒𝐈𝐍𝐆 𝐓𝐇𝐄 𝐒𝐔𝐑𝐕𝐈𝐕𝐀𝐋 𝐆𝐀𝐏 – 𝐄𝐐𝐔𝐈𝐓𝐘 𝐈𝐍 𝐒𝐈𝐂𝐊𝐋𝐄 𝐂𝐄𝐋𝐋 𝐃𝐈𝐒𝐄𝐀𝐒𝐄</h2>
             <p> On 19/06/2026, Kenya joined the global community in commemorating 𝐖𝐨𝐫𝐥𝐝 𝐒𝐢𝐜𝐤𝐥𝐞 𝐂𝐞𝐥𝐥 𝐃𝐚𝐲 𝟐𝟎𝟐𝟔 under
              the theme  𝐂𝐥𝐨𝐬𝐢𝐧𝐠 𝐭𝐡𝐞 𝐒𝐮𝐫𝐯𝐢𝐯𝐚𝐥 𝐆𝐚𝐩: 𝐄𝐪𝐮𝐢𝐭𝐲 𝐢𝐧 𝐒𝐢𝐜𝐤𝐥𝐞 𝐂𝐞𝐥𝐥 𝐃𝐢𝐬𝐞𝐚𝐬𝐞. The national celebration was hosted
               at Bunyala TVET, Busia County, bringing together government leaders, healthcare professionals, development 
@@ -132,6 +134,7 @@ function Gallery() {
           </div>
 
           <div className="card-content">
+            <h2>HRG LEARNING AND DOCUMENTATION</h2>
           <p>𝐓𝐮𝐦𝐚𝐢𝐧𝐢 𝐒𝐢𝐜𝐤𝐥𝐞 𝐂𝐞𝐥𝐥 𝐎𝐫𝐠𝐚𝐧𝐢𝐳𝐚𝐭𝐢𝐨𝐧
              Proud to have represented people living with Sickle Cell Disease at this week’s 𝐇𝐑𝐆 𝐋𝐞𝐚𝐫𝐧𝐢𝐧𝐠 & 𝐃𝐨𝐜𝐮𝐦𝐞𝐧𝐭𝐚𝐭𝐢𝐨𝐧 workshop,
              sponsored by 𝐀𝐌𝐑𝐄𝐅 𝐇𝐞𝐚𝐥𝐭𝐡 𝐀𝐟𝐫𝐢𝐜𝐚 𝐚𝐧𝐝 𝐟𝐚𝐜𝐢𝐥𝐢𝐭𝐚𝐭𝐞𝐝 𝐛𝐲 𝐍𝐞𝐱𝐭 𝐆𝐞𝐧𝐞𝐫𝐚𝐭𝐢𝐨𝐧 𝐋𝐚𝐰𝐲𝐞𝐫𝐬.</p>
@@ -151,6 +154,7 @@ function Gallery() {
           </div>
 
           <div className="card-content">
+            <h2>VOLUNATRY SICKLE CELL GENOTYPE SCREENING, COUNSELING, EDUCATION AND AWARENESS PROGRAM</h2>
             <p>Yesterday, 8th May 2026, marked a significant milestone as the pilot 𝗩𝗼𝗹𝘂𝗻𝘁𝗮𝗿𝘆 𝗦𝗶𝗰𝗸𝗹𝗲 𝗖𝗲𝗹𝗹 𝗚𝗲𝗻𝗼𝘁𝘆𝗽𝗲 𝗦𝗰𝗿𝗲𝗲𝗻𝗶𝗻𝗴,
              𝗖𝗼𝘂𝗻𝘀𝗲𝗹𝗶𝗻𝗴, 𝗘𝗱𝘂𝗰𝗮𝘁𝗶𝗼𝗻 𝗮𝗻𝗱 𝗔𝘄𝗮𝗿𝗲𝗻𝗲𝘀𝘀 𝗣𝗿𝗼𝗴𝗿𝗮𝗺 for university students was successfully rolled out at Jaramogi 
              Oginga Odinga University of Science and Technology.(JOOUST)</p>
@@ -170,6 +174,7 @@ function Gallery() {
           </div>
 
           <div className="card-content">
+            <h2>WORKSHOP ON KENYA'S MALARIA PROGRAMMING</h2>
             <p>Over the past two days, 𝐓𝐮𝐦𝐚𝐢𝐧𝐢 𝐒𝐢𝐜𝐤𝐥𝐞 𝐂𝐞𝐥𝐥 𝐎𝐫𝐠𝐚𝐧𝐢𝐳𝐚𝐭𝐢𝐨𝐧 had the privilege of participating in an intensive
              workshop on Kenya’s malaria programming, organized by 𝐘𝐨𝐮𝐭𝐡 𝐟𝐨𝐫 𝐀𝐜𝐭𝐢𝐨𝐧 𝐊𝐞𝐧𝐲𝐚 𝐅𝐨𝐫𝐮𝐦 (𝐘𝐎𝐅𝐀𝐊)  and funded by
               𝐀𝐦𝐫𝐞𝐟 𝐇𝐞𝐚𝐥𝐭𝐡 𝐀𝐟𝐫𝐢𝐜𝐚.</p>
@@ -189,6 +194,7 @@ function Gallery() {
           </div>
 
           <div className="card-content">
+            <h2>DIGNITY, HEALTH AND EMPOWERMENT FOR GIRLS LIVING WITH SICKLE CELL</h2>
           <p>Today marked a powerful step toward dignity, health, and empowerment for girls living with sickle cell disease in Kisumu Central.
              In a collaborative effort, Tumaini Sickle cell Organization -TSCO  , Together for Better , 𝐄𝐪𝐮𝐚𝐭𝐨𝐫 𝐑𝐨𝐮𝐧𝐝 𝐓𝐚𝐛𝐥𝐞, and the Kenya Red Cross Society  came together to support over 50 girls by distributing free reusable sanitary pads, a sustainable solution designed with 100% organic materials, free from chemicals and plastics, and reusable for up to two years.Today marked a 
              powerful step toward dignity, health, and empowerment for girls living with sickle cell disease in Kisumu Central.</p>
@@ -208,8 +214,10 @@ function Gallery() {
           </div>
 
           <div className="card-content">
+            <h2>IMPROVING ACCESS TO QUALITY HEALTH CARE FOR COMMUNITIES</h2>
             <p>𝐓𝐮𝐦𝐚𝐢𝐧𝐢 𝐒𝐢𝐜𝐤𝐥𝐞 𝐂𝐞𝐥𝐥 𝐎𝐫𝐠𝐚𝐧𝐢𝐳𝐚𝐭𝐢𝐨𝐧 was honored to join a multi-sectoral medical camp organized by the 
-            𝐃𝐫. 𝐉𝐨𝐬𝐞𝐩𝐡 𝐀𝐥𝐮𝐨𝐜𝐡 𝐅𝐨𝐮𝐧𝐝𝐚𝐭𝐢𝐨𝐧 in partnership with 𝐊𝐞𝐧𝐲𝐚 𝐌𝐞𝐝𝐢𝐜𝐚𝐥 𝐀𝐬𝐬𝐨𝐜𝐢𝐚𝐭𝐢𝐨𝐧.</p>
+            𝐃𝐫. 𝐉𝐨𝐬𝐞𝐩𝐡 𝐀𝐥𝐮𝐨𝐜𝐡 𝐅𝐨𝐮𝐧𝐝𝐚𝐭𝐢𝐨𝐧 in partnership with 𝐊𝐞𝐧𝐲𝐚 𝐌𝐞𝐝𝐢𝐜𝐚𝐥 𝐀𝐬𝐬𝐨𝐜𝐢𝐚𝐭𝐢𝐨𝐧. 
+            The camp brought together an incredible network of health facilities, media houses, NGOs in the health sector, financial institutions, and pharmaceutical partners — all united by one goal: 𝘪𝘮𝘱𝘳𝘰𝘷𝘪𝘯𝘨 𝘢𝘤𝘤𝘦𝘴𝘴 𝘵𝘰 𝘲𝘶𝘢𝘭𝘪𝘵𝘺 𝘩𝘦𝘢𝘭𝘵𝘩𝘤𝘢𝘳𝘦 𝘧𝘰𝘳 𝘤𝘰𝘮𝘮𝘶𝘯𝘪𝘵𝘪𝘦𝘴.</p>
 
             <div className="card-link">
               <Link to="/H">View More</Link>
@@ -226,6 +234,7 @@ function Gallery() {
           </div>
 
           <div className="card-content">
+            <h2>ENTREPRENEURIAL SKILL TRAINING</h2>
           <p>We are proud to share that on the 12th and 13th of last week, 𝐓𝐮𝐦𝐚𝐢𝐧𝐢 𝐒𝐢𝐜𝐤𝐥𝐞 𝐂𝐞𝐥𝐥 𝐎𝐫𝐠𝐚𝐧𝐢𝐳𝐚𝐭𝐢𝐨𝐧 was honored to be selected among 12 outstanding organizations whose social enterprise proposals qualified for the 𝐄𝐧𝐭𝐫𝐞𝐩𝐫𝐞𝐧𝐞𝐮𝐫𝐢𝐚𝐥 𝐒𝐤𝐢𝐥𝐥𝐬 𝐓𝐫𝐚𝐢𝐧𝐢𝐧𝐠 hosted by 𝐓𝐡𝐞 𝐆𝐢𝐯𝐢𝐧𝐠 𝐄𝐱𝐜𝐡𝐚𝐧𝐠𝐞 (𝐓𝐆𝐄) under the Kisumu Cohort.</p>
           <div className="card-link">
             <Link to="/I">View More</Link>
@@ -241,6 +250,7 @@ function Gallery() {
             <img src={img40} alt="Gallery Image 40" />
           </div>
           <div className="card-content">
+            <h2>SIGNING THE MEMORANDUM OF UNDERSTANDING(MoU)</h2>
             <p>Today marked a historic milestone in the fight against sickle cell disease as 𝐓𝐮𝐦𝐚𝐢𝐧𝐢 𝐒𝐢𝐜𝐤𝐥𝐞 𝐂𝐞𝐥𝐥 𝐎𝐫𝐠𝐚𝐧𝐢𝐳𝐚𝐭𝐢𝐨𝐧 (𝐓𝐒𝐂𝐎) and 𝐉𝐚𝐫𝐚𝐦𝐨𝐠𝐢 𝐎𝐠𝐢𝐧𝐠𝐚 𝐎𝐝𝐢𝐧𝐠𝐚 𝐔𝐧𝐢𝐯𝐞𝐫𝐬𝐢𝐭𝐲 𝐨𝐟 𝐒𝐜𝐢𝐞𝐧𝐜𝐞 𝐚𝐧𝐝 𝐓𝐞𝐜𝐡𝐧𝐨𝐥𝐨𝐠𝐲 (𝐉𝐎𝐎𝐔𝐒𝐓) officially signed a 𝐌𝐞𝐦𝐨𝐫𝐚𝐧𝐝𝐮𝐦 𝐨𝐟 𝐔𝐧𝐝𝐞𝐫𝐬𝐭𝐚𝐧𝐝𝐢𝐧𝐠 (𝐌𝐨𝐔) to collaborate on research and innovation in sickle cell disease.</p>
             <div className="card-link">
               <Link to="/J">View More</Link>
@@ -256,10 +266,10 @@ function Gallery() {
             <img src={img44} alt="Gallery Image 44" />
           </div>
           <div className="card-content">
+            <h2>BLOOD DONATION DRIVE</h2>
             <p>Today, Tumaini Sickle Cell Organization, in partnership with the Regional Blood Bank and Kenya Red Cross Society, hosted a successful blood donation drive at Great Lakes University
 Students and staff actively participated in donating blood to save lives, while also benefiting from free SCD genotype screening.
-A huge thank you to everyone who volunteered and supported this life-saving initiative. 
-#BloodDonation #SickleCellAwareness #GreatLakesUniversity #KenyaRedCross #SaveLives #CommunitySupport</p>
+</p>
     <div className="card-link">
               <Link to="/K">View More</Link>
             </div>

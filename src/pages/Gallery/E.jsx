@@ -1,5 +1,5 @@
 import React from "react";
-import "../../components/TSCO.css";
+import "../../components/gallery.css";
 
 import img1 from "../../assets/E (1).jpg";
 import img2 from "../../assets/E (2).jpg";
@@ -44,7 +44,13 @@ import img40 from "../../assets/E (40).jpg";
 
 function E() {
     return (
-        <section className="gallery-card">
+        <section className="gallery-card single-gallery">
+
+            <div className="gallery-card-header">
+                <h2>VOLUNATRY SICKLE CELL GENOTYPE SCREENING, COUNSELING, EDUCATION AND AWARENESS PROGRAM</h2>
+            </div>
+
+            <div className="gallery-image">
             <img src={img1} alt="Gallery Image 1" />
             <img src={img2} alt="Gallery Image 2" />
             <img src={img3} alt="Gallery Image 3" />
@@ -85,14 +91,19 @@ function E() {
             <img src={img38} alt="Gallery Image 38" />
             <img src={img39} alt="Gallery Image 39" />
             <img src={img40} alt="Gallery Image 40" />
+            </div>
 
-        <p>Yesterday, 8th May 2026, marked a significant milestone as the pilot 𝗩𝗼𝗹𝘂𝗻𝘁𝗮𝗿𝘆 𝗦𝗶𝗰𝗸𝗹𝗲 𝗖𝗲𝗹𝗹 𝗚𝗲𝗻𝗼𝘁𝘆𝗽𝗲 𝗦𝗰𝗿𝗲𝗲𝗻𝗶𝗻𝗴, 𝗖𝗼𝘂𝗻𝘀𝗲𝗹𝗶𝗻𝗴, 𝗘𝗱𝘂𝗰𝗮𝘁𝗶𝗼𝗻 𝗮𝗻𝗱 𝗔𝘄𝗮𝗿𝗲𝗻𝗲𝘀𝘀 𝗣𝗿𝗼𝗴𝗿𝗮𝗺 for university students was successfully rolled out at Jaramogi Oginga Odinga University of Science and Technology.(JOOUST)
-This impactful initiative was spearheaded through a powerful collaboration between 𝗧𝘂𝗺𝗮𝗶𝗻𝗶 𝗦𝗶𝗰𝗸𝗹𝗲 𝗖𝗲𝗹𝗹 𝗢𝗿𝗴𝗮𝗻𝗶𝘇𝗮𝘁𝗶𝗼𝗻, 𝗔𝗠𝗣𝗔𝗧𝗛 𝗞𝗲𝗻𝘆𝗮, 𝗜𝗻𝗻𝗼𝘃𝗮𝘁𝗶𝘃𝗲 𝗛𝗲𝗺𝗮𝘁𝗼𝗹𝗼𝗴𝘆 𝗜𝗻𝗰., 𝗗𝗿. 𝗦𝗮𝗺 𝗠𝗯𝘂𝗻𝘆𝗮 𝗛𝗲𝗮𝗹𝘁𝗵 & 𝗟𝗲𝗮𝗱𝗲𝗿𝘀𝗵𝗶𝗽 𝗖𝗼𝗻𝘀𝘂𝗹𝘁𝗮𝗻𝗰𝘆, 𝗠𝗮𝘁𝗶𝗯𝗮𝗯𝘂 𝗛𝗼𝘀𝗽𝗶𝘁𝗮𝗹, 𝗮𝗻𝗱 𝗦𝗶𝗹𝘃𝗲𝗿𝗹𝗮𝗸𝗲 𝗥𝗲𝘀𝗲𝗮𝗿𝗰𝗵 𝗖𝗼𝗺𝗽𝗮𝗻𝘆/𝗛𝗲𝗺𝗼𝘁𝘆𝗽𝗲𝗖𝗦.
-Our goal is to increase awareness on Sickle Cell Disease (SCD), promote voluntary genotype screening among young people, and generate critical data that will support evidence-based advocacy and policy reform on genetic screening in Kenya.
-One of the highlights of the day was a highly educative and emotionally moving performance by the JOOUST Drama Team, which boldly challenged the long-held myth that sickle cell disease is caused by witchcraft. Through drama and storytelling, they emphasized the importance of seeking proper medical care instead of relying on traditional misconceptions and harmful stigma.
-We extend our sincere gratitude to the leadership of JOOUST, especially 𝗣𝗿𝗼𝗳. 𝗚𝗲𝗼𝗿𝗴𝗲 𝗔𝘆𝗼𝗱𝗼, for graciously hosting the event and for the tremendous mobilization that saw students turn up overwhelmingly for voluntary screening.
+            <div className="card-content">
+        <p>Yesterday, 8th May 2026, marked a significant milestone as the pilot 𝗩𝗼𝗹𝘂𝗻𝘁𝗮𝗿𝘆 𝗦𝗶𝗰𝗸𝗹𝗲 𝗖𝗲𝗹𝗹 𝗚𝗲𝗻𝗼𝘁𝘆𝗽𝗲 𝗦𝗰𝗿𝗲𝗲𝗻𝗶𝗻𝗴, 𝗖𝗼𝘂𝗻𝘀𝗲𝗹𝗶𝗻𝗴, 𝗘𝗱𝘂𝗰𝗮𝘁𝗶𝗼𝗻 𝗮𝗻𝗱 𝗔𝘄𝗮𝗿𝗲𝗻𝗲𝘀𝘀 𝗣𝗿𝗼𝗴𝗿𝗮𝗺 for university students was successfully rolled out at Jaramogi Oginga Odinga University of Science and Technology (JOOUST)<br />
+This impactful initiative was spearheaded through a powerful collaboration between 𝗧𝘂𝗺𝗮𝗶𝗻𝗶 𝗦𝗶𝗰𝗸𝗹𝗲 𝗖𝗲𝗹𝗹 𝗢𝗿𝗴𝗮𝗻𝗶𝘇𝗮𝘁𝗶𝗼𝗻, 𝗔𝗠𝗣𝗔𝗧𝗛 𝗞𝗲𝗻𝘆𝗮, 𝗜𝗻𝗻𝗼𝘃𝗮𝘁𝗶𝘃𝗲 𝗛𝗲𝗺𝗮𝘁𝗼𝗹𝗼𝗴𝘆 𝗜𝗻𝗰., 𝗗𝗿. 𝗦𝗮𝗺 𝗠𝗯𝘂𝗻𝘆𝗮 𝗛𝗲𝗮𝗹𝘁𝗵 & 𝗟𝗲𝗮𝗱𝗲𝗿𝘀𝗵𝗶𝗽 𝗖𝗼𝗻𝘀𝘂𝗹𝘁𝗮𝗻𝗰𝘆, 𝗠𝗮𝘁𝗶𝗯𝗮𝗯𝘂 𝗛𝗼𝘀𝗽𝗶𝘁𝗮𝗹, 𝗮𝗻𝗱 𝗦𝗶𝗹𝘃𝗲𝗿𝗹𝗮𝗸𝗲 𝗥𝗲𝘀𝗲𝗮𝗿𝗰𝗵 𝗖𝗼𝗺𝗽𝗮𝗻𝘆/𝗛𝗲𝗺𝗼𝘁𝘆𝗽𝗲𝗖𝗦.<br />
+Our goal is to increase awareness on Sickle Cell Disease (SCD), promote voluntary genotype screening among young people, and generate critical data that will support evidence-based advocacy and policy reform on genetic screening in Kenya.<br />
+One of the highlights of the day was a highly educative and emotionally moving performance by the JOOUST Drama Team, which boldly challenged the long-held myth that sickle cell disease is caused by witchcraft.<br /> Through drama and storytelling, they emphasized the importance of seeking proper medical care instead of relying on traditional misconceptions and harmful stigma.
+We extend our sincere gratitude to the leadership of JOOUST, especially 𝗣𝗿𝗼𝗳. 𝗚𝗲𝗼𝗿𝗴𝗲 𝗔𝘆𝗼𝗱𝗼, for graciously hosting the event and for the tremendous mobilization that saw students turn up overwhelmingly for voluntary screening.<br />
 We are matching on with the initiative to all universities in Western Kenya , we are breaking stigma, promoting informed choices, and building a healthier future through awareness, science, and community action.
+</p>
+<p style = {{color: "blue"}}>
 #SickleCellAwareness #KnowYourGenotype #HealthEquity #YouthHealth #GenotypeScreening #EndTheStigma #TumainiSickleCellOrganization #JOOUST #AMPATHKenya</p>    
+        </div>
         </section>
     );
 }

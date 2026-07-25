@@ -1,0 +1,78 @@
+.gallery-card {
+  display: grid;
+  border-radius: 24px;
+  padding: 16px;
+  margin: 16px;
+  text-align: center;
+  
+}
+
+.gallery-card-header {
+  margin-bottom: 16px;
+}
+
+.gallery-image {
+  height: 150px;
+  width: 100px;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.card-content {
+   display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    gap:20px;
+
+}
+
+/* Page-specific layout for single-gallery pages (A.jsx) */
+.single-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+}
+
+.single-gallery .gallery-image {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  align-items: start; /* ensure images align at top */
+}
+
+.single-gallery .gallery-image img {
+  width: calc(25% - 9px);
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  max-width: 200px;
+}
+
+.single-gallery .card-content {
+  width: 1250px;
+  max-width: 3300px;
+  text-align: left;
+  margin-top: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 640px) {
+  .single-gallery .gallery-image img {
+    width: calc(50% - 6px);
+    height: 140px;
+  }
+}

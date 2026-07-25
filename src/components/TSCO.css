@@ -202,7 +202,7 @@ html, body {
 .gallery-card{
     display:grid;
 
-    grid-template-columns: 45% 55%;
+    grid-template-columns: 460px 1fr;
 
     gap:2rem;
 
@@ -212,7 +212,7 @@ html, body {
 
     background:white;
 
-    border-radius:20px;
+    border-radius:24px;
 
     box-shadow:0 15px 40px rgba(0,0,0,.08);
 
@@ -220,7 +220,7 @@ html, body {
 }
 
 .gallery-card:hover {
-  transform: translateY(-4px);
+
   box-shadow: 0 24px 55px rgba(15, 40, 80, 0.12);
 }
 
@@ -233,9 +233,6 @@ html, body {
   transition: transform 0.35s ease;
 }
 
-.gallery-card:hover img {
-  transform: scale(1.03);
-}
 
 .gallery-header {
   text-align: center;
@@ -282,7 +279,7 @@ html, body {
 .gallery-image {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 15px;
 }
 
 .gallery-image img {
@@ -290,12 +287,9 @@ html, body {
     height: 190px;
     object-fit: cover;
     border-radius: 16px;
-    transition: 0.3s;
+    
 }
 
-.gallery-image img:hover {
-    transform: scale(1.05);
-}
 
 .gallery-content{
 
@@ -303,13 +297,15 @@ html, body {
 
     flex-direction:column;
 
-    justify-content:center;
+    justify-content:left;
 
     gap:20px;
 
 }
 
 .gallery-content p{
+  justify-content: left;
+  align-items: center;
 
     line-height:1.8;
 
@@ -323,7 +319,7 @@ html, body {
 .gallery-card > .card-images {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
+  gap: 19px;
 }
 
 .gallery-card > .card-images img {
@@ -337,8 +333,9 @@ html, body {
 .gallery-card > .card-content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: left;
   min-height: 100%;
+  width: 700px;
 }
 
 .gallery-card > .card-content p {

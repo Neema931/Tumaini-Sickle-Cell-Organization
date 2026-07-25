@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../components/TSCO.css";
+import "../../components/gallery.css";
 
 import img1 from "../../assets/B (1).jpg";
 import img2 from "../../assets/B (2).jpg";
@@ -18,7 +18,12 @@ import img14 from "../../assets/B (14).jpg";
 
 function B() {
     return (
-        <section className="gallery-card">
+        <section className="gallery-card single-gallery">
+            <div className="gallery-card-header">
+                <h2>3RD NATIONAL COMMUNITY SYSTEMS STRENGHETHING KNOWLEDGE DISSEMINATION FORUM</h2>
+            </div>
+
+            <div className="gallery-image">
             <img src={img1} alt="Gallery Image 1" />
             <img src={img2} alt="Gallery Image 2" />
             <img src={img3} alt="Gallery Image 3" />
@@ -33,13 +38,22 @@ function B() {
             <img src={img12} alt="Gallery Image 12" />
             <img src={img13} alt="Gallery Image 13" />
             <img src={img14} alt="Gallery Image 14" />
+            </div>
 
-            <p>Honored to have served as a member of the Planning Committee and Lead Rapporteur during the 𝟑𝐫𝐝 𝐍𝐚𝐭𝐢𝐨𝐧𝐚𝐥 𝐂𝐨𝐦𝐦𝐮𝐧𝐢𝐭𝐲 𝐒𝐲𝐬𝐭𝐞𝐦𝐬 𝐒𝐭𝐫𝐞𝐧𝐠𝐭𝐡𝐞𝐧𝐢𝐧𝐠 𝐊𝐧𝐨𝐰𝐥𝐞𝐝𝐠𝐞 𝐃𝐢𝐬𝐬𝐞𝐦𝐢𝐧𝐚𝐭𝐢𝐨𝐧 𝐅𝐨𝐫𝐮𝐦 held in Naivasha from 23rd–25th June 2026. 
-The forum brought together government, civil society, community-led organizations, development partners, academia, and affected communities under the theme:  “*𝐒𝐭𝐫𝐞𝐧𝐠𝐭𝐡𝐞𝐧𝐢𝐧𝐠 𝐂𝐨𝐦𝐦𝐮𝐧𝐢𝐭𝐲 𝐒𝐲𝐬𝐭𝐞𝐦𝐬 𝐢𝐧 𝐭𝐡𝐞 𝐂𝐡𝐚𝐧𝐠𝐢𝐧𝐠 𝐆𝐥𝐨𝐛𝐚𝐥 𝐇𝐞𝐚𝐥𝐭𝐡 𝐋𝐚𝐧𝐝𝐬𝐜𝐚𝐩𝐞.”*
-We reaffirmed that community systems are the foundation of equitable, people-centered, and resilient health systems in Kenya. As the country advances Universal Health Coverage and navigates changing donor funding landscapes, community health workers, community-led organizations, and grassroots accountability mechanisms must be recognized, protected, and adequately resourced.
+            <div className="card-content">
+                
+            <p>Honored to have served as a member of the Planning Committee and Lead Rapporteur during the 𝟑𝐫𝐝 𝐍𝐚𝐭𝐢𝐨𝐧𝐚𝐥 𝐂𝐨𝐦𝐦𝐮𝐧𝐢𝐭𝐲 𝐒𝐲𝐬𝐭𝐞𝐦𝐬 𝐒𝐭𝐫𝐞𝐧𝐠𝐭𝐡𝐞𝐧𝐢𝐧𝐠 𝐊𝐧𝐨𝐰𝐥𝐞𝐝𝐠𝐞 𝐃𝐢𝐬𝐬𝐞𝐦𝐢𝐧𝐚𝐭𝐢𝐨𝐧 𝐅𝐨𝐫𝐮𝐦 held in Naivasha from 23rd–25th June 2026.<br />
+The forum brought together government, civil society, community-led organizations, development partners, academia, and affected communities under the theme:  “𝐒𝐭𝐫𝐞𝐧𝐠𝐭𝐡𝐞𝐧𝐢𝐧𝐠 𝐂𝐨𝐦𝐦𝐮𝐧𝐢𝐭𝐲 𝐒𝐲𝐬𝐭𝐞𝐦𝐬 𝐢𝐧 𝐭𝐡𝐞 𝐂𝐡𝐚𝐧𝐠𝐢𝐧𝐠 𝐆𝐥𝐨𝐛𝐚𝐥 𝐇𝐞𝐚𝐥𝐭𝐡 𝐋𝐚𝐧𝐝𝐬𝐜𝐚𝐩𝐞.”<br />
+We reaffirmed that community systems are the foundation of equitable, people-centered, and resilient health systems in Kenya. As the country advances Universal Health Coverage and navigates changing donor funding landscapes, community health workers, community-led 
+organizations, and grassroots accountability mechanisms must be recognized, protected, and adequately resourced.<br />
 Key calls to action included increased domestic investment in community health, formal recognition of Community-Led Monitoring, stronger policy and legal frameworks, and accelerated but carefully managed health systems integration.
-One message stood out clearly: 𝐂𝐨𝐦𝐦𝐮𝐧𝐢𝐭𝐲 𝐬𝐲𝐬𝐭𝐞𝐦𝐬 𝐚𝐫𝐞 𝐧𝐨𝐭 𝐚 𝐬𝐚𝐟𝐞𝐭𝐲 𝐧𝐞𝐭 𝐟𝐨𝐫 𝐰𝐡𝐞𝐧 𝐭𝐡𝐞 𝐡𝐞𝐚𝐥𝐭𝐡 𝐬𝐲𝐬𝐭𝐞𝐦 𝐟𝐚𝐢𝐥𝐬. 𝐓𝐡𝐞𝐲 𝐚𝐫𝐞 𝐭𝐡𝐞 𝐡𝐞𝐚𝐥𝐭𝐡 𝐬𝐲𝐬𝐭𝐞𝐦.
+<br />
+One message stood out clearly: 𝐂𝐨𝐦𝐦𝐮𝐧𝐢𝐭𝐲 𝐬𝐲𝐬𝐭𝐞𝐦𝐬 𝐚𝐫𝐞 𝐧𝐨𝐭 𝐚 𝐬𝐚𝐟𝐞𝐭𝐲 𝐧𝐞𝐭 𝐟𝐨𝐫 𝐰𝐡𝐞𝐧 𝐭𝐡𝐞 𝐡𝐞𝐚𝐥𝐭𝐡 𝐬𝐲𝐬𝐭𝐞𝐦 𝐟𝐚𝐢𝐥𝐬. 𝐓𝐡𝐞𝐲 𝐚𝐫𝐞 𝐭𝐡𝐞 𝐡𝐞𝐚𝐥𝐭𝐡 𝐬𝐲𝐬𝐭𝐞𝐦.<br />
+</p>
+
+<p style = {{color: "blue"}}>
 #CSSForum2026 #CommunitySystemsStrengthening #UHC #CommunityHealth #HealthEquity #DomesticResourceMobilization #CommunityLeadership </p>
+       </div>
         </section>
     );
 }
