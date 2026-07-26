@@ -27,7 +27,7 @@ function Donate() {
             const response = await fetch(
                 `${import.meta.env.VITE_API_URL}/donate`,
                 {
-                    method: "POSTt",
+                    method: "POST",
 
                     headers: {
                         "Content-Type": "application/json"
