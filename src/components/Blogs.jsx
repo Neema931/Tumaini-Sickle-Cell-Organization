@@ -7,7 +7,7 @@ function Blogs() {
   useEffect(() => {
     const loadNewsletters = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/blogs`);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/blogs`);
         const data = await response.json();
         setNewsletters(data);
       } catch (error) {

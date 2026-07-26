@@ -29,7 +29,7 @@ function Donate() {
         }
 
         try {
-            const response = await fetch(`${apiUrl}/donate`, {
+            const response = await fetch(`${apiUrl}/api/donate`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
