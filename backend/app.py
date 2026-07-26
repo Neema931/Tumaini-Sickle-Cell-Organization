@@ -45,6 +45,15 @@ with app.app_context():
     ensure_default_admin()
 
 
+
+@app.route("/")
+def home():
+    return jsonify({
+        "status": "success",
+        "message": "TSCO Payment API Running"
+    })
+
+
 def send_email(subject, body, recipients, reply_to=None):
     smtp_host = os.getenv("SMTP_HOST")
     smtp_port = int(os.getenv("SMTP_PORT", 587))
