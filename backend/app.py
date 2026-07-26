@@ -13,8 +13,19 @@ from models.admin import AdminUser, BlogPost, NewsletterSubscriber, GalleryItem,
 app = Flask(__name__)
 app.secret_key = "tsco-admin-secret-key"
 
-CORS(app, supports_credentials=True, resources={r"/*": {"origins": ["https://tumaini-sickle-cell-organization.onrender.com/api", "http://127.0.0.1:5173", "https://tumaini-sickle-cell-organization.vercel.app"]}})
-  
+CORS(
+    app,
+    supports_credentials=True,
+    resources={
+        r"/*": {
+            "origins": [
+                "http://localhost:5173",
+                "http://127.0.0.1:5173",
+                "https://tumaini-sickle-cell-organization.vercel.app"
+            ]
+        }
+    }
+)
 
 app.register_blueprint(payment_bp, url_prefix="/api")
 

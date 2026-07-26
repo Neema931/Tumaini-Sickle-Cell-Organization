@@ -57,7 +57,7 @@ def submit_order(order_details):
         "currency": "KES",
         "amount": order_details["amount"],
         "description": "Donation to Tumaini Sickle Cell Organization",
-        "callback_url": "https://tumaini-sickle-cell-organization.onrender.com/api/ipn/payment-success",
+        "callback_url": "https://tumaini-sickle-cell-organization.vercel.app/payment-success",
         "notification_id": order_details["notification_id"],
         "billing_address": {
             "email_address": order_details["email"],
