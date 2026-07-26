@@ -37,51 +37,30 @@ def test():
 @payment_bp.route("/donate", methods=["POST"])
 def donate():
 
-    data = request.json
-
-
-    # Create donation record first
+    data = request.json or {}
 
     donation = Donation(
-
-        donor_name = (
+        donor_name=(
             data.get("first_name", "")
             + " "
             + data.get("last_name", "")
         ),
-
-        email = data.get("email"),
-
-        phone = data.get("phone"),
-
-        amount = data.get("amount"),
-
-        status = "PENDING"
-
+        email=data.get("email"),
+        phone=data.get("phone"),
+        amount=data.get("amount"),
+        status="PENDING"
     )
 
-
     db.session.add(donation)
-
     db.session.commit()
-
-
-
-    # Send request to Pesapal
 
     response = submit_order(data)
 
-
-
-    # Save Pesapal tracking ID
-
     if response.get("order_tracking_id"):
-
-        donation.tracking_id = response.get(
-            "order_tracking_id"
-        )
-
+        donation.tracking_id = response.get("order_tracking_id")
         db.session.commit()
+
+    return jsonify(response)
 
 @payment_bp.route("/donations", methods=["GET"])
 def get_donations():
@@ -104,25 +83,4 @@ def get_donations():
 
     return jsonify(results)
     
-    @payment_bp.route("/donations", methods=["GET"])
-    def get_donations():
-
-        donations = Donation.query.order_by(Donation.id.desc()).all()
-
-        results = []
-
-        for donation in donations:
-            results.append({
-                "id": donation.id,
-                "name": donation.donor_name,
-                "email": donation.email,
-                "phone": donation.phone,
-                "amount": donation.amount,
-                "status": donation.status,
-                "tracking_id": donation.tracking_id,
-                "date": donation.created_at.strftime("%Y-%m-%d %H:%M")
-         })
-
-    return jsonify(results)
-
     return jsonify(response)
