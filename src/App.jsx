@@ -11,12 +11,24 @@ import Partnerships from "./components/Partnerships";
 import QualityImprovement from "./components/QualityImprovement";
 import SupportGroups from "./components/SupportGroups";
 import Sanitorium from "./components/Sanitorium";
-import Blogs from "./components/Blogs";
-import Events from "./components/Events";
+import PublicBlogs from "./components/Blogs";
+import PublicEvents from "./components/Events";
 import Contact from "./components/Contact";
 import Donate from "./pages/Donate";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
+import AdminLayout from "./layouts/AdminLayout";
+import Login from "./admin/Login";
+import Dashboard from "./admin/Dashboard";
+import Donations from "./admin/Donations";
+import AdminBlogs from "./admin/Blogs";
+import AdminGallery from "./admin/Gallery.jsx";
+import Newsletters from "./admin/Newsletters.jsx";
+import AdminEvents from "./admin/Events.jsx";
+import Volunteers from "./admin/Volunteers.jsx";
+import Reports from "./admin/Reports.jsx";
+import Settings from "./admin/Settings.jsx";
+import Users from "./admin/Users.jsx";
 import A from "./pages/Gallery/A";
 import B from "./pages/Gallery/B";
 import C from "./pages/Gallery/C";
@@ -28,6 +40,7 @@ import H from "./pages/Gallery/H";
 import I from "./pages/Gallery/I";
 import J from "./pages/Gallery/J";
 import K from "./pages/Gallery/K";
+import "./admin/admin.css";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -42,39 +55,49 @@ function ScrollToTop() {
 function App() {
   return (
     <>
-      <Navbar />
       <ScrollToTop />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/programs" element={<Programs />} />
-        <Route path="/programs/awareness" element={<AwarenessEducation />} />
-        <Route path="/programs/advocacy" element={<AdvocacyPolicy />} />
-        <Route path="/programs/partnerships" element={<Partnerships />} />
-        <Route path="/programs/quality" element={<QualityImprovement />} />
-        <Route path="/programs/support" element={<SupportGroups />} />
-        <Route path="/programs/sanitorium" element={<Sanitorium />} />
-        <Route path="/blogs" element={<Blogs />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/donate" element={<Donate />} />
-        <Route path="/A" element={<A />} />
-        <Route path="/B" element={<B />} />
-        <Route path="/C" element={<C />} />
-        <Route path="/D" element={<D />} />
-        <Route path="/E" element={<E />} />
-        <Route path="/F" element={<F />} />
-        <Route path="/G" element={<G />} />
-        <Route path="/H" element={<H />} />
-        <Route path="/I" element={<I />} />
-        <Route path="/J" element={<J />} />
-        <Route path="/K" element={<K />} />
-      </Routes>
+        <Route path="/admin/login" element={<Login />} />
+        <Route path="/admin/*" element={<AdminLayout><Routes>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="donations" element={<Donations />} />
+          <Route path="blogs" element={<AdminBlogs />} />
+          <Route path="gallery" element={<AdminGallery />} />
+          <Route path="newsletters" element={<Newsletters />} />
+          <Route path="events" element={<AdminEvents />} />
+          <Route path="volunteers" element={<Volunteers />} />
+          <Route path="reports" element={<Reports />} />
+          <Route path="settings" element={<Settings />} />
+          <Route path="users" element={<Users />} />
+        </Routes></AdminLayout>} />
 
-      <CTA />
-      <Footer />
+        <Route path="/" element={<><Navbar /><Home /><CTA /><Footer /></>} />
+        <Route path="/about" element={<><Navbar /><About /><CTA /><Footer /></>} />
+        <Route path="/gallery" element={<><Navbar /><Gallery /><CTA /><Footer /></>} />
+        <Route path="/programs" element={<><Navbar /><Programs /><CTA /><Footer /></>} />
+        <Route path="/programs/awareness" element={<><Navbar /><AwarenessEducation /><CTA /><Footer /></>} />
+        <Route path="/programs/advocacy" element={<><Navbar /><AdvocacyPolicy /><CTA /><Footer /></>} />
+        <Route path="/programs/partnerships" element={<><Navbar /><Partnerships /><CTA /><Footer /></>} />
+        <Route path="/programs/quality" element={<><Navbar /><QualityImprovement /><CTA /><Footer /></>} />
+        <Route path="/programs/support" element={<><Navbar /><SupportGroups /><CTA /><Footer /></>} />
+        <Route path="/programs/sanitorium" element={<><Navbar /><Sanitorium /><CTA /><Footer /></>} />
+        <Route path="/blogs" element={<><Navbar /><PublicBlogs /><CTA /><Footer /></>} />
+        <Route path="/events" element={<><Navbar /><PublicEvents /><CTA /><Footer /></>} />
+        <Route path="/contact" element={<><Navbar /><Contact /><CTA /><Footer /></>} />
+        <Route path="/donate" element={<><Navbar /><Donate /><CTA /><Footer /></>} />
+        <Route path="/A" element={<><Navbar /><A /><CTA /><Footer /></>} />
+        <Route path="/B" element={<><Navbar /><B /><CTA /><Footer /></>} />
+        <Route path="/C" element={<><Navbar /><C /><CTA /><Footer /></>} />
+        <Route path="/D" element={<><Navbar /><D /><CTA /><Footer /></>} />
+        <Route path="/E" element={<><Navbar /><E /><CTA /><Footer /></>} />
+        <Route path="/F" element={<><Navbar /><F /><CTA /><Footer /></>} />
+        <Route path="/G" element={<><Navbar /><G /><CTA /><Footer /></>} />
+        <Route path="/H" element={<><Navbar /><H /><CTA /><Footer /></>} />
+        <Route path="/I" element={<><Navbar /><I /><CTA /><Footer /></>} />
+        <Route path="/J" element={<><Navbar /><J /><CTA /><Footer /></>} />
+        <Route path="/K" element={<><Navbar /><K /><CTA /><Footer /></>} />
+      </Routes>
 
     </>
   );

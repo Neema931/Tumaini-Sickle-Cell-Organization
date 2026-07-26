@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TSCO Blogs</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #f4f6fb; color: #1f2937; }
+    .layout { display: flex; min-height: 100vh; }
+    .sidebar { width: 260px; background: #111827; color: white; padding: 24px 20px; }
+    .sidebar h2 { margin-top: 0; }
+    .sidebar a { display: block; color: #d1d5db; text-decoration: none; padding: 10px 12px; border-radius: 10px; margin-bottom: 6px; }
+    .sidebar a.active, .sidebar a:hover { background: #1f2937; color: white; }
+    .main { flex: 1; padding: 24px; }
+    .panel { background: white; padding: 18px; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+    form { display: flex; flex-direction: column; gap: 10px; }
+    input, textarea, select, button { padding: 10px; border-radius: 10px; border: 1px solid #d1d5db; }
+    button { background: #8B0000; color: white; border: none; cursor: pointer; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>TSCO Admin</h2>
+      <a href="/admin/dashboard">Dashboard</a>
+      <a href="/admin/donations">Donations</a>
+      <a class="active" href="/admin/blogs">Blogs</a>
+      <a href="/admin/newsletters">Newsletters</a>
+      <a href="/admin/gallery">Gallery</a>
+      <a href="/admin/events">Events</a>
+      <a href="/admin/volunteers">Volunteers</a>
+      <a href="/admin/messages">Contact Messages</a>
+      <a href="/admin/reports">Reports</a>
+      <a href="/admin/users">Users</a>
+      <a href="/admin/settings">Settings</a>
+      <a class="logout" href="/admin/logout">Logout</a>
+    </aside>
+    <main class="main">
+      <h1>Blog Management</h1>
+      <div class="panel">
+        <h2>Create / Edit Blog</h2>
+        <form method="post">
+          <div class="row">
+            <input type="text" name="title" placeholder="Title" required />
+            <input type="text" name="category" placeholder="Category" />
+          </div>
+          <textarea name="content" rows="8" placeholder="Write your article..." required></textarea>
+          <div class="row">
+            <input type="text" name="cover_image" placeholder="Cover image URL" />
+            <select name="status">
+              <option value="draft">Draft</option>
+              <option value="published">Published</option>
+            </select>
+          </div>
+          <button type="submit">Save Blog</button>
+        </form>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

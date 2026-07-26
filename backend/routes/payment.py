@@ -83,6 +83,46 @@ def donate():
 
         db.session.commit()
 
+@payment_bp.route("/donations", methods=["GET"])
+def get_donations():
 
+    donations = Donation.query.order_by(Donation.id.desc()).all()
+
+    results = []
+
+    for donation in donations:
+        results.append({
+            "id": donation.id,
+            "name": donation.donor_name,
+            "email": donation.email,
+            "phone": donation.phone,
+            "amount": donation.amount,
+            "status": donation.status,
+            "tracking_id": donation.tracking_id,
+            "date": donation.created_at.strftime("%Y-%m-%d %H:%M")
+        })
+
+    return jsonify(results)
+    
+    @payment_bp.route("/donations", methods=["GET"])
+    def get_donations():
+
+        donations = Donation.query.order_by(Donation.id.desc()).all()
+
+        results = []
+
+        for donation in donations:
+            results.append({
+                "id": donation.id,
+                "name": donation.donor_name,
+                "email": donation.email,
+                "phone": donation.phone,
+                "amount": donation.amount,
+                "status": donation.status,
+                "tracking_id": donation.tracking_id,
+                "date": donation.created_at.strftime("%Y-%m-%d %H:%M")
+         })
+
+    return jsonify(results)
 
     return jsonify(response)
