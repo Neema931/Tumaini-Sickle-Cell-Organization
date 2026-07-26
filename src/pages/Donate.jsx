@@ -21,62 +21,46 @@ function Donate() {
 
 
     const handleDonate = async () => {
+        const apiUrl = import.meta.env.VITE_API_URL;
+        if (!apiUrl) {
+            alert("Payment service is not configured. Please contact support.");
+            console.error("VITE_API_URL is not set.");
+            return;
+        }
 
         try {
+            const response = await fetch(`${apiUrl}/donate`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    id: "TSCO-" + Date.now(),
+                    amount: Number(formData.amount),
+                    notification_id: "ed79fae5-523f-46f7-aed2-da190c459e84",
+                    email: formData.email,
+                    phone: formData.phone,
+                    first_name: formData.first_name,
+                    last_name: formData.last_name
+                })
+            });
 
-            const response = await fetch(
-                `${import.meta.env.VITE_API_URL}/donate`,
-                {
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-
-                    body: JSON.stringify({
-
-                        id: "TSCO-" + Date.now(),
-
-                        amount: Number(formData.amount),
-
-                        notification_id: "ed79fae5-523f-46f7-aed2-da190c459e84",
-
-                        email: formData.email,
-
-                        phone: formData.phone,
-
-                        first_name: formData.first_name,
-
-                        last_name: formData.last_name
-
-                    })
-                }
-            );
-
-
-            const data = await response.json();
-
-
-            console.log(data);
-
-
-            if(data.redirect_url){
-
-                window.location.href = data.redirect_url;
-
-            } else {
-
-                alert("Unable to start payment. Please try again.");
-
+            if (!response.ok) {
+                const errorBody = await response.text();
+                throw new Error(`Payment request failed: ${response.status} ${errorBody}`);
             }
 
+            const data = await response.json();
+            console.log(data);
 
-        } catch(error){
-
+            if (data.redirect_url) {
+                window.location.href = data.redirect_url;
+            } else {
+                alert("Unable to start payment. Please try again.");
+            }
+        } catch (error) {
             console.error("Payment Error:", error);
-
             alert("Something went wrong. Please try again.");
-
         }
 
     };
@@ -184,7 +168,7 @@ function Donate() {
                 />
 
 
-                <button onClick={handleDonate}>
+                <button type="button" onClick={handleDonate}>
                     Proceed To Payment
                 </button>
 
