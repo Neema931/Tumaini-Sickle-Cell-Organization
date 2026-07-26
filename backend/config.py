@@ -9,7 +9,7 @@ class Config:
     FRONTEND_URL = "https://tumaini-sickle-cell-organization.vercel.app/"
     ENVIRONMENT = "sandbox"
 
-    CALLBACK_URL = "http://localhost:5173/payment-success"
+    CALLBACK_URL = "https://tumaini-sickle-cell-organization.onrender.com/api/payment-success"
 
     
     

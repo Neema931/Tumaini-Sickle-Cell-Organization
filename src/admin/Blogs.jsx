@@ -47,7 +47,7 @@ function Blogs() {
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/admin/api/blogs", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/admin/api/blogs`, {
         method: "POST",
         credentials: "include",
         body: formData,

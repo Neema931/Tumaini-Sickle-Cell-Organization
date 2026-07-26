@@ -7,7 +7,7 @@ function Donations() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/donations")
+    fetch(`${import.meta.env.VITE_API_URL}/donations`)
       .then((res) => res.json())
       .then((data) => {
         setDonations(data);

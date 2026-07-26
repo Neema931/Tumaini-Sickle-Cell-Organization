@@ -32,9 +32,9 @@ def register_ipn():
     }
 
     payload = {
-        "url": "http://localhost:5000/api/ipn",
-        "ipn_notification_type": "POST"
-    }
+    "url": "https://tumaini-sickle-cell-organization.onrender.com/api/ipn",
+    "ipn_notification_type": "POST"
+        }
 
     response = requests.post(url, json=payload, headers=headers)
     return response.json()
@@ -57,7 +57,7 @@ def submit_order(order_details):
         "currency": "KES",
         "amount": order_details["amount"],
         "description": "Donation to Tumaini Sickle Cell Organization",
-        "callback_url": "http://localhost:5173/payment-success",
+        "callback_url": "https://tumaini-sickle-cell-organization.onrender.com/api/ipn/payment-success",
         "notification_id": order_details["notification_id"],
         "billing_address": {
             "email_address": order_details["email"],
