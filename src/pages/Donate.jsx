@@ -1,42 +1,273 @@
+import { useState } from "react";
 import "../components/TSCO.css";
 
 function Donate() {
+
+    const [formData, setFormData] = useState({
+        first_name: "",
+        last_name: "",
+        email: "",
+        phone: "",
+        amount: ""
+    });
+
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+
+    const handleDonate = async () => {
+
+        try {
+
+            const response = await fetch(
+                "http://127.0.0.1:5000/api/donate",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        id: "TSCO-" + Date.now(),
+
+                        amount: Number(formData.amount),
+
+                        notification_id: "ed79fae5-523f-46f7-aed2-da190c459e84",
+
+                        email: formData.email,
+
+                        phone: formData.phone,
+
+                        first_name: formData.first_name,
+
+                        last_name: formData.last_name
+
+                    })
+                }
+            );
+
+
+            const data = await response.json();
+
+
+            console.log(data);
+
+
+            if(data.redirect_url){
+
+                window.location.href = data.redirect_url;
+
+            } else {
+
+                alert("Unable to start payment. Please try again.");
+
+            }
+
+
+        } catch(error){
+
+            console.error("Payment Error:", error);
+
+            alert("Something went wrong. Please try again.");
+
+        }
+
+    };
+
+
+
     return (
+
         <div className="donate-page">
+
 
             <h1>Support Our Mission</h1>
 
-            <p>Your contribution helps provide treatment, awareness, and support for sickle cell warriors.</p>
 
             <p>
-                We are a dedicated initiative that aims to make a significant impact in the lives of individuals affected by sickle cell disease (SCD). Our organization was founded with a profound commitment to collaborate with esteemed medical agencies, accomplished medical professionals, esteemed research institutions, and other crucial stakeholders.
+                Your contribution helps provide treatment, awareness,
+                and support for sickle cell warriors.
             </p>
 
-            <p>
-              Sickle cell disease is a complex and challenging genetic disorder that affects countless lives worldwide. Our goal is to create a lasting positive impact by championing comprehensive, multi-disciplinary, state-of-the-art treatment options and groundbreaking research for SCD. We firmly believe that through strategic partnerships and collective efforts, we can improve the quality of life for those living with this condition and eventually pave the way for innovative breakthroughs that could change the landscape of SCD management.  
-            </p>
+
 
             <p>
-                Sickle cell disease is a complex and challenging genetic disorder that affects countless lives worldwide. Our goal is to create a lasting positive impact by championing comprehensive, multi-disciplinary, state-of-the-art treatment options and groundbreaking research for SCD. We firmly believe that through strategic partnerships and collective efforts, we can improve the quality of life for those living with this condition and eventually pave the way for innovative breakthroughs that could change the landscape of SCD management.
+                We are a dedicated initiative that aims to make a significant
+                impact in the lives of individuals affected by sickle cell
+                disease (SCD). Our organization was founded with a profound
+                commitment to collaborate with medical agencies, accomplished
+                medical professionals, research institutions, and other
+                stakeholders.
             </p>
 
+
+
             <p>
-                We invite you to join us in our mission to bring hope, relief, and progress to the SCD community. Your support will be deeply appreciated and acknowledged. Together, we can turn the tide against sickle cell disease and pave the way for a brighter, healthier future.
+                Sickle cell disease is a complex and challenging genetic
+                disorder that affects countless lives worldwide. Our goal is
+                to create a lasting positive impact by championing
+                comprehensive care, awareness, research, and support for
+                individuals and families affected by SCD.
             </p>
+
+
+
+            <p>
+                We invite you to join us in our mission to bring hope,
+                relief, and progress to the SCD community. Your support will
+                help us continue our initiatives and create a healthier future.
+            </p>
+
 
             <p>
                 Thank you.
             </p>
-            
-            <div className="donate-box">
-                <h3>M-PESA DETAILS</h3>
-                <p><strong>Paybill</strong> 4118759</p>
-                <p><strong>Account</strong> Donation</p>
+
+
+
+            {/* Donation Form */}
+
+            <div className="donation-form">
+
+                <h2>Make a Donation</h2>
+
+
+                <input
+                    type="text"
+                    name="first_name"
+                    placeholder="First Name"
+                    value={formData.first_name}
+                    onChange={handleChange}
+                />
+
+
+                <input
+                    type="text"
+                    name="last_name"
+                    placeholder="Last Name"
+                    value={formData.last_name}
+                    onChange={handleChange}
+                />
+
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    value={formData.email}
+                    onChange={handleChange}
+                />
+
+
+                <input
+                    type="text"
+                    name="phone"
+                    placeholder="Phone Number"
+                    value={formData.phone}
+                    onChange={handleChange}
+                />
+
+
+                <input
+                    type="number"
+                    name="amount"
+                    placeholder="Amount (KES)"
+                    value={formData.amount}
+                    onChange={handleChange}
+                />
+
+
+                <button onClick={handleDonate}>
+                    Proceed To Payment
+                </button>
+
+
             </div>
 
-            {/* <button className="primary-btn">Donate Now</button> */}
+
+
+
+            {/* Payment Options */}
+
+            <div className="payment-options">
+
+
+                <div className="payment-card">
+
+                    <h3>📱 M-Pesa</h3>
+
+                    <p>
+                        Donate quickly using M-Pesa.
+                        Payments are securely processed through Pesapal.
+                    </p>
+
+
+                    <button onClick={handleDonate}>
+                        Donate with M-Pesa
+                    </button>
+
+
+                </div>
+
+
+
+
+
+                <div className="payment-card">
+
+                    <h3>💳 Credit / Debit Card</h3>
+
+
+                    <p>
+                        Secure online payment using Visa or Mastercard.
+                    </p>
+
+
+                    <button onClick={handleDonate}>
+                        Donate by Card
+                    </button>
+
+
+                </div>
+
+
+
+
+
+                <div className="payment-card">
+
+                    <h3>🏦 Bank Transfer</h3>
+
+
+                    <p>
+                        Transfer directly to our organisation's account.
+                    </p>
+
+
+                    <button>
+                        View Bank Details
+                    </button>
+
+
+                </div>
+
+
+
+            </div>
+
+
         </div>
+
     );
+
 }
+
 
 export default Donate;
