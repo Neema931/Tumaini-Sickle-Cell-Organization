@@ -21,7 +21,6 @@ import AdminLayout from "./layouts/AdminLayout";
 import Login from "./admin/Login";
 import Dashboard from "./admin/Dashboard";
 import Donations from "./admin/Donations";
-import AdminBlogs from "./admin/Blogs";
 import AdminGallery from "./admin/Gallery.jsx";
 import Newsletters from "./admin/Newsletters.jsx";
 import AdminEvents from "./admin/Events.jsx";
@@ -62,7 +61,6 @@ function App() {
         <Route path="/admin/*" element={<AdminLayout><Routes>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="donations" element={<Donations />} />
-          <Route path="blogs" element={<AdminBlogs />} />
           <Route path="gallery" element={<AdminGallery />} />
           <Route path="newsletters" element={<Newsletters />} />
           <Route path="events" element={<AdminEvents />} />

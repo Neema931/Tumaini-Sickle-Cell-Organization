@@ -62,6 +62,15 @@ def donate():
 
     return jsonify(response)
 
+
+
+@payment_bp.route("/register-ipn")
+def create_ipn():
+
+    response = register_ipn()
+
+    return jsonify(response)
+
 @payment_bp.route("/donations", methods=["GET"])
 def get_donations():
 

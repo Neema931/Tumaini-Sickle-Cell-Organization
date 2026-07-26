@@ -4,7 +4,6 @@ import { FaHome, FaMoneyBillWave, FaBlog, FaImage, FaEnvelope, FaCalendarAlt, Fa
 const navItems = [
   { to: "/admin/dashboard", label: "Dashboard", icon: <FaHome /> },
   { to: "/admin/donations", label: "Donations", icon: <FaMoneyBillWave /> },
-  { to: "/admin/blogs", label: "Blogs", icon: <FaBlog /> },
   { to: "/admin/gallery", label: "Gallery", icon: <FaImage /> },
 ];
 

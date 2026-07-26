@@ -1,8 +1,9 @@
 import os
 import smtplib
 import ssl
+from pathlib import Path
 from email.message import EmailMessage
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 from routes.payment import payment_bp
 from routes.admin.portal import admin_bp, ensure_default_admin
@@ -12,6 +13,13 @@ from models.admin import AdminUser, BlogPost, NewsletterSubscriber, GalleryItem,
 
 app = Flask(__name__)
 app.secret_key = "tsco-admin-secret-key"
+
+UPLOAD_DIR = Path(__file__).resolve().parent / "uploads"
+UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+
+@app.route("/uploads/<path:filename>")
+def serve_upload(filename):
+    return send_from_directory(UPLOAD_DIR, filename)
 
 CORS(
     app,

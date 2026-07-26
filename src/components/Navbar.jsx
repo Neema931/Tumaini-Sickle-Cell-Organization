@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { MdPhone, MdEmail } from "react-icons/md";
 import logoImg from "../assets/logo.jpg";
 import "./TSCO.css";
@@ -8,7 +8,12 @@ import "./TSCO.css";
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
     const handleLinkClick = () => setIsOpen(false);
+
+    useEffect(() => {
+        setIsOpen(false);
+    }, [location]);
 
     return (
         <nav className="navbar">

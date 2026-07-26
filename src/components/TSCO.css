@@ -822,15 +822,114 @@ html, body {
 
   .director-card {
     flex-direction: column;
+    align-items: center;
     text-align: center;
+  }
+
+  .director-image,
+  .director-image img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .director-content {
+    width: 100%;
   }
 
   .about-content {
     grid-template-columns: 1fr;
+    padding: 0 1.5rem 60px;
+  }
+
+  .about-card {
+    grid-template-columns: 1fr;
+    padding: 1.25rem;
+  }
+
+  .about-gallery {
+    gap: 1rem;
+  }
+
+  .about-gallery .gallery-card,
+  .upcoming-events,
+  .donation-card {
+    padding: 1.25rem;
+  }
+
+  .donation-section {
+    padding: 40px 1.5rem 60px;
+  }
+
+  .donation-details {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .donation-details .detail {
+    width: 100%;
+  }
+
+  .upcoming-events-content {
+    justify-content: center;
+  }
+
+  .upcoming-events-content img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .gallery-page {
+    padding: 40px 1rem 60px;
+  }
+
+  .gallery-card {
+    grid-template-columns: 1fr;
+    padding: 1.25rem;
+  }
+
+  .gallery-card > .card-images {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-card > .card-images img {
+    width: 100%;
+    height: auto;
+    max-height: none;
+  }
+
+  .gallery-card > .card-content .card-link {
+    justify-content: center;
+  }
+
+  .card-link a {
+    width: 100%;
+    text-align: center;
   }
 
   .director-content h2 {
     font-size: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-content {
+    padding: 0 1rem 40px;
+  }
+
+  .director-content h2,
+  .upcoming-events-header h2,
+  .gallery-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .gallery-page {
+    padding: 30px 0.75rem 50px;
+  }
+
+  .gallery-card {
+    padding: 1rem;
   }
 }
 
