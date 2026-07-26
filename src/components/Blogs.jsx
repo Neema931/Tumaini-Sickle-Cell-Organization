@@ -41,7 +41,13 @@ function Blogs() {
                 download
                 className="blog-newsletter-card"
               >
-                <img src={newsletter.cover_image || ""} alt={newsletter.title} />
+                <img
+                  src={
+                    newsletter.cover_image ||
+                    "https://via.placeholder.com/640x360?text=Newsletter+Cover"
+                  }
+                  alt={newsletter.title}
+                />
                 <div className="blog-newsletter-content">
                   <h3>{newsletter.title}</h3>
                   <p>{newsletter.description}</p>
