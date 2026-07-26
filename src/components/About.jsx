@@ -1,8 +1,15 @@
 import bloodImg from "../assets/t1.jpg";
 import loveImg from "../assets/t3.jpg";
 import directorImg from "../assets/director.jpg";
+import val from "../assets/val.jpeg";
+import george from "../assets/george.jpg";
+import emma from "../assets/emma.jpg";
+import brenda from "../assets/brenda.jpg";
+import ayugu from "../assets/ayugu.jpg";
+import alex from "../assets/alex.jpg";
 
 import "./TSCO.css";
+import BoardMembers from "./BoardMembers";
 
 function About() {
   return (
@@ -43,10 +50,13 @@ function About() {
         </article>
       </section>
 
+
+      <BoardMembers />
+
       {/* About Section */}
       <section className="about-content">
-
-        <div className="about-text">
+        <div className="about-card">
+          <div className="about-text">
 
           <h2>About TSCO</h2>
 
@@ -71,9 +81,9 @@ function About() {
             and hope.
           </p>
 
-        </div>
+          </div>
 
-        <div className="about-gallery">
+          <div className="about-gallery">
 
           <div className="gallery-card">
             <img src={bloodImg} alt="Blood donation awareness" />
@@ -83,6 +93,7 @@ function About() {
             <img src={loveImg} alt="Community support" />
           </div>
 
+          </div>
         </div>
 
       </section>

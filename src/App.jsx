@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -13,7 +15,6 @@ import Blogs from "./components/Blogs";
 import Events from "./components/Events";
 import Contact from "./components/Contact";
 import Donate from "./pages/Donate";
-import { Routes, Route } from "react-router-dom";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 import A from "./pages/Gallery/A";
@@ -28,10 +29,21 @@ import I from "./pages/Gallery/I";
 import J from "./pages/Gallery/J";
 import K from "./pages/Gallery/K";
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   return (
     <>
       <Navbar />
+      <ScrollToTop />
 
       <Routes>
         <Route path="/" element={<Home />} />
