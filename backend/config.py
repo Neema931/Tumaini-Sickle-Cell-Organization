@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
+print("Notification ID:", os.getenv("PESAPAL_NOTIFICATION_ID"))
 class Config:
 
     # ==========================
