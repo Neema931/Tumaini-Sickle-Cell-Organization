@@ -23,17 +23,14 @@ def serve_upload(filename):
 
 CORS(
     app,
+    origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "https://tumaini-sickle-cell-organization.vercel.app",
+        "https://tumainisicklecell.org"
+    ],
     supports_credentials=True,
-    resources={
-        r"/*": {
-            "origins": [
-                "http://localhost:5173",
-                "http://127.0.0.1:5173",
-                "https://tumaini-sickle-cell-organization.vercel.app",
-                "https://tumainisicklecell.org"
-            ]
-        }
-    }
+    methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 )
 
 app.register_blueprint(payment_bp, url_prefix="/api")
