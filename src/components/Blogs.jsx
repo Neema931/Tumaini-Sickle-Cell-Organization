@@ -42,7 +42,7 @@ function Blogs() {
   return (
     <div className="page">
       <h1>Newsletters</h1>
-      <p>Click any card to view or download the newsletter PDF.</p>
+      <p>Click any card to download and read the newsletter PDF.</p>
 
       <div className="blog-newsletters">
         <div className="blog-newsletter-list">
@@ -59,7 +59,7 @@ function Blogs() {
               <div className="blog-newsletter-content">
                 <h3>{newsletter.title}</h3>
                 <p>{newsletter.description}</p>
-                <span>View & Download</span>
+                <span>Download</span>
               </div>
             </a>
           ))}

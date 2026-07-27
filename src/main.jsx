@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 
 
 import "./components/gallery.css";
+import "./components/responsive.css";
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(

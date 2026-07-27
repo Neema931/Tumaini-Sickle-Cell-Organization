@@ -1,0 +1,49 @@
+:root{
+  --max-content-width: 1126px;
+}
+
+/* Global image responsiveness */
+img{ max-width:100%; height:auto; display:block; }
+
+/* Make main container fluid on small screens */
+.container{ padding: 0 4%; max-width: var(--max-content-width); box-sizing:border-box; }
+
+/* Gallery and card adjustments */
+.gallery-card{ grid-template-columns: minmax(180px, 420px) 1fr !important; }
+.gallery-card img{ max-width:100%; height:auto; }
+
+/* Single gallery (detail) pages */
+.single-gallery .gallery-image img{ width: calc(25% - 12px); height: 200px; }
+
+/* Director image flexible */
+.director-image{ flex: 0 0 min(36%, 320px) !important; }
+
+/* Hero heading scales */
+.hero-content h1{ font-size: clamp(28px, 6vw, 60px) !important; }
+.hero, .hero-swiper{ min-height: 45vh !important; }
+
+/* Donation form and payment options */
+.donation-form{ max-width:100% !important; width:100%; padding:20px !important; margin: 30px auto !important; }
+.payment-options{ grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important; gap:16px !important; }
+
+/* Navbar tweaks */
+.navbar-top, .navbar-bottom{ padding: 10px 4% !important; }
+.nav-links{ gap:8px; }
+.nav-links li{ flex: none; }
+
+/* Make card links full width on small screens */
+@media (max-width: 520px){
+  .card-link a{ width:100%; box-sizing:border-box; display:inline-block; }
+  .single-gallery .gallery-image img{ width: calc(50% - 10px); height: 140px; }
+}
+
+@media (max-width: 900px){
+  .gallery-card{ grid-template-columns: 1fr !important; }
+  .director-card{ flex-direction: column; }
+  .director-image{ width: 100%; }
+}
+
+@media (max-width: 400px){
+  .single-gallery .gallery-image img{ width:100% !important; height:auto !important; }
+  .hero-content h1{ font-size: 26px !important; }
+}

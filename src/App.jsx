@@ -17,17 +17,6 @@ import Contact from "./components/Contact";
 import Donate from "./pages/Donate";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
-import AdminLayout from "./layouts/AdminLayout";
-import Login from "./admin/Login";
-import Dashboard from "./admin/Dashboard";
-import Donations from "./admin/Donations";
-import AdminGallery from "./admin/Gallery.jsx";
-import Newsletters from "./admin/Newsletters.jsx";
-import AdminEvents from "./admin/Events.jsx";
-import Volunteers from "./admin/Volunteers.jsx";
-import Reports from "./admin/Reports.jsx";
-import Settings from "./admin/Settings.jsx";
-import Users from "./admin/Users.jsx";
 import A from "./pages/Gallery/A";
 import B from "./pages/Gallery/B";
 import C from "./pages/Gallery/C";
@@ -39,7 +28,7 @@ import H from "./pages/Gallery/H";
 import I from "./pages/Gallery/I";
 import J from "./pages/Gallery/J";
 import K from "./pages/Gallery/K";
-import "./admin/admin.css";
+
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -57,19 +46,6 @@ function App() {
       <ScrollToTop />
 
       <Routes>
-        <Route path="/admin/login" element={<Login />} />
-        <Route path="/admin/*" element={<AdminLayout><Routes>
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="donations" element={<Donations />} />
-          <Route path="gallery" element={<AdminGallery />} />
-          <Route path="newsletters" element={<Newsletters />} />
-          <Route path="events" element={<AdminEvents />} />
-          <Route path="volunteers" element={<Volunteers />} />
-          <Route path="reports" element={<Reports />} />
-          <Route path="settings" element={<Settings />} />
-          <Route path="users" element={<Users />} />
-        </Routes></AdminLayout>} />
-
         <Route path="/" element={<><Navbar /><Home /><CTA /><Footer /></>} />
         <Route path="/about" element={<><Navbar /><About /><CTA /><Footer /></>} />
         <Route path="/gallery" element={<><Navbar /><Gallery /><CTA /><Footer /></>} />

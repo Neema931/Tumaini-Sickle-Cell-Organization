@@ -1,78 +1,100 @@
+/* Gallery card base */
 .gallery-card {
-  display: grid;
-  border-radius: 24px;
+  display: block;
+  border-radius: 16px;
   padding: 16px;
-  margin: 16px;
+  margin: 16px auto;
   text-align: center;
-  
+  max-width: 1100px;
+  box-sizing: border-box;
+  background: transparent;
 }
 
 .gallery-card-header {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .gallery-image {
-  height: 150px;
-  width: 100px;
   overflow: hidden;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px;
+  gap: 12px;
   margin-bottom: 16px;
 }
 
-.card-content {
-   display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    gap:20px;
-
+.gallery-image img {
+  width: 100%;
+  height: auto;
+  max-width: 280px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
-/* Page-specific layout for single-gallery pages (A.jsx) */
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
+  padding: 8px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* Single gallery (detail) layout */
 .single-gallery {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 24px;
+  align-items: stretch;
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .single-gallery .gallery-image {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 20px;
+  gap: 12px;
+  margin-bottom: 18px;
   width: 100%;
-  height: auto;
-  overflow: visible;
-  align-items: start; /* ensure images align at top */
 }
 
 .single-gallery .gallery-image img {
-  width: calc(25% - 9px);
-  height: 250px;
-  object-fit: cover;
-  border-radius: 12px;
-  max-width: 200px;
+  width: calc(25% - 12px);
+  height: 200px;
 }
 
 .single-gallery .card-content {
-  width: 1250px;
-  max-width: 3300px;
-  text-align: left;
-  margin-top: 12px;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .single-gallery .gallery-image img {
+    width: calc(33.333% - 12px);
+    height: 180px;
+  }
 }
 
 @media (max-width: 640px) {
   .single-gallery .gallery-image img {
-    width: calc(50% - 6px);
+    width: calc(50% - 10px);
     height: 140px;
+  }
+
+  .gallery-card {
+    padding: 12px;
+    margin: 12px;
+  }
+
+  .card-content {
+    gap: 12px;
+    padding: 6px;
+  }
+}
+
+@media (max-width: 400px) {
+  .single-gallery .gallery-image img {
+    width: 100%;
+    height: auto;
   }
 }
