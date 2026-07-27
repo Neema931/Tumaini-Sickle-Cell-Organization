@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 
 import { Link } from "react-router-dom";
 
-import hero1 from "../assets/h1.jpg";
+import hero1 from "../assets/aaa.jpg";
 import hero2 from "../assets/h5.jpg";
 import noela from "../assets/t2.jpg";
 import h4 from "../assets/h4.jpg";

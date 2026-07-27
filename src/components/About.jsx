@@ -98,36 +98,6 @@ function About() {
 
       </section>
 
-      {/* Donation Section */}
-      <section className="donation-section">
-
-        <div className="donation-card">
-
-          <h2>Support Our Mission</h2>
-
-          <p>
-            Your contribution helps fund awareness programs,
-            patient support initiatives, advocacy campaigns,
-            and community outreach activities.
-          </p>
-
-          <div className="donation-details">
-
-            <div className="detail">
-              <span>Paybill</span>
-              <strong>4118759</strong>
-            </div>
-
-            <div className="detail">
-              <span>Account Number</span>
-              <strong>Donation</strong>
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
 
     </main>
   );
