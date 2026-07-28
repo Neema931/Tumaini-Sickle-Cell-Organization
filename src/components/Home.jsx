@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
@@ -12,13 +13,58 @@ import hero2 from "../assets/h5.jpg";
 import noela from "../assets/t2.jpg";
 import h4 from "../assets/h4.jpg";
 import hero3 from "../assets/hero3.jpg";
+import glory from "../assets/glory.png";
 
 
 import "./TSCO.css";
 
 function Home() {
+   useEffect(() => {
+    const script1 = document.createElement("script");
+    script1.src = "https://cdn.aseelapp.com/widget-v1.js";
+    script1.defer = true;
+    script1.setAttribute(
+      "data-organization",
+      "organization_01KY57KH4GXHV0RA8E0QVW36F5"
+    );
+
+    const script2 = document.createElement("script");
+    script2.src = "https://cdn.aseelapp.com/elements-v1.js";
+    script2.defer = true;
+    script2.setAttribute(
+      "data-organization",
+      "organization_01KY57KH4GXHV0RA8E0QVW36F5"
+    );
+
+    document.body.appendChild(script1);
+    document.body.appendChild(script2);
+
+    return () => {
+      document.body.removeChild(script1);
+      document.body.removeChild(script2);
+    };
+  }, []);
+
+
   return (
+    
     <>
+      <section className="glory-card">
+        <img
+          src={glory}
+          alt="Support Tumaini Sickle Cell Organization"
+          className="glory-card__image"
+        />
+
+        <div className="glory-card__footer">
+          <div
+            data-aidos-widget-type="donation_button"
+            data-aidos-campaign="camp_01KYMNZKH73WEJ36Q8X90HQZ0C"
+            data-aidos-widget-id="widget_01KYMPGY06B899653A5AQCN9SG"
+          ></div>
+        </div>
+      </section>
+
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         navigation
@@ -102,7 +148,7 @@ function HomeAbout() {
                 ></div>
 
                 <h2>Who we are</h2>
-                <p>Tumaini Sickle Cell Organization in an NGO based in western kenya.....</p>
+                <p>Tumaini Sickle Cell Organization is an NGO based in western kenya.....</p>
                 <Link to="/about" className="card-link">
                 Learn More →
                 </Link>
@@ -119,7 +165,7 @@ function HomeAbout() {
                 
 
                 <h2>What We Do</h2>
-                <p>We are a dedicated initiative that aims to make significant in the lives of individuals affected by sickle cell disease.</p>
+                <p>We are a dedicated initiative that aims to make a significant impact  in the lives of individuals affected by sickle cell disease.</p>
                 <Link to="/about" className="card-link">
                   Learn More →
                 </Link>
