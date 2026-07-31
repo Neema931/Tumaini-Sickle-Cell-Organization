@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
@@ -15,11 +15,27 @@ import h4 from "../assets/h4.jpg";
 import hero3 from "../assets/hero3.jpg";
 import glory from "../assets/glory.png";
 
+import { getHomeContent } from "../content/homeContent";
 
 import "./TSCO.css";
 
+const imageMap = {
+  hero1,
+  hero2,
+  hero3,
+  noela,
+};
+
 function Home() {
-   useEffect(() => {
+  const [content, setContent] = useState(getHomeContent());
+
+  useEffect(() => {
+    const handleUpdate = () => setContent(getHomeContent());
+    window.addEventListener("homeContentUpdated", handleUpdate);
+    return () => window.removeEventListener("homeContentUpdated", handleUpdate);
+  }, []);
+
+  useEffect(() => {
     const script1 = document.createElement("script");
     script1.src = "https://cdn.aseelapp.com/widget-v1.js";
     script1.defer = true;
@@ -45,9 +61,7 @@ function Home() {
     };
   }, []);
 
-
   return (
-    
     <>
       <section className="glory-card">
         <img
@@ -73,118 +87,69 @@ function Home() {
         loop={true}
         className="hero-swiper"
       >
-
-      {/* SLIDE 1 */}
-      <SwiperSlide>
-        <section
-          className="hero"
-          style={{
-            backgroundImage: `url(${hero1})`,
-          }}
-        >
-          <div className="hero-overlay">
-            <div className="hero-content">
-              <div className="hero-tag">Community Health & Support</div>
-              <h1>
-                Bringing Hope to Sickle Cell Warriors
-              </h1>
-              <p className="hero-subtitle">
-                Comprehensive care, advocacy, and life-changing support for families living with sickle cell disease.
-              </p>
-              <div className="hero-buttons">
-                <Link to="/donate">
-                  <button className="primary-button">
-                    Donate Now
-                  </button>
-                </Link>
+        {content.heroSlides.map((slide, index) => (
+          <SwiperSlide key={index}>
+            <section
+              className="hero"
+              style={{
+                backgroundImage: `url(${imageMap[slide.image] || slide.image || hero1})`,
+              }}
+            >
+              <div className="hero-overlay">
+                <div className="hero-content">
+                  <div className="hero-tag">{slide.tag}</div>
+                  <h1>{slide.title}</h1>
+                  <p className="hero-subtitle">{slide.subtitle}</p>
+                  {slide.buttonText ? (
+                    <div className="hero-buttons">
+                      <Link to={slide.buttonLink || "/"}>
+                        <button className="primary-button">
+                          {slide.buttonText}
+                        </button>
+                      </Link>
+                    </div>
+                  ) : null}
+                </div>
               </div>
-            </div>
-          </div>
-        </section>
-      </SwiperSlide>
-
-      {/* SLIDE 2 */}
-      <SwiperSlide>
-        <section
-          className="hero"
-          style={{
-            backgroundImage: `url(${hero2})`,
-          }}
-        >
-          <div className="hero-overlay">
-            <div className="hero-content">
-              <div className="hero-tag">Care, Awareness, Action</div>
-              <h1>
-                Together We Can Save Lives
-              </h1>
-              <p className="hero-subtitle">
-                Join our mission to improve health outcomes, educate communities, and support every patient.
-              </p>
-            </div>
-          </div>
-        </section>
-      </SwiperSlide>
-
-
+            </section>
+          </SwiperSlide>
+        ))}
       </Swiper>
-      <HomeAbout />
-      <HomePrograms />
-      <HomeStatistics />
+
+      <HomeAbout content={content} />
+      <HomePrograms content={content} />
+      <HomeStatistics content={content} />
     </>
   );
 }
 
-function HomeAbout() {
-    return (
-        <section className="home-about">
+function HomeAbout({ content }) {
+  return (
+    <section className="home-about">
+      {content.aboutCards.map((card, index) => (
+        <div key={index} className="home-card">
+          <div
+            className="card-image"
+            style={{
+              backgroundImage: `url(${imageMap[card.image] || card.image || hero3})`,
+            }}
+          ></div>
 
-            {/* CARD 1 */}
-            <div className="home-card">
-                <div
-                  className="card-image"
-                  style={{
-                    backgroundImage: `url(${noela})`,
-                  }}
-                ></div>
-
-                <h2>Who we are</h2>
-                <p>Tumaini Sickle Cell Organization is an NGO based in western kenya.....</p>
-                <Link to="/about" className="card-link">
-                Learn More →
-                </Link>
-              </div>
-
-              {/* CARD 2 */}
-              <div className="home-card">
-                <div
-                  className="card-image"
-                  style={{
-                    backgroundImage: `url(${hero3})`,
-                  }}
-                ></div>
-                
-
-                <h2>What We Do</h2>
-                <p>We are a dedicated initiative that aims to make a significant impact  in the lives of individuals affected by sickle cell disease.</p>
-                <Link to="/about" className="card-link">
-                  Learn More →
-                </Link>
-
-                </div>
-                </section>
-              
-    );
-
+          <h2>{card.title}</h2>
+          <p>{card.text}</p>
+          <Link to={card.linkUrl} className="card-link">
+            {card.linkText}
+          </Link>
+        </div>
+      ))}
+    </section>
+  );
 }
 
-
-function HomePrograms() {
+function HomePrograms({ content }) {
   return (
     <section className="home-programs">
-
       <div className="programs-container">
-
-        {/* BACKGROUND IMAGE BOX */}
         <div
           className="programs-image"
           style={{
@@ -192,59 +157,41 @@ function HomePrograms() {
           }}
         ></div>
 
-        {/* TEXT CONTENT */}
         <div className="programs-content">
+          <h2>{content.programs.title}</h2>
+          <p>{content.programs.description}</p>
+          <p>We offer:</p>
+          <ul>
+            {content.programs.items.map((item, index) => (
+              <li key={index}>
+                <Link to={content.programs.linkUrl}>{item}</Link>
+              </li>
+            ))}
+          </ul>
 
-          <h2>Our Programs</h2>
-
-          <p>
-            Discover our impactful programs designed to support those affected
-            by sickle cell disease.
-          </p>
-
-          <p>
-            We offer:
-          </p>
-            <ul>
-              <li><Link to="/programs">Healthcare Support →</Link></li>
-              <li><Link to="/programs">Educational Workshops →</Link></li>
-              <li><Link to="/programs">Community Outreach →</Link></li>
-              <li><Link to="/programs">Advocacy →</Link></li>
-              <li><Link to="/programs">Research Initiatives →</Link></li>
-            </ul>
-
-          <Link to="/programs" className="card-link">
-            Programs →
+          <Link to={content.programs.linkUrl} className="card-link">
+            {content.programs.linkText}
           </Link>
-
         </div>
-
       </div>
-
     </section>
   );
 }
 
-function HomeStatistics() {
-    return (
-        <section className="home-stats">
-            <h2>Our Impact</h2>
-            <div className="stats-container">
-                <div className="stat-item">
-                    <h3>500+</h3>
-                    <p>Individuals Supported</p>
-                </div>
-                <div className="stat-item"> 
-                    <h3>20+</h3>
-                    <p>Community Events</p>
-                </div>
-                <div className="stat-item">
-                    <h3>10+</h3>
-                    <p>Educational Workshops</p>
-                </div>
-            </div>
-        </section>
-    );
+function HomeStatistics({ content }) {
+  return (
+    <section className="home-stats">
+      <h2>Our Impact</h2>
+      <div className="stats-container">
+        {content.stats.map((stat, index) => (
+          <div key={index} className="stat-item">
+            <h3>{stat.value}</h3>
+            <p>{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }
 
 export default Home;

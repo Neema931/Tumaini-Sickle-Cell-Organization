@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./TSCO.css";
 import { MdEmail, MdPhone } from "react-icons/md";
 import facebookImg from "../assets/Facebook.png";
 import linkedinImg from "../assets/images.png";
 import instagramImg from "../assets/instagram.png";
 import locationImg from "../assets/location.png";
+import { getContactContent } from "../content/contactContent";
 
 function Contact() {
   const [name, setName] = useState("");
@@ -12,6 +13,14 @@ function Contact() {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState(null);
   const [error, setError] = useState(null);
+  const [contactInfo, setContactInfo] = useState(getContactContent());
+
+  useEffect(() => {
+    const updateContactInfo = () => setContactInfo(getContactContent());
+    updateContactInfo();
+    window.addEventListener("contactContentUpdated", updateContactInfo);
+    return () => window.removeEventListener("contactContentUpdated", updateContactInfo);
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -55,49 +64,62 @@ function Contact() {
         
       {/*top info*/}
       <div className="contact-info">
-        <h2>Get in Touch</h2>
-        <p>Have questions or want to learn more about our organization? Reach out to us!</p>
+        {contactInfo.image && (
+          <div className="contact-image-panel">
+            <img src={contactInfo.image} alt="Contact" className="contact-page-image" />
+          </div>
+        )}
+
+        <h2>{contactInfo.heading}</h2>
+        <p>{contactInfo.intro}</p>
 
         <div className="contact-item">
           <MdEmail className="contact-icon" />
-          <p><strong>Email:</strong> info@tumainisicklecell.org</p>
+          <p><strong>Email:</strong> {contactInfo.email}</p>
         </div>
 
         <div className="contact-item">
           <MdPhone className="contact-icon" />
-          <p><strong>Phone:</strong> +254715873713</p>
+          <p><strong>Phone:</strong> {contactInfo.phone}</p>
         </div>
 
         <div className="contact-item">
           <img src={locationImg} alt="Location" className="contact-icon contact-icon-img" />
-          <p><strong>Location:</strong> Opposite Jaramogi Oginga Odinga Teaching and Referral Hospital, Red Cross Compound</p>
+          <p><strong>Location:</strong> {contactInfo.location}</p>
         </div>
 
         <div className="social-links">
           <div className="social-item">
-            <a href="https://www.facebook.com/TumainiSickleCellOrganization" target="_blank" rel="noreferrer">
+            <a href={contactInfo.socialLinks.facebook} target="_blank" rel="noreferrer">
               <img src={facebookImg} alt="Facebook" className="social-icon social-icon-img" />
             </a>
-            <p>Tumaini Sickle Cell Organization</p>
+            <p>{contactInfo.socialLabels.facebook}</p>
           </div>
           <div className="social-item">
-            <a href="https://www.linkedin.com/company/tumainisicklecellorganization" target="_blank" rel="noreferrer">
+            <a href={contactInfo.socialLinks.linkedin} target="_blank" rel="noreferrer">
               <img src={linkedinImg} alt="LinkedIn" className="social-icon social-icon-img" />
             </a>
-            <p>Tumaini Sickle Cell Organization</p>
+            <p>{contactInfo.socialLabels.linkedin}</p>
           </div>
           <div className="social-item">
-            <a href="https://www.instagram.com/tumainisicklecellorganization?igsh=NXEweHZvOXNiY3Jp&utm_source=qr" target="_blank" rel="noreferrer">
+            <a href={contactInfo.socialLinks.instagram} target="_blank" rel="noreferrer">
               <img src={instagramImg} alt="Instagram" className="social-icon social-icon-img" />
             </a>
-            <p>tumainisicklecellorganization</p>
+            <p>{contactInfo.socialLabels.instagram}</p>
           </div>
+          {(contactInfo.additionalLinks || []).map((link, index) => (
+            <div key={`${link.label}-${index}`} className="social-item">
+              <a href={link.url} target="_blank" rel="noreferrer">
+                <span className="social-link-text">{link.label || "Social Link"}</span>
+              </a>
+            </div>
+          ))}
         </div>
       </div>
 
       {/*bottom form*/}
       <form className="contact-form" action="https://formsubmit.co/neemaisabel@gmail.com" method="POST" onSubmit={handleSubmit}>
-        <h2>Send us a Message</h2>
+        <h2>{contactInfo.formTitle}</h2>
         <input
           type="text"
           name="name"

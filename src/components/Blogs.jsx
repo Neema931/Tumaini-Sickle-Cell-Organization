@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import q1Cover from "../assets/newsletters/q1newsletter.png";
 import q2Cover from "../assets/newsletters/q2newsletter.png";
 import Cover from "../assets/newsletters/newsletter2025.png";
@@ -6,38 +7,47 @@ import pdfQ12026 from "../assets/newsletters/TUMAINI SICKLE CELL ORGANIZATION_QU
 import pdfQ22026 from "../assets/newsletters/TUMAINI SICKLE CELL ORGANIZATION Q2 2026 Newsletter.pdf";
 import pdf2025 from "../assets/newsletters/TSCO 3rd Edition Newsletter 2025.pdf";
 import pdfQ12025 from "../assets/newsletters/TSCO Quarterly Newsletter 2025.pdf";
+import { getBlogContent } from "../content/blogContent";
+
+const fallbackCoverMap = {
+  q1Cover: q1Cover,
+  q2Cover: q2Cover,
+  thirdCover: thirdCover,
+  Cover: Cover,
+};
+
+const fallbackPdfMap = {
+  pdfQ12026: pdfQ12026,
+  pdfQ22026: pdfQ22026,
+  pdf2025: pdf2025,
+  pdfQ12025: pdfQ12025,
+};
 
 function Blogs() {
-  const newsletters = [
-    {
-      id: 1,
-      title: "Quarter 1 Newsletter 2026",
-      description: "Read the latest TSCO updates from the first quarter of 2026.",
-      cover_image: q1Cover,
-      pdf_url: pdfQ12026,
-    },
-    {
-      id: 2,
-      title: "Quarter 2 Newsletter 2026",
-      description: "Stay informed with events, updates, and community news.",
-      cover_image: q2Cover,
-      pdf_url: pdfQ22026,
-    },
-    {
-      id: 3,
-      title: "3rd Edition Newsletter 2025",
-      description: "A special edition newsletter covering TSCO milestones.",
-      cover_image: thirdCover,
-      pdf_url: pdf2025,
-    },
-    {
-      id: 4,
-      title: "Quarter 1 Newsletter 2025",
-      description: "Archive newsletter with updates from early 2025.",
-      cover_image: Cover,
-      pdf_url: pdfQ12025,
-    },
-  ];
+  const [newsletters, setNewsletters] = useState([]);
+
+  useEffect(() => {
+    const updateNewsletters = () => {
+      const content = getBlogContent();
+      setNewsletters(content.blogs || []);
+    };
+
+    updateNewsletters();
+    window.addEventListener("blogContentUpdated", updateNewsletters);
+    return () => window.removeEventListener("blogContentUpdated", updateNewsletters);
+  }, []);
+
+  const resolveCoverImage = (value) => {
+    if (!value) return "";
+    if (typeof value === "string" && value.startsWith("data:")) return value;
+    return fallbackCoverMap[value] || value;
+  };
+
+  const resolvePdfUrl = (value) => {
+    if (!value) return "";
+    if (typeof value === "string" && value.startsWith("data:")) return value;
+    return fallbackPdfMap[value] || value;
+  };
 
   return (
     <div className="page">
@@ -46,23 +56,28 @@ function Blogs() {
 
       <div className="blog-newsletters">
         <div className="blog-newsletter-list">
-          {newsletters.map((newsletter) => (
-            <a
-              key={newsletter.id}
-              href={newsletter.pdf_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              download
-              className="blog-newsletter-card"
-            >
-              <img src={newsletter.cover_image} alt={newsletter.title} />
-              <div className="blog-newsletter-content">
-                <h3>{newsletter.title}</h3>
-                <p>{newsletter.description}</p>
-                <span>Download</span>
-              </div>
-            </a>
-          ))}
+          {newsletters.map((newsletter) => {
+            const pdfUrl = resolvePdfUrl(newsletter.pdf_url);
+            const coverImage = resolveCoverImage(newsletter.cover_image);
+
+            return (
+              <a
+                key={newsletter.id}
+                href={pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                download={Boolean(pdfUrl)}
+                className="blog-newsletter-card"
+              >
+                {coverImage && <img src={coverImage} alt={newsletter.title} />}
+                <div className="blog-newsletter-content">
+                  <h3>{newsletter.title}</h3>
+                  <p>{newsletter.description}</p>
+                  <span>Download</span>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </div>
     </div>

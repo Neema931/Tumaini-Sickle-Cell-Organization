@@ -6,10 +6,24 @@ import ayugu from "../assets/ayugu.jpg";
 import alex from "../assets/alex.jpg";
 import directorImg from "../assets/director.jpg";
 
-function BoardMembers() {
-  const members = [
+const defaultImages = {
+  val,
+  george,
+  emma,
+  brenda,
+  ayugu,
+  alex,
+  directorImg,
+};
+
+function BoardMembers({ members }) {
+  const boardMembers = members || [
     { name: "George Ariya", img: george, role: "Chairman" },
-    { name: "Veronica Bitta", img: directorImg, role: ["Executive Director", "Secretary", "Head of the secretariat"] },
+    {
+      name: "Veronica Bitta",
+      img: directorImg,
+      role: ["Executive Director", "Secretary", "Head of the secretariat"],
+    },
     { name: "John Ayugu", img: ayugu, role: "Treasurer" },
     { name: "Emma Otieno", img: emma, role: "Pediatric Clinician" },
     { name: "Brenda Sinzore", img: brenda, role: "Board Member" },
@@ -22,9 +36,9 @@ function BoardMembers() {
       <article className="board-members-card">
         <h2>Meet Our Board Members</h2>
         <div className="board-members-grid">
-          {members.map((m) => (
+          {boardMembers.map((m) => (
             <div key={m.name} className="board-member">
-              <img src={m.img} alt={m.name} />
+              <img src={defaultImages[m.img] || m.img || directorImg} alt={m.name} />
               <h3>{m.name}</h3>
               {Array.isArray(m.role) ? (
                 <div className="role">

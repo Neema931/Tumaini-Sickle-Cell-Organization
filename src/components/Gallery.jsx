@@ -1,5 +1,6 @@
-import React from 'react';
+import { useEffect, useState } from "react";
 import "./TSCO.css";
+import { getGalleryContent } from "../content/galleryContent";
 
 import img1 from "../assets/A (1).jpg";
 import img2 from "../assets/A (2).jpg";
@@ -230,11 +231,34 @@ const images = [
 ];
 
 function Gallery() {
+  const [galleryContent, setGalleryContent] = useState(getGalleryContent());
+
+  useEffect(() => {
+    const updateGalleryContent = () => setGalleryContent(getGalleryContent());
+    window.addEventListener("galleryContentUpdated", updateGalleryContent);
+    return () => window.removeEventListener("galleryContentUpdated", updateGalleryContent);
+  }, []);
+
+  const sizeClass = {
+    small: "gallery-image-small",
+    medium: "gallery-image-medium",
+    large: "gallery-image-large",
+  }[galleryContent.size || "medium"];
+
+  const publicImages = Array.isArray(galleryContent.images) && galleryContent.images.length > 0
+    ? galleryContent.images
+    : images;
+
   return (
     <div className="gallery-page">
       <div className="gallery-flat-grid">
-        {images.map((src, index) => (
-          <img key={index} src={src} alt={`Gallery ${index + 1}`} className="gallery-image-item" />
+        {publicImages.map((src, index) => (
+          <img
+            key={`${src}-${index}`}
+            src={src}
+            alt={galleryContent.alt || `Gallery ${index + 1}`}
+            className={`gallery-image-item ${sizeClass}`}
+          />
         ))}
       </div>
     </div>

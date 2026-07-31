@@ -17,17 +17,18 @@ import Contact from "./components/Contact";
 import Donate from "./pages/Donate";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
-import A from "./pages/Gallery/A";
-import B from "./pages/Gallery/B";
-import C from "./pages/Gallery/C";
-import D from "./pages/Gallery/D";
-import E from "./pages/Gallery/E";
-import F from "./pages/Gallery/F";
-import G from "./pages/Gallery/G";
-import H from "./pages/Gallery/H";
-import I from "./pages/Gallery/I";
-import J from "./pages/Gallery/J";
-import K from "./pages/Gallery/K";
+import AdminLayout from "./layouts/AdminLayout";
+import AdminHome from "./pages/admin/Home";
+import AdminAbout from "./pages/admin/About";
+import AdminBlogs from "./pages/admin/Blogs";
+import AdminContact from "./pages/admin/Contact";
+import AdminGallery from "./pages/admin/Gallery";
+import AdminPrograms from "./pages/admin/Programs";
+import AdminEvents from "./pages/admin/Events";
+import AdminLogin from "./pages/admin/Login";
+import AdminLogout from "./pages/admin/Logout";
+import ProtectedRoute from "./auth/ProtectedRoute";
+
 
 
 function ScrollToTop() {
@@ -60,17 +61,49 @@ function App() {
         <Route path="/events" element={<><Navbar /><PublicEvents /><CTA /><Footer /></>} />
         <Route path="/contact" element={<><Navbar /><Contact /><CTA /><Footer /></>} />
         <Route path="/donate" element={<><Navbar /><Donate /><CTA /><Footer /></>} />
-        <Route path="/A" element={<><Navbar /><A /><CTA /><Footer /></>} />
-        <Route path="/B" element={<><Navbar /><B /><CTA /><Footer /></>} />
-        <Route path="/C" element={<><Navbar /><C /><CTA /><Footer /></>} />
-        <Route path="/D" element={<><Navbar /><D /><CTA /><Footer /></>} />
-        <Route path="/E" element={<><Navbar /><E /><CTA /><Footer /></>} />
-        <Route path="/F" element={<><Navbar /><F /><CTA /><Footer /></>} />
-        <Route path="/G" element={<><Navbar /><G /><CTA /><Footer /></>} />
-        <Route path="/H" element={<><Navbar /><H /><CTA /><Footer /></>} />
-        <Route path="/I" element={<><Navbar /><I /><CTA /><Footer /></>} />
-        <Route path="/J" element={<><Navbar /><J /><CTA /><Footer /></>} />
-        <Route path="/K" element={<><Navbar /><K /><CTA /><Footer /></>} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/logout" element={<AdminLogout />} />
+        <Route path="/admin" element={
+          <ProtectedRoute>
+            <AdminLayout><AdminHome /></AdminLayout>
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/home" element={
+          <ProtectedRoute>
+            <AdminLayout><AdminHome /></AdminLayout>
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/about" element={
+          <ProtectedRoute>
+            <AdminLayout><AdminAbout /></AdminLayout>
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/blogs" element={
+          <ProtectedRoute>
+            <AdminLayout><AdminBlogs /></AdminLayout>
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/contact" element={
+          <ProtectedRoute>
+            <AdminLayout><AdminContact /></AdminLayout>
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/gallery" element={
+          <ProtectedRoute>
+            <AdminLayout><AdminGallery /></AdminLayout>
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/programs" element={
+          <ProtectedRoute>
+            <AdminLayout><AdminPrograms /></AdminLayout>
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/events" element={
+          <ProtectedRoute>
+            <AdminLayout><AdminEvents /></AdminLayout>
+          </ProtectedRoute>
+        } />
+        
       </Routes>
 
     </>

@@ -1,10 +1,14 @@
 import { NavLink } from "react-router-dom";
-import { FaHome, FaMoneyBillWave, FaBlog, FaImage, FaEnvelope, FaCalendarAlt, FaHandsHelping, FaChartBar, FaUsers, FaCog, FaSignOutAlt } from "react-icons/fa";
+
 
 const navItems = [
-  { to: "/admin/dashboard", label: "Dashboard", icon: <FaHome /> },
-  { to: "/admin/donations", label: "Donations", icon: <FaMoneyBillWave /> },
-  { to: "/admin/gallery", label: "Gallery", icon: <FaImage /> },
+  { to: "/admin/home", label: "Home" },
+  { to: "/admin/about", label: "About" },
+  { to: "/admin/blogs", label: "Blogs" },
+  { to: "/admin/contact", label: "Contact" },
+  { to: "/admin/gallery", label: "Gallery" },
+  { to: "/admin/programs", label: "Programs" },
+  { to: "/admin/events", label: "Events" },
 ];
 
 function Sidebar() {
@@ -18,13 +22,11 @@ function Sidebar() {
       <nav className="admin-sidebar-nav">
         {navItems.map((item) => (
           <NavLink key={item.to} to={item.to} className={({ isActive }) => `admin-nav-item${isActive ? " active" : ""}`}>
-            <span>{item.icon}</span>
-            <span>{item.label}</span>
+           <span>{item.label}</span>
           </NavLink>
         ))}
 
-        <NavLink to="/admin/login" className="admin-nav-item logout">
-          <span><FaSignOutAlt /></span>
+        <NavLink to="/admin/logout" className="admin-nav-item logout">
           <span>Logout</span>
         </NavLink>
       </nav>

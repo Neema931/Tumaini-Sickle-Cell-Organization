@@ -396,10 +396,35 @@ html, body {
 
 .gallery-flat-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
   justify-items: center;
   justify-content: center;
+}
+
+.gallery-admin-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+  align-items: stretch;
+}
+
+.gallery-admin-thumb-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gallery-admin-thumb {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.gallery-admin-delete {
+  width: 100%;
 }
 
 .gallery-flat-grid .gallery-image-item {
@@ -412,38 +437,56 @@ html, body {
   display: block;
 }
 
+.gallery-image-small {
+  max-width: 150px !important;
+}
+
+.gallery-image-medium {
+  max-width: 200px !important;
+}
+
+.gallery-image-large {
+  max-width: 280px !important;
+}
+
 @media (min-width: 1600px) {
-  .gallery-flat-grid {
+  .gallery-flat-grid,
+  .gallery-admin-grid {
     grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 1200px) and (max-width: 1599px) {
-  .gallery-flat-grid {
+  .gallery-flat-grid,
+  .gallery-admin-grid {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-  .gallery-flat-grid {
+  .gallery-flat-grid,
+  .gallery-admin-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  .gallery-flat-grid {
+  .gallery-flat-grid,
+  .gallery-admin-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 767px) {
-  .gallery-flat-grid {
+  .gallery-flat-grid,
+  .gallery-admin-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 520px) {
-  .gallery-flat-grid {
+  .gallery-flat-grid,
+  .gallery-admin-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -2456,6 +2499,18 @@ html, body {
   flex: 1;
 }
 
+.contact-image-panel {
+  margin-bottom: 20px;
+}
+
+.contact-page-image {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
 .contact-info h2 {
   margin-bottom: 15px;
   font-size: 28px;
@@ -2501,6 +2556,12 @@ html, body {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.social-link-text {
+  color: #cf040b;
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 .social-icon {
