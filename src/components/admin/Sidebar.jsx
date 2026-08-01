@@ -6,7 +6,6 @@ const navItems = [
   { to: "/admin/about", label: "About" },
   { to: "/admin/blogs", label: "Blogs" },
   { to: "/admin/contact", label: "Contact" },
-  { to: "/admin/gallery", label: "Gallery" },
   { to: "/admin/programs", label: "Programs" },
   { to: "/admin/events", label: "Events" },
 ];

@@ -40,32 +40,40 @@ function Navbar() {
                     <img src={logoImg} alt="TSCO Logo" />
                 </Link>
 
-                    <div className="top-cta">
-                        <a className="call-link" href="tel:0715873713">
-                            <MdPhone className="call-icon" />
-                            <span className="call-number">0715873713</span>
-                        </a>
+                <div className="top-cta">
+                    <a className="call-link" href="tel:0715873713">
+                        <MdPhone className="call-icon" />
+                        <span className="call-number">0715873713</span>
+                    </a>
 
-                        <a className="email-link" href="mailto:info@tumainisicklecell.org">
-                            <MdEmail className="email-icon" />
-                            <span className="email-text">info@tumainisicklecell.org</span>
-                        </a>
-                    </div>
+                    <a className="email-link" href="mailto:info@tumainisicklecell.org">
+                        <MdEmail className="email-icon" />
+                        <span className="email-text">info@tumainisicklecell.org</span>
+                    </a>
+                </div>
             </div>
 
             <div className="navbar-bottom">
                 <ul className="nav-links">
                     <li><NavLink end to="/" onClick={handleLinkClick}>Home</NavLink></li>
                     <li><NavLink to="/about" onClick={handleLinkClick}>About</NavLink></li>
-                    <li><NavLink to="/gallery" onClick={handleLinkClick}>Gallery</NavLink></li>
                     <li><NavLink to="/programs" onClick={handleLinkClick}>Programs</NavLink></li>
                     <li><NavLink to="/blogs" onClick={handleLinkClick}>Blogs</NavLink></li>
                     <li><NavLink to="/events" onClick={handleLinkClick}>Events</NavLink></li>
                     <li><NavLink to="/contact" onClick={handleLinkClick}>Contact</NavLink></li>
                 </ul>
 
-                <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
-                    ☰
+                <div className="navbar-bottom-actions">
+                    <div
+                        className="navbar-donate-widget"
+                        data-aidos-widget-type="donation_button"
+                        data-aidos-campaign="camp_01KYMNZKH73WEJ36Q8X90HQZ0C"
+                        data-aidos-widget-id="widget_01KYMPGY06B899653A5AQCN9SG"
+                    />
+
+                    <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
+                        ☰
+                    </div>
                 </div>
             </div>
 
@@ -73,7 +81,6 @@ function Navbar() {
                 <div className="mobile-menu">
                     <NavLink end to="/" onClick={handleLinkClick}>Home</NavLink>
                     <NavLink to="/about" onClick={handleLinkClick}>About</NavLink>
-                    <NavLink to="/gallery" onClick={handleLinkClick}>Gallery</NavLink>
                     <NavLink to="/programs" onClick={handleLinkClick}>Programs</NavLink>
                     <NavLink to="/blogs" onClick={handleLinkClick}>Blogs</NavLink>
                     <NavLink to="/events" onClick={handleLinkClick}>Events</NavLink>

@@ -13,7 +13,11 @@ import hero2 from "../assets/h5.jpg";
 import noela from "../assets/t2.jpg";
 import h4 from "../assets/h4.jpg";
 import hero3 from "../assets/hero3.jpg";
-import glory from "../assets/glory.png";
+import gloryImg from "../assets/glory.png";
+import donateImg from "../assets/donate.png";
+import noel from "../assets/no.jpeg";
+import hardwoodImg from "../assets/Hardwood.jpg";
+import hh1 from "../assets/asss.jpg";
 
 import { getHomeContent } from "../content/homeContent";
 
@@ -63,22 +67,6 @@ function Home() {
 
   return (
     <>
-      <section className="glory-card">
-        <img
-          src={glory}
-          alt="Support Tumaini Sickle Cell Organization"
-          className="glory-card__image"
-        />
-
-        <div className="glory-card__footer">
-          <div
-            data-aidos-widget-type="donation_button"
-            data-aidos-campaign="camp_01KYMNZKH73WEJ36Q8X90HQZ0C"
-            data-aidos-widget-id="widget_01KYMPGY06B899653A5AQCN9SG"
-          ></div>
-        </div>
-      </section>
-
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         navigation
@@ -115,6 +103,53 @@ function Home() {
           </SwiperSlide>
         ))}
       </Swiper>
+
+      <section className="home-donation-promo">
+        <div className="home-donation-grid">
+          <div className="home-donation-card">
+            <img src={noel} alt="Noel" className="home-donation-image" />
+            <h2>SPONSOR HEALTH INSURANCE FOR FAMILIES LIVING WITH SICKLE CELL DISEASE</h2>
+            <p>Many children and adults living with sickle cell disease are unable to access lifesaving treatment because they cannot afford Social Health Insurance Fund 
+              (SHIF) registration and contributions. Your support helps provide Social Health Insurance Fund (SHIF) coverage, improve access to quality healthcare, reduce preventable complications, and give vulnerable families hope for a healthier future.
+insure hope save lives
+Sponsor Health Insurance For Families
+ Living with Sickle Cell Disease
+Together we can replace fear with hope and barrires with opportunity</p>
+            <div className="home-donation-footer">
+              <div
+                className="donation-widget-inline"
+                data-aidos-widget-type="donation_button"
+                data-aidos-campaign="camp_01KYMNZKH73WEJ36Q8X90HQZ0C"
+                data-aidos-widget-id="widget_01KYMPGY06B899653A5AQCN9SG"
+              />
+            </div>
+          </div>
+
+          <div className="home-donation-card">
+            <img src={h4} alt="Donate" className="home-donation-image" />
+            <h2>BLOOD DONATION DRIVE CAMPAIGN</h2>
+            <p>Support our Blood Donation Drive Campaign to help fund community blood drives, media awareness campaigns, transportation, and essential logistics that ensure lifesaving blood reaches those who need it most. Your contribution helps build a reliable blood supply for people living with sickle cell disease while creating awareness that inspires more voluntary blood donors.
+</p>
+            <div className="home-donation-footer">
+              <button className="donate-action-button" type="button" onClick={() => window.location.href = 'https://tinyurl.com/yjy7hhve'}>
+                Donate Now
+              </button>
+            </div>
+          </div>
+
+          <div className="home-donation-card">
+            <img src={hardwoodImg} alt="Hardwood" className="home-donation-image" />
+           <h2>BRIQUETTES FOR BETTER LIVING CONDITIONS</h2>
+           <p>Support our Briquettes Initiative to provide an affordable, eco-friendly source of clean cooking fuel while creating sustainable livelihoods for vulnerable families affected by sickle cell disease. Your contribution helps fund briquette production, equipment, training, and distribution, empowering communities and improving their quality of life.
+</p>
+            <div className="home-donation-footer">
+              <button className="donate-action-button" type="button" onClick={() => window.location.href = 'https://tinyurl.com/yjy7hhve'}>
+                Donate Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <HomeAbout content={content} />
       <HomePrograms content={content} />

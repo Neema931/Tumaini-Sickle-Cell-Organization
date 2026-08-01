@@ -2,8 +2,6 @@ import App from './App.jsx'
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./auth/AuthProvider";
-
-import "./components/gallery.css";
 import "./components/responsive.css";
 import "./auth/auth.css";
 

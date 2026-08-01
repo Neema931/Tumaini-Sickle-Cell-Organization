@@ -3,7 +3,6 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
-import Gallery from "./components/Gallery";
 import Programs from "./components/Programs";
 import AwarenessEducation from "./components/AwarenessEducation";
 import AdvocacyPolicy from "./components/AdvocacyPolicy";
@@ -22,7 +21,6 @@ import AdminHome from "./pages/admin/Home";
 import AdminAbout from "./pages/admin/About";
 import AdminBlogs from "./pages/admin/Blogs";
 import AdminContact from "./pages/admin/Contact";
-import AdminGallery from "./pages/admin/Gallery";
 import AdminPrograms from "./pages/admin/Programs";
 import AdminEvents from "./pages/admin/Events";
 import AdminLogin from "./pages/admin/Login";
@@ -49,7 +47,6 @@ function App() {
       <Routes>
         <Route path="/" element={<><Navbar /><Home /><CTA /><Footer /></>} />
         <Route path="/about" element={<><Navbar /><About /><CTA /><Footer /></>} />
-        <Route path="/gallery" element={<><Navbar /><Gallery /><CTA /><Footer /></>} />
         <Route path="/programs" element={<><Navbar /><Programs /><CTA /><Footer /></>} />
         <Route path="/programs/awareness" element={<><Navbar /><AwarenessEducation /><CTA /><Footer /></>} />
         <Route path="/programs/advocacy" element={<><Navbar /><AdvocacyPolicy /><CTA /><Footer /></>} />
@@ -86,11 +83,6 @@ function App() {
         <Route path="/admin/contact" element={
           <ProtectedRoute>
             <AdminLayout><AdminContact /></AdminLayout>
-          </ProtectedRoute>
-        } />
-        <Route path="/admin/gallery" element={
-          <ProtectedRoute>
-            <AdminLayout><AdminGallery /></AdminLayout>
           </ProtectedRoute>
         } />
         <Route path="/admin/programs" element={
