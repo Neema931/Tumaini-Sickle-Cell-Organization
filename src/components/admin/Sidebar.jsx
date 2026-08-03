@@ -8,6 +8,7 @@ const navItems = [
   { to: "/admin/contact", label: "Contact" },
   { to: "/admin/programs", label: "Programs" },
   { to: "/admin/events", label: "Events" },
+  { to: "/admin/gallery", label: "Gallery" },
 ];
 
 function Sidebar() {

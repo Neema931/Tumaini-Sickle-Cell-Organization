@@ -60,6 +60,7 @@ function Navbar() {
                     <li><NavLink to="/programs" onClick={handleLinkClick}>Programs</NavLink></li>
                     <li><NavLink to="/blogs" onClick={handleLinkClick}>Blogs</NavLink></li>
                     <li><NavLink to="/events" onClick={handleLinkClick}>Events</NavLink></li>
+                    <li><NavLink to="/gallery" onClick={handleLinkClick}>Gallery</NavLink></li>
                     <li><NavLink to="/contact" onClick={handleLinkClick}>Contact</NavLink></li>
                 </ul>
 
@@ -84,6 +85,7 @@ function Navbar() {
                     <NavLink to="/programs" onClick={handleLinkClick}>Programs</NavLink>
                     <NavLink to="/blogs" onClick={handleLinkClick}>Blogs</NavLink>
                     <NavLink to="/events" onClick={handleLinkClick}>Events</NavLink>
+                    <NavLink to="/gallery" onClick={handleLinkClick}>Gallery</NavLink>
                     <NavLink to="/contact" onClick={handleLinkClick}>Contact</NavLink>
                 </div>
             )}

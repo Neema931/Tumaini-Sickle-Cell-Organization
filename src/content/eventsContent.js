@@ -55,7 +55,7 @@ function mergeContent(defaults, stored) {
     const storedValue = stored[key];
 
     if (Array.isArray(defaultValue)) {
-      merged[key] = defaultValue.map((item, index) => {
+      const mergedArray = defaultValue.map((item, index) => {
         if (storedValue?.[index] !== undefined) {
           if (typeof item === "object" && item !== null) {
             return mergeContent(item, storedValue[index]);
@@ -64,6 +64,12 @@ function mergeContent(defaults, stored) {
         }
         return item;
       });
+
+      if (Array.isArray(storedValue) && storedValue.length > defaultValue.length) {
+        merged[key] = mergedArray.concat(storedValue.slice(defaultValue.length));
+      } else {
+        merged[key] = mergedArray;
+      }
     } else if (typeof defaultValue === "object" && defaultValue !== null) {
       merged[key] = mergeContent(defaultValue, storedValue || {});
     } else if (storedValue !== undefined) {
@@ -88,9 +94,50 @@ export function getEventsContent() {
   return defaultEventsContent;
 }
 
+function sanitizeHtml(html) {
+  if (!html || typeof html !== "string") return "";
+  const allowed = new Set(["B", "STRONG", "I", "EM", "BR", "P", "UL", "OL", "LI"]);
+  try {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+    const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_ELEMENT, null, false);
+    let node = walker.nextNode();
+    while (node) {
+      const name = node.nodeName;
+      const next = walker.nextNode();
+      if (!allowed.has(name)) {
+        // unwrap node: move children up and remove node
+        const parent = node.parentNode;
+        while (node.firstChild) parent.insertBefore(node.firstChild, node);
+        parent.removeChild(node);
+      } else {
+        // strip attributes
+        for (let i = node.attributes.length - 1; i >= 0; i--) {
+          node.removeAttribute(node.attributes[i].name);
+        }
+      }
+      node = next;
+    }
+    return doc.body.innerHTML;
+  } catch (e) {
+    return "";
+  }
+}
+
 export function saveEventsContent(content) {
-  localStorage.setItem(EVENTS_CONTENT_KEY, JSON.stringify(content));
-  window.dispatchEvent(new Event("eventsContentUpdated"));
+  try {
+    const copy = JSON.parse(JSON.stringify(content || {}));
+    if (Array.isArray(copy.events)) {
+      copy.events = copy.events.map((ev) => ({
+        ...ev,
+        description: sanitizeHtml(ev.description || ""),
+      }));
+    }
+    localStorage.setItem(EVENTS_CONTENT_KEY, JSON.stringify(copy));
+    window.dispatchEvent(new Event("eventsContentUpdated"));
+  } catch (e) {
+    console.warn("Failed to save events content", e);
+  }
 }
 
 export function resetEventsContent() {

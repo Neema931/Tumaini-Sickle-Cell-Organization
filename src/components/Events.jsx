@@ -14,8 +14,8 @@ function Events() {
   const heroImage = eventsContent.heroImage || "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80";
 
   return (
-    <div className="gallery-page">
-      <div className="gallery-grid">
+    <div className="gallery-page events-page">
+      <div className="gallery-grid events-grid">
         <section className="upcoming-events">
           <div className="image-card">
             <div className="upcoming-events-header">
@@ -33,14 +33,17 @@ function Events() {
           eventsContent.events.map((event, index) => (
             <section key={event.id ?? `${event.title}-${index}`} className="gallery-card">
               <div className="card-images">
-                {(event.images || []).slice(0, 4).map((image, imageIndex) => (
+                {(event.images || []).map((image, imageIndex) => (
                   <img key={`${event.title}-${imageIndex}`} src={image} alt={`${event.title} ${imageIndex + 1}`} />
                 ))}
               </div>
 
               <div className="card-content">
                 <h2>{event.title}</h2>
-                <p>{event.description}</p>
+                <div
+                  className="event-description"
+                  dangerouslySetInnerHTML={{ __html: event.description || "" }}
+                />
               </div>
             </section>
           ))

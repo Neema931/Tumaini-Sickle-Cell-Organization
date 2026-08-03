@@ -225,6 +225,23 @@
   border-radius: 0.85rem;
 }
 
+.admin-grid-list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.admin-grid-list .admin-card-small {
+  padding: 0.5rem;
+}
+
+.admin-grid-list .admin-image-preview {
+  max-width: none;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin-top: 0;
+}
+
 .admin-image-preview {
   width: 100%;
   max-width: 320px;
@@ -233,4 +250,22 @@
   border-radius: 0.85rem;
   object-fit: cover;
   border: 1px solid #cbd5e1;
+}
+
+@media (max-width: 1100px) {
+  .admin-grid-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 780px) {
+  .admin-grid-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .admin-grid-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }

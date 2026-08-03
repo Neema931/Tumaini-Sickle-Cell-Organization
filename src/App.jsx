@@ -12,6 +12,7 @@ import SupportGroups from "./components/SupportGroups";
 import Sanitorium from "./components/Sanitorium";
 import PublicBlogs from "./components/Blogs";
 import PublicEvents from "./components/Events";
+import Gallery from "./components/Gallery";
 import Contact from "./components/Contact";
 import Donate from "./pages/Donate";
 import CTA from "./components/CTA";
@@ -23,6 +24,7 @@ import AdminBlogs from "./pages/admin/Blogs";
 import AdminContact from "./pages/admin/Contact";
 import AdminPrograms from "./pages/admin/Programs";
 import AdminEvents from "./pages/admin/Events";
+import AdminGallery from "./pages/admin/Gallery";
 import AdminLogin from "./pages/admin/Login";
 import AdminLogout from "./pages/admin/Logout";
 import ProtectedRoute from "./auth/ProtectedRoute";
@@ -56,6 +58,7 @@ function App() {
         <Route path="/programs/sanitorium" element={<><Navbar /><Sanitorium /><CTA /><Footer /></>} />
         <Route path="/blogs" element={<><Navbar /><PublicBlogs /><CTA /><Footer /></>} />
         <Route path="/events" element={<><Navbar /><PublicEvents /><CTA /><Footer /></>} />
+        <Route path="/gallery" element={<><Navbar /><Gallery /><CTA /><Footer /></>} />
         <Route path="/contact" element={<><Navbar /><Contact /><CTA /><Footer /></>} />
         <Route path="/donate" element={<><Navbar /><Donate /><CTA /><Footer /></>} />
         <Route path="/admin/login" element={<AdminLogin />} />
@@ -93,6 +96,11 @@ function App() {
         <Route path="/admin/events" element={
           <ProtectedRoute>
             <AdminLayout><AdminEvents /></AdminLayout>
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/gallery" element={
+          <ProtectedRoute>
+            <AdminLayout><AdminGallery /></AdminLayout>
           </ProtectedRoute>
         } />
         
