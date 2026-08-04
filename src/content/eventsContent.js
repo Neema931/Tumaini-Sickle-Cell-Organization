@@ -1,5 +1,3 @@
-const EVENTS_CONTENT_KEY = "tscoEventsContent";
-
 const defaultEventsContent = {
   heroTitle: "Upcoming Events",
   heroImage: "",
@@ -55,20 +53,30 @@ function mergeContent(defaults, stored) {
     const storedValue = stored[key];
 
     if (Array.isArray(defaultValue)) {
-      const mergedArray = defaultValue.map((item, index) => {
-        if (storedValue?.[index] !== undefined) {
-          if (typeof item === "object" && item !== null) {
-            return mergeContent(item, storedValue[index]);
-          }
-          return storedValue[index];
-        }
-        return item;
-      });
+      if (Array.isArray(storedValue)) {
+        const isObjectArray = defaultValue.some(
+          (item) => typeof item === "object" && item !== null
+        );
 
-      if (Array.isArray(storedValue) && storedValue.length > defaultValue.length) {
-        merged[key] = mergedArray.concat(storedValue.slice(defaultValue.length));
+        if (isObjectArray) {
+          const mergedArray = defaultValue.map((item, index) => {
+            if (storedValue[index] !== undefined) {
+              if (typeof item === "object" && item !== null) {
+                return mergeContent(item, storedValue[index]);
+              }
+              return storedValue[index];
+            }
+            return item;
+          });
+
+          merged[key] = Array.isArray(storedValue) && storedValue.length > defaultValue.length
+            ? mergedArray.concat(storedValue.slice(defaultValue.length))
+            : mergedArray;
+        } else {
+          merged[key] = storedValue;
+        }
       } else {
-        merged[key] = mergedArray;
+        merged[key] = defaultValue;
       }
     } else if (typeof defaultValue === "object" && defaultValue !== null) {
       merged[key] = mergeContent(defaultValue, storedValue || {});
@@ -81,17 +89,21 @@ function mergeContent(defaults, stored) {
 }
 
 export function getEventsContent() {
-  try {
-    const stored = localStorage.getItem(EVENTS_CONTENT_KEY);
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      return mergeContent(defaultEventsContent, parsed);
-    }
-  } catch (error) {
-    console.warn("Failed to parse events content", error);
-  }
-
   return defaultEventsContent;
+}
+
+export async function fetchEventsContent() {
+  try {
+    const response = await fetch("/api/content/events");
+    if (!response.ok) {
+      throw new Error("Failed to fetch events content");
+    }
+    const content = await response.json();
+    return mergeContent(defaultEventsContent, content);
+  } catch (error) {
+    console.warn("Failed to fetch events content", error);
+    return defaultEventsContent;
+  }
 }
 
 function sanitizeHtml(html) {
@@ -106,12 +118,10 @@ function sanitizeHtml(html) {
       const name = node.nodeName;
       const next = walker.nextNode();
       if (!allowed.has(name)) {
-        // unwrap node: move children up and remove node
         const parent = node.parentNode;
         while (node.firstChild) parent.insertBefore(node.firstChild, node);
         parent.removeChild(node);
       } else {
-        // strip attributes
         for (let i = node.attributes.length - 1; i >= 0; i--) {
           node.removeAttribute(node.attributes[i].name);
         }
@@ -124,7 +134,7 @@ function sanitizeHtml(html) {
   }
 }
 
-export function saveEventsContent(content) {
+export async function saveEventsContent(content) {
   try {
     const copy = JSON.parse(JSON.stringify(content || {}));
     if (Array.isArray(copy.events)) {
@@ -133,17 +143,33 @@ export function saveEventsContent(content) {
         description: sanitizeHtml(ev.description || ""),
       }));
     }
-    localStorage.setItem(EVENTS_CONTENT_KEY, JSON.stringify(copy));
+    const response = await fetch("/api/content/events", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(copy),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to save events content");
+    }
+    const savedContent = await response.json();
     window.dispatchEvent(new Event("eventsContentUpdated"));
+    return savedContent;
   } catch (e) {
     console.warn("Failed to save events content", e);
+    throw e;
   }
 }
 
-export function resetEventsContent() {
-  localStorage.removeItem(EVENTS_CONTENT_KEY);
-  window.dispatchEvent(new Event("eventsContentUpdated"));
-  return defaultEventsContent;
+export async function resetEventsContent() {
+  try {
+    const defaultContent = defaultEventsContent;
+    await saveEventsContent(defaultContent);
+    return defaultContent;
+  } catch (error) {
+    return defaultEventsContent;
+  }
 }
 
 export function getDefaultEventsContent() {

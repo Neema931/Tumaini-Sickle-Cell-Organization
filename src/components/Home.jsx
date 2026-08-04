@@ -19,7 +19,7 @@ import noel from "../assets/no.jpeg";
 import hardwoodImg from "../assets/Hardwood.jpg";
 import hh1 from "../assets/asss.jpg";
 
-import { getHomeContent } from "../content/homeContent";
+import { getHomeContent, fetchHomeContent } from "../content/homeContent";
 
 import "./TSCO.css";
 
@@ -37,6 +37,10 @@ function Home() {
     const handleUpdate = () => setContent(getHomeContent());
     window.addEventListener("homeContentUpdated", handleUpdate);
     return () => window.removeEventListener("homeContentUpdated", handleUpdate);
+  }, []);
+
+  useEffect(() => {
+    fetchHomeContent().then(setContent).catch(() => {});
   }, []);
 
   useEffect(() => {

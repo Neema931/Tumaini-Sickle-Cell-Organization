@@ -1,6 +1,7 @@
-import { useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   getEventsContent,
+  fetchEventsContent,
   saveEventsContent,
   getDefaultEventsContent,
   resetEventsContent,
@@ -11,10 +12,13 @@ function Events() {
   const [message, setMessage] = useState("");
   const editorRefs = useRef({});
 
+  useEffect(() => {
+    fetchEventsContent().then(setFormState).catch(() => {});
+  }, []);
+
   const persistFormState = (nextState) => {
     setFormState(nextState);
-    saveEventsContent(nextState);
-    window.dispatchEvent(new Event("eventsContentUpdated"));
+    saveEventsContent(nextState).catch(() => {});
   };
 
   const updateEvent = (index, field, value) => {
@@ -133,18 +137,26 @@ function Events() {
     persistFormState(next);
   };
 
-  const handleSave = () => {
-    saveEventsContent(formState);
-    window.dispatchEvent(new Event("eventsContentUpdated"));
-    setMessage("Events content saved.");
+  const handleSave = async () => {
+    try {
+      await saveEventsContent(formState);
+      window.dispatchEvent(new Event("eventsContentUpdated"));
+      setMessage("Events content saved.");
+    } catch (error) {
+      setMessage("Failed to save events content. Try again.");
+    }
     setTimeout(() => setMessage(""), 2500);
   };
 
-  const handleReset = () => {
+  const handleReset = async () => {
     const defaults = getDefaultEventsContent();
     setFormState(defaults);
-    resetEventsContent();
-    setMessage("Events content reset to defaults.");
+    try {
+      await resetEventsContent();
+      setMessage("Events content reset to defaults.");
+    } catch (error) {
+      setMessage("Failed to reset events content. Try again.");
+    }
     setTimeout(() => setMessage(""), 2500);
   };
 

@@ -512,9 +512,9 @@ html, body {
 }
 
 .events-page .upcoming-events-content img {
-  width: 100%;
+  width: 400px;
   max-width: 100%;
-  height: auto;
+  height: 200px;
   aspect-ratio: 16 / 9;
   border-radius: 18px;
   object-fit: cover;

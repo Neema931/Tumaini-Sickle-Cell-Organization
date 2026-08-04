@@ -1,5 +1,3 @@
-const HOME_CONTENT_KEY = "tscoHomeContent";
-
 const defaultHomeContent = {
   heroSlides: [
     {
@@ -117,27 +115,52 @@ function mergeContent(defaults, stored) {
 }
 
 export function getHomeContent() {
+  return defaultHomeContent;
+}
+
+export async function fetchHomeContent() {
   try {
-    const stored = localStorage.getItem(HOME_CONTENT_KEY);
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      return mergeContent(defaultHomeContent, parsed);
+    const response = await fetch("/api/content/home");
+    if (!response.ok) {
+      throw new Error("Failed to fetch home content");
     }
+    const content = await response.json();
+    return mergeContent(defaultHomeContent, content);
   } catch (error) {
-    console.warn("Failed to parse home content", error);
+    console.warn("Failed to fetch home content", error);
+    return defaultHomeContent;
   }
-  return defaultHomeContent;
 }
 
-export function saveHomeContent(content) {
-  localStorage.setItem(HOME_CONTENT_KEY, JSON.stringify(content));
-  window.dispatchEvent(new Event("homeContentUpdated"));
+export async function saveHomeContent(content) {
+  try {
+    const response = await fetch("/api/content/home", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(content),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to save home content");
+    }
+    const savedContent = await response.json();
+    window.dispatchEvent(new Event("homeContentUpdated"));
+    return savedContent;
+  } catch (error) {
+    console.warn("Failed to save home content", error);
+    throw error;
+  }
 }
 
-export function resetHomeContent() {
-  localStorage.removeItem(HOME_CONTENT_KEY);
-  window.dispatchEvent(new Event("homeContentUpdated"));
-  return defaultHomeContent;
+export async function resetHomeContent() {
+  try {
+    const resetContent = defaultHomeContent;
+    await saveHomeContent(resetContent);
+    return resetContent;
+  } catch (error) {
+    return defaultHomeContent;
+  }
 }
 
 export function getDefaultHomeContent() {

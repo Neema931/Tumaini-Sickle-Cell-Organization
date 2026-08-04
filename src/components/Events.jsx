@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 import "./TSCO.css";
-import { getEventsContent } from "../content/eventsContent";
+import { getEventsContent, fetchEventsContent } from "../content/eventsContent";
 
 function Events() {
   const [eventsContent, setEventsContent] = useState(getEventsContent());
 
   useEffect(() => {
+    fetchEventsContent().then(setEventsContent).catch(() => {});
     const updateEventsContent = () => setEventsContent(getEventsContent());
     window.addEventListener("eventsContentUpdated", updateEventsContent);
     return () => window.removeEventListener("eventsContentUpdated", updateEventsContent);
   }, []);
 
-  const heroImage = eventsContent.heroImage || "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80";
+  const heroImage = eventsContent.heroImage || "";
 
   return (
     <div className="gallery-page events-page">

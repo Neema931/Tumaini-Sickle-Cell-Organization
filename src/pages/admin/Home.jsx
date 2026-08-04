@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { getHomeContent, saveHomeContent, getDefaultHomeContent } from "../../content/homeContent";
+import {
+  getHomeContent,
+  fetchHomeContent,
+  saveHomeContent,
+  getDefaultHomeContent,
+} from "../../content/homeContent";
 import hero1 from "../../assets/aaa.jpg";
 import hero2 from "../../assets/h5.jpg";
 import hero3 from "../../assets/hero3.jpg";
@@ -17,6 +22,7 @@ function Home() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
+    fetchHomeContent().then(setFormState).catch(() => {});
     const handleUpdate = () => setFormState(getHomeContent());
     window.addEventListener("homeContentUpdated", handleUpdate);
     return () => window.removeEventListener("homeContentUpdated", handleUpdate);
@@ -100,17 +106,25 @@ function Home() {
     }));
   };
 
-  const handleSave = () => {
-    saveHomeContent(formState);
-    setMessage("Home page content saved.");
+  const handleSave = async () => {
+    try {
+      await saveHomeContent(formState);
+      setMessage("Home page content saved.");
+    } catch (error) {
+      setMessage("Failed to save home page content. Try again.");
+    }
     setTimeout(() => setMessage(""), 3000);
   };
 
-  const handleReset = () => {
+  const handleReset = async () => {
     const defaults = getDefaultHomeContent();
     setFormState(defaults);
-    saveHomeContent(defaults);
-    setMessage("Home page content reset to defaults.");
+    try {
+      await saveHomeContent(defaults);
+      setMessage("Home page content reset to defaults.");
+    } catch (error) {
+      setMessage("Failed to reset home page content. Try again.");
+    }
     setTimeout(() => setMessage(""), 3000);
   };
 
