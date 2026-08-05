@@ -1,3 +1,4 @@
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "/api";
 const BLOG_CONTENT_KEY = "tscoBlogContent";
 
 const defaultBlogContent = {
@@ -65,27 +66,52 @@ function mergeContent(defaults, stored) {
 }
 
 export function getBlogContent() {
+  return defaultBlogContent;
+}
+
+export async function fetchBlogContent() {
   try {
-    const stored = localStorage.getItem(BLOG_CONTENT_KEY);
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      return mergeContent(defaultBlogContent, parsed);
+    const response = await fetch(`${API_BASE_URL}/content/blog`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch blog content");
     }
+    const content = await response.json();
+    return mergeContent(defaultBlogContent, content);
   } catch (error) {
-    console.warn("Failed to parse blog content", error);
+    console.warn("Failed to fetch blog content", error);
+    return defaultBlogContent;
   }
-  return defaultBlogContent;
 }
 
-export function saveBlogContent(content) {
-  localStorage.setItem(BLOG_CONTENT_KEY, JSON.stringify(content));
-  window.dispatchEvent(new Event("blogContentUpdated"));
+export async function saveBlogContent(content) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/content/blog`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(content),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to save blog content");
+    }
+    const savedContent = await response.json();
+    window.dispatchEvent(new Event("blogContentUpdated"));
+    return savedContent;
+  } catch (error) {
+    console.warn("Failed to save blog content", error);
+    throw error;
+  }
 }
 
-export function resetBlogContent() {
-  localStorage.removeItem(BLOG_CONTENT_KEY);
-  window.dispatchEvent(new Event("blogContentUpdated"));
-  return defaultBlogContent;
+export async function resetBlogContent() {
+  try {
+    const defaultContent = defaultBlogContent;
+    await saveBlogContent(defaultContent);
+    return defaultContent;
+  } catch (error) {
+    return defaultBlogContent;
+  }
 }
 
 export function getDefaultBlogContent() {

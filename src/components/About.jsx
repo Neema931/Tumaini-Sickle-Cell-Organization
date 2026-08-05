@@ -11,7 +11,7 @@ import alex from "../assets/alex.jpg";
 
 import "./TSCO.css";
 import BoardMembers from "./BoardMembers";
-import { getAboutContent } from "../content/aboutContent";
+import { getAboutContent, fetchAboutContent } from "../content/aboutContent";
 
 const imageMap = {
   bloodImg,
@@ -29,7 +29,8 @@ function About() {
   const [content, setContent] = useState(getAboutContent());
 
   useEffect(() => {
-    const handleUpdate = () => setContent(getAboutContent());
+    fetchAboutContent().then(setContent).catch(() => {});
+    const handleUpdate = () => fetchAboutContent().then(setContent).catch(() => {});
     window.addEventListener("aboutContentUpdated", handleUpdate);
     return () => window.removeEventListener("aboutContentUpdated", handleUpdate);
   }, []);

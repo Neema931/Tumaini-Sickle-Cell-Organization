@@ -1,3 +1,4 @@
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "/api";
 const CONTACT_CONTENT_KEY = "tscoContactContent";
 
 const defaultContactContent = {
@@ -53,27 +54,52 @@ function mergeContent(defaults, stored) {
 }
 
 export function getContactContent() {
+  return defaultContactContent;
+}
+
+export async function fetchContactContent() {
   try {
-    const stored = localStorage.getItem(CONTACT_CONTENT_KEY);
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      return mergeContent(defaultContactContent, parsed);
+    const response = await fetch(`${API_BASE_URL}/content/contact`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch contact content");
     }
+    const content = await response.json();
+    return mergeContent(defaultContactContent, content);
   } catch (error) {
-    console.warn("Failed to parse contact content", error);
+    console.warn("Failed to fetch contact content", error);
+    return defaultContactContent;
   }
-  return defaultContactContent;
 }
 
-export function saveContactContent(content) {
-  localStorage.setItem(CONTACT_CONTENT_KEY, JSON.stringify(content));
-  window.dispatchEvent(new Event("contactContentUpdated"));
+export async function saveContactContent(content) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/content/contact`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(content),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to save contact content");
+    }
+    const savedContent = await response.json();
+    window.dispatchEvent(new Event("contactContentUpdated"));
+    return savedContent;
+  } catch (error) {
+    console.warn("Failed to save contact content", error);
+    throw error;
+  }
 }
 
-export function resetContactContent() {
-  localStorage.removeItem(CONTACT_CONTENT_KEY);
-  window.dispatchEvent(new Event("contactContentUpdated"));
-  return defaultContactContent;
+export async function resetContactContent() {
+  try {
+    const defaultContent = defaultContactContent;
+    await saveContactContent(defaultContent);
+    return defaultContent;
+  } catch (error) {
+    return defaultContactContent;
+  }
 }
 
 export function getDefaultContactContent() {

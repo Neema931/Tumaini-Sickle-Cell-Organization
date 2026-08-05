@@ -1,3 +1,5 @@
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "/api";
+
 const defaultHomeContent = {
   heroSlides: [
     {
@@ -120,7 +122,7 @@ export function getHomeContent() {
 
 export async function fetchHomeContent() {
   try {
-    const response = await fetch("/api/content/home");
+    const response = await fetch(`${API_BASE_URL}/content/home`);
     if (!response.ok) {
       throw new Error("Failed to fetch home content");
     }
@@ -134,7 +136,7 @@ export async function fetchHomeContent() {
 
 export async function saveHomeContent(content) {
   try {
-    const response = await fetch("/api/content/home", {
+    const response = await fetch(`${API_BASE_URL}/content/home`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

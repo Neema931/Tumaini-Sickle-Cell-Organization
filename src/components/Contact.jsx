@@ -5,7 +5,7 @@ import facebookImg from "../assets/Facebook.png";
 import linkedinImg from "../assets/images.png";
 import instagramImg from "../assets/instagram.png";
 import locationImg from "../assets/location.png";
-import { getContactContent } from "../content/contactContent";
+import { getContactContent, fetchContactContent } from "../content/contactContent";
 
 function Contact() {
   const [name, setName] = useState("");
@@ -16,7 +16,12 @@ function Contact() {
   const [contactInfo, setContactInfo] = useState(getContactContent());
 
   useEffect(() => {
-    const updateContactInfo = () => setContactInfo(getContactContent());
+    const updateContactInfo = () => {
+      fetchContactContent().then(setContactInfo).catch(() => {
+        setContactInfo(getContactContent());
+      });
+    };
+
     updateContactInfo();
     window.addEventListener("contactContentUpdated", updateContactInfo);
     return () => window.removeEventListener("contactContentUpdated", updateContactInfo);

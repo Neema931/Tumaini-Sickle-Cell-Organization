@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
-import { getProgramsContent } from "../content/programsContent";
+import { getProgramsContent, fetchProgramsContent } from "../content/programsContent";
 
 function Programs() {
   const [programsContent, setProgramsContent] = useState(getProgramsContent());
 
   useEffect(() => {
-    const updateProgramsContent = () => setProgramsContent(getProgramsContent());
+    const updateProgramsContent = () => {
+      fetchProgramsContent().then(setProgramsContent).catch(() => {
+        setProgramsContent(getProgramsContent());
+      });
+    };
+
+    updateProgramsContent();
     window.addEventListener("programsContentUpdated", updateProgramsContent);
     return () => window.removeEventListener("programsContentUpdated", updateProgramsContent);
   }, []);

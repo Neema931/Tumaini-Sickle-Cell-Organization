@@ -7,7 +7,7 @@ import pdfQ12026 from "../assets/newsletters/TUMAINI SICKLE CELL ORGANIZATION_QU
 import pdfQ22026 from "../assets/newsletters/TUMAINI SICKLE CELL ORGANIZATION Q2 2026 Newsletter.pdf";
 import pdf2025 from "../assets/newsletters/TSCO 3rd Edition Newsletter 2025.pdf";
 import pdfQ12025 from "../assets/newsletters/TSCO Quarterly Newsletter 2025.pdf";
-import { getBlogContent } from "../content/blogContent";
+import { getBlogContent, fetchBlogContent } from "../content/blogContent";
 
 const fallbackCoverMap = {
   q1Cover: q1Cover,
@@ -28,8 +28,9 @@ function Blogs() {
 
   useEffect(() => {
     const updateNewsletters = () => {
-      const content = getBlogContent();
-      setNewsletters(content.blogs || []);
+      fetchBlogContent().then((content) => setNewsletters(content.blogs || [])).catch(() => {
+        setNewsletters(getBlogContent().blogs || []);
+      });
     };
 
     updateNewsletters();

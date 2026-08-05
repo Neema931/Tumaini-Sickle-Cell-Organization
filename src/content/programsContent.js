@@ -1,3 +1,4 @@
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "/api";
 const PROGRAMS_CONTENT_KEY = "tscoProgramsContent";
 
 const defaultProgramsContent = {
@@ -67,28 +68,52 @@ function mergeContent(defaults, stored) {
 }
 
 export function getProgramsContent() {
+  return defaultProgramsContent;
+}
+
+export async function fetchProgramsContent() {
   try {
-    const stored = localStorage.getItem(PROGRAMS_CONTENT_KEY);
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      return mergeContent(defaultProgramsContent, parsed);
+    const response = await fetch(`${API_BASE_URL}/content/programs`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch programs content");
     }
+    const content = await response.json();
+    return mergeContent(defaultProgramsContent, content);
   } catch (error) {
-    console.warn("Failed to parse programs content", error);
+    console.warn("Failed to fetch programs content", error);
+    return defaultProgramsContent;
   }
-
-  return defaultProgramsContent;
 }
 
-export function saveProgramsContent(content) {
-  localStorage.setItem(PROGRAMS_CONTENT_KEY, JSON.stringify(content));
-  window.dispatchEvent(new Event("programsContentUpdated"));
+export async function saveProgramsContent(content) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/content/programs`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(content),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to save programs content");
+    }
+    const savedContent = await response.json();
+    window.dispatchEvent(new Event("programsContentUpdated"));
+    return savedContent;
+  } catch (error) {
+    console.warn("Failed to save programs content", error);
+    throw error;
+  }
 }
 
-export function resetProgramsContent() {
-  localStorage.removeItem(PROGRAMS_CONTENT_KEY);
-  window.dispatchEvent(new Event("programsContentUpdated"));
-  return defaultProgramsContent;
+export async function resetProgramsContent() {
+  try {
+    const defaultContent = defaultProgramsContent;
+    await saveProgramsContent(defaultContent);
+    return defaultContent;
+  } catch (error) {
+    return defaultProgramsContent;
+  }
 }
 
 export function getDefaultProgramsContent() {

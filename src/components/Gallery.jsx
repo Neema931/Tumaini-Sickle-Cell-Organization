@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getGalleryContent } from "../content/galleryContent";
+import { getGalleryContent, fetchGalleryContent } from "../content/galleryContent";
 import "./TSCO.css";
 
 const galleryImageModules = import.meta.glob("../assets/**/*.{jpg,jpeg,png,webp}", {
@@ -11,9 +11,15 @@ function Gallery() {
   const [galleryContent, setGalleryContent] = useState(getGalleryContent());
 
   useEffect(() => {
-    const handleUpdate = () => setGalleryContent(getGalleryContent());
-    window.addEventListener("galleryContentUpdated", handleUpdate);
-    return () => window.removeEventListener("galleryContentUpdated", handleUpdate);
+    const updateGalleryContent = () => {
+      fetchGalleryContent().then(setGalleryContent).catch(() => {
+        setGalleryContent(getGalleryContent());
+      });
+    };
+
+    updateGalleryContent();
+    window.addEventListener("galleryContentUpdated", updateGalleryContent);
+    return () => window.removeEventListener("galleryContentUpdated", updateGalleryContent);
   }, []);
 
   const builtInGalleryImages = Object.entries(galleryImageModules)

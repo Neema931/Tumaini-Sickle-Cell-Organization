@@ -1,3 +1,4 @@
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "/api";
 const ABOUT_CONTENT_KEY = "tscoAboutContent";
 
 const defaultAboutContent = {
@@ -95,27 +96,52 @@ function mergeContent(defaults, stored) {
 }
 
 export function getAboutContent() {
+  return defaultAboutContent;
+}
+
+export async function fetchAboutContent() {
   try {
-    const stored = localStorage.getItem(ABOUT_CONTENT_KEY);
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      return mergeContent(defaultAboutContent, parsed);
+    const response = await fetch(`${API_BASE_URL}/content/about`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch about content");
     }
+    const content = await response.json();
+    return mergeContent(defaultAboutContent, content);
   } catch (error) {
-    console.warn("Failed to parse about content", error);
+    console.warn("Failed to fetch about content", error);
+    return defaultAboutContent;
   }
-  return defaultAboutContent;
 }
 
-export function saveAboutContent(content) {
-  localStorage.setItem(ABOUT_CONTENT_KEY, JSON.stringify(content));
-  window.dispatchEvent(new Event("aboutContentUpdated"));
+export async function saveAboutContent(content) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/content/about`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(content),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to save about content");
+    }
+    const savedContent = await response.json();
+    window.dispatchEvent(new Event("aboutContentUpdated"));
+    return savedContent;
+  } catch (error) {
+    console.warn("Failed to save about content", error);
+    throw error;
+  }
 }
 
-export function resetAboutContent() {
-  localStorage.removeItem(ABOUT_CONTENT_KEY);
-  window.dispatchEvent(new Event("aboutContentUpdated"));
-  return defaultAboutContent;
+export async function resetAboutContent() {
+  try {
+    const defaultContent = defaultAboutContent;
+    await saveAboutContent(defaultContent);
+    return defaultContent;
+  } catch (error) {
+    return defaultAboutContent;
+  }
 }
 
 export function getDefaultAboutContent() {

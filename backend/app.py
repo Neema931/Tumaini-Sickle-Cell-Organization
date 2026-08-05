@@ -26,6 +26,7 @@ def load_default_content(file_path, fallback=None):
 
 DEFAULT_HOME_CONTENT = load_default_content(HOME_CONTENT_FILE, {})
 DEFAULT_EVENTS_CONTENT = load_default_content(EVENTS_CONTENT_FILE, {})
+CONTENT_KEYS = {"home", "events", "about", "blog", "contact", "gallery", "programs"}
 
 
 def get_connection():
@@ -47,6 +48,10 @@ def initialize_database():
     connection.commit()
     ensure_content_key(connection, "home", DEFAULT_HOME_CONTENT)
     ensure_content_key(connection, "events", DEFAULT_EVENTS_CONTENT)
+
+    # Ensure other content keys exist with empty defaults so frontend can query them.
+    for key in CONTENT_KEYS - {"home", "events"}:
+        ensure_content_key(connection, key, {})
     connection.close()
 
 
@@ -119,6 +124,32 @@ def events_content():
 
     payload = request.get_json()
     save_content("events", payload)
+    return jsonify(payload)
+
+
+@app.route("/api/content/<key>", methods=["GET", "PUT", "POST"])
+def generic_content(key):
+    if key not in CONTENT_KEYS:
+        abort(404, f"Content key '{key}' is not supported.")
+
+    default_values = {
+        "home": DEFAULT_HOME_CONTENT,
+        "events": DEFAULT_EVENTS_CONTENT,
+        "about": {},
+        "blog": {},
+        "contact": {},
+        "gallery": {},
+        "programs": {},
+    }
+
+    if request.method == "GET":
+        return jsonify(read_content(key, default_values.get(key, {})))
+
+    if not request.is_json:
+        abort(400, "Expected JSON payload")
+
+    payload = request.get_json()
+    save_content(key, payload)
     return jsonify(payload)
 
 

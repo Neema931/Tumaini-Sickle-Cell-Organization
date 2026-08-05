@@ -1,3 +1,4 @@
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "/api";
 const GALLERY_CONTENT_KEY = "tscoGalleryContent";
 
 const defaultGalleryContent = {
@@ -17,28 +18,52 @@ function mergeContent(defaults, stored) {
 }
 
 export function getGalleryContent() {
+  return defaultGalleryContent;
+}
+
+export async function fetchGalleryContent() {
   try {
-    const stored = localStorage.getItem(GALLERY_CONTENT_KEY);
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      return mergeContent(defaultGalleryContent, parsed);
+    const response = await fetch(`${API_BASE_URL}/content/gallery`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch gallery content");
     }
+    const content = await response.json();
+    return mergeContent(defaultGalleryContent, content);
   } catch (error) {
-    console.warn("Failed to parse gallery content", error);
+    console.warn("Failed to fetch gallery content", error);
+    return defaultGalleryContent;
   }
-
-  return defaultGalleryContent;
 }
 
-export function saveGalleryContent(content) {
-  localStorage.setItem(GALLERY_CONTENT_KEY, JSON.stringify(content));
-  window.dispatchEvent(new Event("galleryContentUpdated"));
+export async function saveGalleryContent(content) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/content/gallery`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(content),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to save gallery content");
+    }
+    const savedContent = await response.json();
+    window.dispatchEvent(new Event("galleryContentUpdated"));
+    return savedContent;
+  } catch (error) {
+    console.warn("Failed to save gallery content", error);
+    throw error;
+  }
 }
 
-export function resetGalleryContent() {
-  localStorage.removeItem(GALLERY_CONTENT_KEY);
-  window.dispatchEvent(new Event("galleryContentUpdated"));
-  return defaultGalleryContent;
+export async function resetGalleryContent() {
+  try {
+    const defaultContent = defaultGalleryContent;
+    await saveGalleryContent(defaultContent);
+    return defaultContent;
+  } catch (error) {
+    return defaultGalleryContent;
+  }
 }
 
 export function getDefaultGalleryContent() {

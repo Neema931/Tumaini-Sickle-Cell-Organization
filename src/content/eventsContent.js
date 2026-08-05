@@ -1,3 +1,5 @@
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "/api";
+
 const defaultEventsContent = {
   heroTitle: "Upcoming Events",
   heroImage: "",
@@ -94,7 +96,7 @@ export function getEventsContent() {
 
 export async function fetchEventsContent() {
   try {
-    const response = await fetch("/api/content/events");
+    const response = await fetch(`${API_BASE_URL}/content/events`);
     if (!response.ok) {
       throw new Error("Failed to fetch events content");
     }
@@ -143,7 +145,7 @@ export async function saveEventsContent(content) {
         description: sanitizeHtml(ev.description || ""),
       }));
     }
-    const response = await fetch("/api/content/events", {
+    const response = await fetch(`${API_BASE_URL}/content/events`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
