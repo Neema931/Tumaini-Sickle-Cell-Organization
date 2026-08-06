@@ -2,9 +2,15 @@ import { useState } from "react";
 import { AuthContext } from "./authContext";
 
 const validAdmins = [
-  { email: "neemaisabel@gmail.com", password: "#neema@microsoft12" },
-  { email: "info@tumainisicklecell.org", password: "Blessedassurance123$" },
-];
+  {
+    email: import.meta.env.VITE_ADMIN_EMAIL_1,
+    password: import.meta.env.VITE_ADMIN_PASSWORD_1,
+  },
+  {
+    email: import.meta.env.VITE_ADMIN_EMAIL_2,
+    password: import.meta.env.VITE_ADMIN_PASSWORD_2,
+  },
+].filter((admin) => admin.email && admin.password);
 
 function readStoredUser() {
   const stored = localStorage.getItem("adminUser") || sessionStorage.getItem("adminUser");
