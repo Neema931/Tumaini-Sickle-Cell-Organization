@@ -28,6 +28,9 @@ import AdminGallery from "./pages/admin/Gallery";
 import AdminLogin from "./pages/admin/Login";
 import AdminLogout from "./pages/admin/Logout";
 import ProtectedRoute from "./auth/ProtectedRoute";
+import { initGA } from "./analytics";
+
+initGA();
 
 
 

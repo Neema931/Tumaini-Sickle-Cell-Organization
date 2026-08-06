@@ -34,13 +34,24 @@ function Home() {
   const [content, setContent] = useState(getHomeContent());
 
   useEffect(() => {
-    const handleUpdate = () => setContent(getHomeContent());
-    window.addEventListener("homeContentUpdated", handleUpdate);
-    return () => window.removeEventListener("homeContentUpdated", handleUpdate);
-  }, []);
+    let mounted = true;
+    const handleUpdate = async () => {
+      try {
+        const c = await fetchHomeContent();
+        if (mounted) setContent(c);
+      } catch (e) {
+        // ignore fetch errors
+      }
+    };
 
-  useEffect(() => {
-    fetchHomeContent().then(setContent).catch(() => {});
+    window.addEventListener("homeContentUpdated", handleUpdate);
+    // initial fetch
+    handleUpdate();
+
+    return () => {
+      mounted = false;
+      window.removeEventListener("homeContentUpdated", handleUpdate);
+    };
   }, []);
 
   useEffect(() => {

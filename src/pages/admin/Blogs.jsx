@@ -10,9 +10,22 @@ function Blogs() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    const handleUpdate = () => setFormState(getBlogContent());
+    let mounted = true;
+    const handleUpdate = async () => {
+      try {
+        const c = await fetchBlogContent();
+        if (mounted) setFormState(c);
+      } catch (e) {
+        // ignore
+      }
+    };
+
     window.addEventListener("blogContentUpdated", handleUpdate);
-    return () => window.removeEventListener("blogContentUpdated", handleUpdate);
+    handleUpdate();
+    return () => {
+      mounted = false;
+      window.removeEventListener("blogContentUpdated", handleUpdate);
+    };
   }, []);
 
   const updateField = (path, value) => {

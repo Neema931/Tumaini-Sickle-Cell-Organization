@@ -31,9 +31,22 @@ function About() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    const handleUpdate = () => setFormState(getAboutContent());
+    let mounted = true;
+    const handleUpdate = async () => {
+      try {
+        const c = await fetchAboutContent();
+        if (mounted) setFormState(c);
+      } catch (e) {
+        // ignore
+      }
+    };
+
     window.addEventListener("aboutContentUpdated", handleUpdate);
-    return () => window.removeEventListener("aboutContentUpdated", handleUpdate);
+    handleUpdate();
+    return () => {
+      mounted = false;
+      window.removeEventListener("aboutContentUpdated", handleUpdate);
+    };
   }, []);
 
   const updateField = (path, value) => {

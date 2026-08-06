@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "/api";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || "/api";
 const CONTACT_CONTENT_KEY = "tscoContactContent";
 
 const defaultContactContent = {
@@ -14,11 +14,13 @@ const defaultContactContent = {
     facebook: "https://www.facebook.com/TumainiSickleCellOrganization",
     linkedin: "https://www.linkedin.com/company/tumainisicklecellorganization",
     instagram: "https://www.instagram.com/tumainisicklecellorganization?igsh=NXEweHZvOXNiY3Jp&utm_source=qr",
+    tiktok: "https://www.tiktok.com/@tumainisicklecell?_r=1&_t=ZS-98eqkdu468A",
   },
   socialLabels: {
     facebook: "Tumaini Sickle Cell Organization",
     linkedin: "Tumaini Sickle Cell Organization",
     instagram: "tumainisicklecellorganization",
+    tiktok: "tumainisicklecell",
   },
 };
 

@@ -22,9 +22,18 @@ function Programs() {
         <section key={program.id ?? `${program.title}-${index}`} id={program.title.toLowerCase().replace(/\s+/g, "-")} className="program-section">
           <h1 className="programs-title">{program.title}</h1>
           <p>{program.description}</p>
-          {(program.details || []).map((detail, detailIndex) => (
-            <p key={`${program.id}-${detailIndex}`}>{detail}</p>
-          ))}
+          {(program.images || []).length > 0 && (
+            <div className="program-image-row">
+              {(program.images || []).map((image, imageIndex) => (
+                <img
+                  key={`${program.id}-${imageIndex}`}
+                  src={image}
+                  alt={`${program.title} ${imageIndex + 1}`}
+                  className="program-image"
+                />
+              ))}
+            </div>
+          )}
         </section>
       ))}
     </div>

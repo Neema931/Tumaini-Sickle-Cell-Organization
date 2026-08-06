@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./TSCO.css";
 import { MdEmail, MdPhone } from "react-icons/md";
+import { SiTiktok } from "react-icons/si";
 import facebookImg from "../assets/Facebook.png";
 import linkedinImg from "../assets/images.png";
 import instagramImg from "../assets/instagram.png";
@@ -107,10 +108,26 @@ function Contact() {
             <p>{contactInfo.socialLabels.linkedin}</p>
           </div>
           <div className="social-item">
-            <a href={contactInfo.socialLinks.instagram} target="_blank" rel="noreferrer">
+            <a
+              href={contactInfo.socialLinks.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className="social-link-icon popup-social-link"
+            >
               <img src={instagramImg} alt="Instagram" className="social-icon social-icon-img" />
             </a>
             <p>{contactInfo.socialLabels.instagram}</p>
+          </div>
+          <div className="social-item">
+            <a
+              href={contactInfo.socialLinks.tiktok}
+              target="_blank"
+              rel="noreferrer"
+              className="social-link-icon popup-social-link"
+            >
+              <SiTiktok className="social-icon" />
+            </a>
+            <p>{contactInfo.socialLabels.tiktok}</p>
           </div>
           {(contactInfo.additionalLinks || []).map((link, index) => (
             <div key={`${link.label}-${index}`} className="social-item">

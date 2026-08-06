@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "/api";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || "/api";
 const PROGRAMS_CONTENT_KEY = "tscoProgramsContent";
 
 const defaultProgramsContent = {
@@ -8,33 +8,55 @@ const defaultProgramsContent = {
       title: "Awareness and Education Programs",
       description:
         "Develop countrywide multi-level messaging and multi-media education and awareness strategy to inform the public about the burden of SCD.",
-      details: [
-        "We raise awareness on the impact of SCD on health, education, social and economic well-being.",
-        "We hold educational workshops, focus group discussions, panel discussions, advocacy lectures, and webinars.",
-      ],
+      images: [],
     },
     {
       id: 2,
       title: "Advocacy And Policy",
       description:
         "Our advocacy work coalesces around legislative initiatives aimed at including SCD in health budgetary allocations.",
-      details: [
-        "We work with Parliamentary, Senate, and County Assembly champions to raise awareness for SCD.",
-        "Together with the county MOH department, we advocate for funding organizations to provide resources for SCD research.",
-      ],
+      images: [],
     },
     {
       id: 3,
       title: "Partnerships",
       description:
         "We join with health care providers, researchers, and organizations to serve children living with or impacted by SCD.",
-      details: [
-        "Collaborative efforts with public and private healthcare providers, NGOs, and support groups provide direction in positioning SCD as a recognized public health concern.",
-        "Partnerships with hospitals and blood banks help create sustainable donation drives.",
-      ],
+      images: [],
     },
   ],
 };
+
+function readStoredContent() {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  try {
+    const storedValue = window.localStorage.getItem(PROGRAMS_CONTENT_KEY);
+    if (!storedValue) {
+      return null;
+    }
+
+    const parsedValue = JSON.parse(storedValue);
+    return parsedValue && typeof parsedValue === "object" ? parsedValue : null;
+  } catch (error) {
+    console.warn("Failed to read programs content from storage", error);
+    return null;
+  }
+}
+
+function writeStoredContent(content) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  try {
+    window.localStorage.setItem(PROGRAMS_CONTENT_KEY, JSON.stringify(content));
+  } catch (error) {
+    console.warn("Failed to write programs content to storage", error);
+  }
+}
 
 function mergeContent(defaults, stored) {
   if (!stored || typeof stored !== "object") {
@@ -57,6 +79,10 @@ function mergeContent(defaults, stored) {
         }
         return item;
       });
+
+      if (Array.isArray(storedValue) && storedValue.length > defaultValue.length) {
+        merged[key] = merged[key].concat(storedValue.slice(defaultValue.length));
+      }
     } else if (typeof defaultValue === "object" && defaultValue !== null) {
       merged[key] = mergeContent(defaultValue, storedValue || {});
     } else if (storedValue !== undefined) {
@@ -68,7 +94,7 @@ function mergeContent(defaults, stored) {
 }
 
 export function getProgramsContent() {
-  return defaultProgramsContent;
+  return mergeContent(defaultProgramsContent, readStoredContent());
 }
 
 export async function fetchProgramsContent() {
@@ -78,41 +104,50 @@ export async function fetchProgramsContent() {
       throw new Error("Failed to fetch programs content");
     }
     const content = await response.json();
-    return mergeContent(defaultProgramsContent, content);
+    const mergedContent = mergeContent(defaultProgramsContent, content);
+    writeStoredContent(mergedContent);
+    return mergedContent;
   } catch (error) {
     console.warn("Failed to fetch programs content", error);
-    return defaultProgramsContent;
+    return getProgramsContent();
   }
 }
 
 export async function saveProgramsContent(content) {
+  const payload = mergeContent(defaultProgramsContent, content || {});
+  writeStoredContent(payload);
+
   try {
     const response = await fetch(`${API_BASE_URL}/content/programs`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(content),
+      body: JSON.stringify(payload),
     });
     if (!response.ok) {
       throw new Error("Failed to save programs content");
     }
     const savedContent = await response.json();
+    const mergedContent = mergeContent(defaultProgramsContent, savedContent || payload);
+    writeStoredContent(mergedContent);
     window.dispatchEvent(new Event("programsContentUpdated"));
-    return savedContent;
+    return mergedContent;
   } catch (error) {
     console.warn("Failed to save programs content", error);
-    throw error;
+    window.dispatchEvent(new Event("programsContentUpdated"));
+    return payload;
   }
 }
 
 export async function resetProgramsContent() {
+  const defaultContent = defaultProgramsContent;
+  writeStoredContent(defaultContent);
   try {
-    const defaultContent = defaultProgramsContent;
     await saveProgramsContent(defaultContent);
     return defaultContent;
   } catch (error) {
-    return defaultProgramsContent;
+    return defaultContent;
   }
 }
 

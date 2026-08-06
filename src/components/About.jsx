@@ -29,10 +29,22 @@ function About() {
   const [content, setContent] = useState(getAboutContent());
 
   useEffect(() => {
-    fetchAboutContent().then(setContent).catch(() => {});
-    const handleUpdate = () => fetchAboutContent().then(setContent).catch(() => {});
+    let mounted = true;
+    const handleUpdate = async () => {
+      try {
+        const c = await fetchAboutContent();
+        if (mounted) setContent(c);
+      } catch (e) {
+        // ignore
+      }
+    };
+
     window.addEventListener("aboutContentUpdated", handleUpdate);
-    return () => window.removeEventListener("aboutContentUpdated", handleUpdate);
+    handleUpdate();
+    return () => {
+      mounted = false;
+      window.removeEventListener("aboutContentUpdated", handleUpdate);
+    };
   }, []);
 
   return (

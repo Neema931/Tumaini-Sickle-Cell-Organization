@@ -1,4 +1,5 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "/api";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || "/api";
+const EVENTS_CONTENT_KEY = "tscoEventsContent";
 
 const defaultEventsContent = {
   heroTitle: "Upcoming Events",
@@ -42,6 +43,37 @@ const defaultEventsContent = {
     },
   ],
 };
+
+function readStoredContent() {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  try {
+    const storedValue = window.localStorage.getItem(EVENTS_CONTENT_KEY);
+    if (!storedValue) {
+      return null;
+    }
+
+    const parsedValue = JSON.parse(storedValue);
+    return parsedValue && typeof parsedValue === "object" ? parsedValue : null;
+  } catch (error) {
+    console.warn("Failed to read events content from storage", error);
+    return null;
+  }
+}
+
+function writeStoredContent(content) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  try {
+    window.localStorage.setItem(EVENTS_CONTENT_KEY, JSON.stringify(content));
+  } catch (error) {
+    console.warn("Failed to write events content to storage", error);
+  }
+}
 
 function mergeContent(defaults, stored) {
   if (!stored || typeof stored !== "object") {
@@ -91,7 +123,7 @@ function mergeContent(defaults, stored) {
 }
 
 export function getEventsContent() {
-  return defaultEventsContent;
+  return mergeContent(defaultEventsContent, readStoredContent());
 }
 
 export async function fetchEventsContent() {
@@ -101,10 +133,12 @@ export async function fetchEventsContent() {
       throw new Error("Failed to fetch events content");
     }
     const content = await response.json();
-    return mergeContent(defaultEventsContent, content);
+    const mergedContent = mergeContent(defaultEventsContent, content);
+    writeStoredContent(mergedContent);
+    return mergedContent;
   } catch (error) {
     console.warn("Failed to fetch events content", error);
-    return defaultEventsContent;
+    return getEventsContent();
   }
 }
 
@@ -137,40 +171,48 @@ function sanitizeHtml(html) {
 }
 
 export async function saveEventsContent(content) {
+  const copy = JSON.parse(JSON.stringify(content || {}));
+  if (Array.isArray(copy.events)) {
+    copy.events = copy.events.map((ev) => ({
+      ...ev,
+      description: sanitizeHtml(ev.description || ""),
+    }));
+  }
+
+  const payload = mergeContent(defaultEventsContent, copy);
+  writeStoredContent(payload);
+
   try {
-    const copy = JSON.parse(JSON.stringify(content || {}));
-    if (Array.isArray(copy.events)) {
-      copy.events = copy.events.map((ev) => ({
-        ...ev,
-        description: sanitizeHtml(ev.description || ""),
-      }));
-    }
     const response = await fetch(`${API_BASE_URL}/content/events`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(copy),
+      body: JSON.stringify(payload),
     });
     if (!response.ok) {
       throw new Error("Failed to save events content");
     }
     const savedContent = await response.json();
+    const mergedContent = mergeContent(defaultEventsContent, savedContent || payload);
+    writeStoredContent(mergedContent);
     window.dispatchEvent(new Event("eventsContentUpdated"));
-    return savedContent;
+    return mergedContent;
   } catch (e) {
     console.warn("Failed to save events content", e);
-    throw e;
+    window.dispatchEvent(new Event("eventsContentUpdated"));
+    return payload;
   }
 }
 
 export async function resetEventsContent() {
+  const defaultContent = defaultEventsContent;
+  writeStoredContent(defaultContent);
   try {
-    const defaultContent = defaultEventsContent;
     await saveEventsContent(defaultContent);
     return defaultContent;
   } catch (error) {
-    return defaultEventsContent;
+    return defaultContent;
   }
 }
 

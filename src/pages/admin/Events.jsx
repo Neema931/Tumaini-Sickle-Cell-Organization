@@ -16,9 +16,14 @@ function Events() {
     fetchEventsContent().then(setFormState).catch(() => {});
   }, []);
 
-  const persistFormState = (nextState) => {
+  const persistFormState = async (nextState) => {
     setFormState(nextState);
-    saveEventsContent(nextState).catch(() => {});
+    try {
+      const saved = await saveEventsContent(nextState);
+      setFormState(saved || nextState);
+    } catch (error) {
+      console.warn("Failed to persist events state", error);
+    }
   };
 
   const updateEvent = (index, field, value) => {
@@ -140,7 +145,6 @@ function Events() {
   const handleSave = async () => {
     try {
       await saveEventsContent(formState);
-      window.dispatchEvent(new Event("eventsContentUpdated"));
       setMessage("Events content saved.");
     } catch (error) {
       setMessage("Failed to save events content. Try again.");

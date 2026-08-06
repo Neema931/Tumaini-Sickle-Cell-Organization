@@ -3,16 +3,38 @@ import "./TSCO.css";
 import { getEventsContent, fetchEventsContent } from "../content/eventsContent";
 
 function Events() {
-  const [eventsContent, setEventsContent] = useState(getEventsContent());
+  const [eventsContent, setEventsContent] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchEventsContent().then(setEventsContent).catch(() => {});
-    const updateEventsContent = () => setEventsContent(getEventsContent());
+    const updateEventsContent = async () => {
+      setLoading(true);
+      try {
+        const content = await fetchEventsContent();
+        setEventsContent(content);
+      } catch (error) {
+        setEventsContent(getEventsContent());
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    updateEventsContent();
     window.addEventListener("eventsContentUpdated", updateEventsContent);
     return () => window.removeEventListener("eventsContentUpdated", updateEventsContent);
   }, []);
 
-  const heroImage = eventsContent.heroImage || "";
+  if (loading) {
+    return (
+      <div className="gallery-page events-page">
+        <div className="gallery-grid events-grid">
+          <p>Loading events...</p>
+        </div>
+      </div>
+    );
+  }
+
+  const heroImage = eventsContent?.heroImage || "";
 
   return (
     <div className="gallery-page events-page">

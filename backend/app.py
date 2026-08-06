@@ -93,15 +93,23 @@ initialize_database()
 
 @app.route("/", methods=["GET"])
 def index():
-    return jsonify({"status": "ok", "message": "Tumaini Sickle Cell Organization backend is running."})
+    return jsonify({ "status": "ok",
+        "message": "THIS IS THE NEW APP.PY",
+        "routes": [
+            "/api/status",
+            "/api/content/home",
+            "/api/content/events",
+            "/api/content/<key>"
+            ]
+            })
 
 
-@app.route("/api/status", methods=["GET"])
+@app.route("/status", methods=["GET"])
 def status():
     return jsonify({"status": "ok", "service": "backend", "version": "1.0"})
 
 
-@app.route("/api/content/home", methods=["GET", "PUT", "POST"])
+@app.route("/content/home", methods=["GET", "PUT", "POST"])
 def home_content():
     if request.method == "GET":
         return jsonify(read_content("home", DEFAULT_HOME_CONTENT))
@@ -114,7 +122,7 @@ def home_content():
     return jsonify(payload)
 
 
-@app.route("/api/content/events", methods=["GET", "PUT", "POST"])
+@app.route("/content/events", methods=["GET", "PUT", "POST"])
 def events_content():
     if request.method == "GET":
         return jsonify(read_content("events", DEFAULT_EVENTS_CONTENT))
@@ -127,7 +135,7 @@ def events_content():
     return jsonify(payload)
 
 
-@app.route("/api/content/<key>", methods=["GET", "PUT", "POST"])
+@app.route("/content/<key>", methods=["GET", "PUT", "POST"])
 def generic_content(key):
     if key not in CONTENT_KEYS:
         abort(404, f"Content key '{key}' is not supported.")

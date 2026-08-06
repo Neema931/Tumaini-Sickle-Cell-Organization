@@ -22,10 +22,24 @@ function Home() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetchHomeContent().then(setFormState).catch(() => {});
-    const handleUpdate = () => setFormState(getHomeContent());
+    let mounted = true;
+    const handleUpdate = async () => {
+      try {
+        const c = await fetchHomeContent();
+        if (mounted) setFormState(c);
+      } catch (e) {
+        // ignore
+      }
+    };
+
     window.addEventListener("homeContentUpdated", handleUpdate);
-    return () => window.removeEventListener("homeContentUpdated", handleUpdate);
+    // initial fetch
+    handleUpdate();
+
+    return () => {
+      mounted = false;
+      window.removeEventListener("homeContentUpdated", handleUpdate);
+    };
   }, []);
 
   const updateField = (path, value) => {

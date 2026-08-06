@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { MdPhone, MdEmail } from "react-icons/md";
+import { SiTiktok } from "react-icons/si";
 import logoImg from "../assets/logo.jpg";
+import instagramImg from "../assets/instagram.png";
 import "./TSCO.css";
 
 
@@ -49,6 +51,25 @@ function Navbar() {
                     <a className="email-link" href="mailto:info@tumainisicklecell.org">
                         <MdEmail className="email-icon" />
                         <span className="email-text">info@tumainisicklecell.org</span>
+                    </a>
+                </div>
+
+                <div className="navbar-social-links">
+                    <a
+                        href="https://www.instagram.com/tumainisicklecellorganization?igsh=NXEweHZvOXNiY3Jp&utm_source=qr"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="popup-social-link"
+                    >
+                        <img src={instagramImg} alt="Instagram" className="social-icon social-icon-img" />
+                    </a>
+                    <a
+                        href="https://www.tiktok.com/@tumainisicklecell?_r=1&_t=ZS-98eqkdu468A"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="popup-social-link"
+                    >
+                        <SiTiktok className="social-icon" />
                     </a>
                 </div>
             </div>

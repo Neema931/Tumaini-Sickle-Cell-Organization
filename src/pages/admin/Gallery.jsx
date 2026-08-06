@@ -25,12 +25,16 @@ function GalleryAdmin() {
     return () => window.removeEventListener("galleryContentUpdated", handleUpdate);
   }, []);
 
-  const persistGalleryState = (updater) => {
-    setFormState((current) => {
-      const nextState = typeof updater === "function" ? updater(current) : updater;
-      saveGalleryContent(nextState);
-      return nextState;
-    });
+  const persistGalleryState = async (updater) => {
+    const nextState = typeof updater === "function" ? updater(formState) : updater;
+    setFormState(nextState);
+    try {
+      const saved = await saveGalleryContent(nextState);
+      setFormState(saved || nextState);
+    } catch (error) {
+      console.warn("Failed to persist gallery state", error);
+    }
+    return nextState;
   };
 
   const addGalleryImage = (file) => {
@@ -64,17 +68,25 @@ function GalleryAdmin() {
     });
   };
 
-  const handleSave = () => {
-    saveGalleryContent(formState);
-    setMessage("Gallery images saved.");
+  const handleSave = async () => {
+    try {
+      await saveGalleryContent(formState);
+      setMessage("Gallery images saved.");
+    } catch (error) {
+      setMessage("Failed to save gallery content. Try again.");
+    }
     setTimeout(() => setMessage(""), 2500);
   };
 
-  const handleReset = () => {
+  const handleReset = async () => {
     const defaults = getDefaultGalleryContent();
     setFormState(defaults);
-    resetGalleryContent();
-    setMessage("Gallery reset to defaults.");
+    try {
+      await resetGalleryContent();
+      setMessage("Gallery reset to defaults.");
+    } catch (error) {
+      setMessage("Failed to reset gallery content. Try again.");
+    }
     setTimeout(() => setMessage(""), 2500);
   };
 
