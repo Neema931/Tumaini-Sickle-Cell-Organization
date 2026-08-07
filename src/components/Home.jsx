@@ -18,6 +18,7 @@ import donateImg from "../assets/donate.png";
 import noel from "../assets/no.jpeg";
 import hardwoodImg from "../assets/Hardwood.jpg";
 import hh1 from "../assets/asss.jpg";
+import genotypeImg from "../assets/genotype.png";
 
 import { getHomeContent, fetchHomeContent } from "../content/homeContent";
 
@@ -118,6 +119,40 @@ function Home() {
           </SwiperSlide>
         ))}
       </Swiper>
+
+      <section className="home-genotype-card">
+        <div className="genotype-card-wrapper">
+          <img src={genotypeImg} alt="Know your genotype" className="genotype-card-image" />
+          <div className="genotype-card-copy">
+            <h2>Know Your Genotype. Build a Healthier Future.</h2>
+            <p>
+              The <strong>Genotype Smart Initiative (GSI)</strong> by Tumaini Sickle Cell Organization empowers young people with knowledge about sickle cell disease, genotype awareness, and informed health choices.
+            </p>
+            <p>
+              We are working to reach <strong>100 schools in Kisumu and surrounding counties within two years</strong>, using School Health Clubs to provide education, reduce stigma, promote voluntary genotype awareness, and encourage healthier communities.
+            </p>
+            <p>
+              <strong>Support the initiative today.</strong> Your donation will help us provide educational materials, train student leaders and teachers, conduct awareness activities, and connect young people to genotype testing and counselling.
+            </p>
+            <p>
+              <strong>Donate. Share. Partner with us. Help us empower a healthier generation.</strong>
+            </p>
+            <p>
+              <strong>Learn today. Lead tomorrow. Leave a legacy of healthy generations.</strong>
+            </p>
+            <div className="genotype-card-actions">
+              <button
+                className="primary-button"
+                color = "#b71c1c"
+                type="button"
+                onClick={() => window.location.href = 'https://tinyurl.com/yjy7hhve'}
+              >
+                Donate Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="home-donation-promo">
         <div className="home-donation-grid">

@@ -3,19 +3,19 @@ import "./TSCO.css";
 import { getEventsContent, fetchEventsContent } from "../content/eventsContent";
 
 function Events() {
-  const [eventsContent, setEventsContent] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [eventsContent, setEventsContent] = useState(getEventsContent());
+  const [updating, setUpdating] = useState(false);
 
   useEffect(() => {
     const updateEventsContent = async () => {
-      setLoading(true);
+      setUpdating(true);
       try {
         const content = await fetchEventsContent();
         setEventsContent(content);
       } catch (error) {
         setEventsContent(getEventsContent());
       } finally {
-        setLoading(false);
+        setUpdating(false);
       }
     };
 
@@ -23,16 +23,6 @@ function Events() {
     window.addEventListener("eventsContentUpdated", updateEventsContent);
     return () => window.removeEventListener("eventsContentUpdated", updateEventsContent);
   }, []);
-
-  if (loading) {
-    return (
-      <div className="gallery-page events-page">
-        <div className="gallery-grid events-grid">
-          <p>Loading events...</p>
-        </div>
-      </div>
-    );
-  }
 
   const heroImage = eventsContent?.heroImage || "";
 
@@ -73,8 +63,9 @@ function Events() {
         ) : (
           <p>No event items are currently available.</p>
         )}
-      </div>
-    </div>
+      </div>      {updating && (
+        <div className="events-updating-banner">Updating events…</div>
+      )}    </div>
   );
 }
 
