@@ -11,8 +11,8 @@ const defaultContactContent = {
   formTitle: "Send us a Message",
   additionalLinks: [],
   socialLinks: {
-    facebook: "https://www.facebook.com/TumainiSickleCellOrganization",
-    linkedin: "https://www.linkedin.com/company/tumainisicklecellorganization",
+    facebook: "https://www.facebook.com/TumainiSicklecell",
+    linkedin: "https://www.linkedin.com/in/tumaini-sickle-cell-organization-kenya-8a677a221?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     instagram: "https://www.instagram.com/tumainisicklecellorganization?igsh=NXEweHZvOXNiY3Jp&utm_source=qr",
     tiktok: "https://www.tiktok.com/@tumainisicklecell?_r=1&_t=ZS-98eqkdu468A",
   },

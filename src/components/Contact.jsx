@@ -96,13 +96,23 @@ function Contact() {
 
         <div className="social-links">
           <div className="social-item">
-            <a href={contactInfo.socialLinks.facebook} target="_blank" rel="noreferrer">
+            <a
+              href={contactInfo.socialLinks.facebook}
+              target="_blank"
+              rel="noreferrer"
+              className="popup-social-link"
+            >
               <img src={facebookImg} alt="Facebook" className="social-icon social-icon-img" />
             </a>
             <p>{contactInfo.socialLabels.facebook}</p>
           </div>
           <div className="social-item">
-            <a href={contactInfo.socialLinks.linkedin} target="_blank" rel="noreferrer">
+            <a
+              href={contactInfo.socialLinks.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="popup-social-link"
+            >
               <img src={linkedinImg} alt="LinkedIn" className="social-icon social-icon-img" />
             </a>
             <p>{contactInfo.socialLabels.linkedin}</p>

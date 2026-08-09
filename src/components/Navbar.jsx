@@ -3,6 +3,8 @@ import { Link, NavLink } from "react-router-dom";
 import { MdPhone, MdEmail } from "react-icons/md";
 import { SiTiktok } from "react-icons/si";
 import logoImg from "../assets/logo.jpg";
+import facebookImg from "../assets/Facebook.png";
+import linkedinImg from "../assets/images.png";
 import instagramImg from "../assets/instagram.png";
 import "./TSCO.css";
 
@@ -55,6 +57,22 @@ function Navbar() {
                 </div>
 
                 <div className="navbar-social-links">
+                    <a
+                        href="https://www.facebook.com/TumainiSicklecell"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="popup-social-link"
+                    >
+                        <img src={facebookImg} alt="Facebook" className="social-icon social-icon-img" />
+                    </a>
+                    <a
+                        href="https://www.linkedin.com/in/tumaini-sickle-cell-organization-kenya-8a677a221?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="popup-social-link"
+                    >
+                        <img src={linkedinImg} alt="LinkedIn" className="social-icon social-icon-img" />
+                    </a>
                     <a
                         href="https://www.instagram.com/tumainisicklecellorganization?igsh=NXEweHZvOXNiY3Jp&utm_source=qr"
                         target="_blank"

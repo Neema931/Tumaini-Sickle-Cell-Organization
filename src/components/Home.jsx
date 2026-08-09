@@ -120,51 +120,19 @@ function Home() {
         ))}
       </Swiper>
 
-      <section className="home-genotype-card">
-        <div className="genotype-card-wrapper">
-          <img src={genotypeImg} alt="Know your genotype" className="genotype-card-image" />
-          <div className="genotype-card-copy">
-            <h2>Know Your Genotype. Build a Healthier Future.</h2>
-            <p>
-              The <strong>Genotype Smart Initiative (GSI)</strong> by Tumaini Sickle Cell Organization empowers young people with knowledge about sickle cell disease, genotype awareness, and informed health choices.
-            </p>
-            <p>
-              We are working to reach <strong>100 schools in Kisumu and surrounding counties within two years</strong>, using School Health Clubs to provide education, reduce stigma, promote voluntary genotype awareness, and encourage healthier communities.
-            </p>
-            <p>
-              <strong>Support the initiative today.</strong> Your donation will help us provide educational materials, train student leaders and teachers, conduct awareness activities, and connect young people to genotype testing and counselling.
-            </p>
-            <p>
-              <strong>Donate. Share. Partner with us. Help us empower a healthier generation.</strong>
-            </p>
-            <p>
-              <strong>Learn today. Lead tomorrow. Leave a legacy of healthy generations.</strong>
-            </p>
-            <div className="genotype-card-actions">
-              <button
-                className="primary-button"
-                color = "#b71c1c"
-                type="button"
-                onClick={() => window.location.href = 'https://tinyurl.com/yjy7hhve'}
-              >
-                Donate Now
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section className="home-donation-promo">
+        <div className="header">
+          <h2 style={{  textAlign: 'center' }}>
+            Support Our Campaigns To Make a Difference in 
+            the Lives of Those Living with Sickle Cell Disease
+          </h2>
+        </div>
+
         <div className="home-donation-grid">
           <div className="home-donation-card">
             <img src={noel} alt="Noel" className="home-donation-image" />
             <h2>SPONSOR HEALTH INSURANCE FOR FAMILIES LIVING WITH SICKLE CELL DISEASE</h2>
-            <p>Many children and adults living with sickle cell disease are unable to access lifesaving treatment because they cannot afford Social Health Insurance Fund 
-              (SHIF) registration and contributions. Your support helps provide Social Health Insurance Fund (SHIF) coverage, improve access to quality healthcare, reduce preventable complications, and give vulnerable families hope for a healthier future.
-insure hope save lives
-Sponsor Health Insurance For Families
- Living with Sickle Cell Disease
-Together we can replace fear with hope and barrires with opportunity</p>
             <div className="home-donation-footer">
               <div
                 className="donation-widget-inline"
@@ -178,27 +146,25 @@ Together we can replace fear with hope and barrires with opportunity</p>
           <div className="home-donation-card">
             <img src={h4} alt="Donate" className="home-donation-image" />
             <h2>BLOOD DONATION DRIVE CAMPAIGN</h2>
-            <p>Support our Blood Donation Drive Campaign to help fund community blood drives, media awareness campaigns, transportation, and essential logistics that ensure lifesaving blood reaches those who need it most. Your contribution helps build a reliable blood supply for people living with sickle cell disease while creating awareness that inspires more voluntary blood donors.
-</p>
             <div className="home-donation-footer">
-              <button className="donate-action-button" type="button" onClick={() => window.location.href = 'https://tinyurl.com/yjy7hhve'}>
-                Donate Now
-              </button>
+              <div 
+              data-aidos-widget-type="donation_button" 
+              data-aidos-campaign="camp_01KZENDQHW3A1X5APZWD4NG6FV"
+               data-aidos-widget-id="widget_01KZKJRY39RM4AX7NPXMD5PR5F"></div>
             </div>
           </div>
 
           <div className="home-donation-card">
             <img src={hardwoodImg} alt="Hardwood" className="home-donation-image" />
            <h2>BRIQUETTES FOR BETTER LIVING CONDITIONS</h2>
-           <p>Support our Briquettes Initiative to provide an affordable, eco-friendly source of clean cooking fuel while creating sustainable livelihoods for vulnerable families affected by sickle cell disease. Your contribution helps fund briquette production, equipment, training, and distribution, empowering communities and improving their quality of life.
-</p>
             <div className="home-donation-footer">
-              <button className="donate-action-button" type="button" onClick={() => window.location.href = 'https://tinyurl.com/yjy7hhve'}>
-                Donate Now
-              </button>
+                <div data-aidos-widget-type="donation_button" 
+                      data-aidos-campaign="camp_01KZEPYN8M02E36XPP8JXVEXA9" 
+                      data-aidos-widget-id="widget_01KZKJXPY98FZYKJCZR72GACBY">
+                </div>
+              </div>
             </div>
           </div>
-        </div>
       </section>
 
       <HomeAbout content={content} />
