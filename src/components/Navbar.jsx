@@ -44,19 +44,19 @@ function Navbar() {
                     <img src={logoImg} alt="TSCO Logo" />
                 </Link>
 
-                <div className="top-cta">
-                    <a className="call-link" href="tel:0715873713">
-                        <MdPhone className="call-icon" />
-                        <span className="call-number">0715873713</span>
-                    </a>
-
-                    <a className="email-link" href="mailto:info@tumainisicklecell.org">
-                        <MdEmail className="email-icon" />
-                        <span className="email-text">info@tumainisicklecell.org</span>
-                    </a>
-                </div>
 
                 <div className="navbar-social-links">
+                     <a className="call-link" href="tel:0715873713"
+                      className="popup-social-link">
+                        <MdPhone className="call-icon" />
+                        
+                    </a>
+
+                    <a className="email-link" href="mailto:info@tumainisicklecell.org"
+                     className="popup-social-link">
+                        <MdEmail className="email-icon" />
+                    </a>
+
                     <a
                         href="https://www.facebook.com/TumainiSicklecell"
                         target="_blank"

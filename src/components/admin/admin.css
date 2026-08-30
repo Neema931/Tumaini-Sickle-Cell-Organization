@@ -269,3 +269,369 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* ==================== TABLET RESPONSIVENESS (768px and below) ==================== */
+@media (max-width: 768px) {
+  .admin-layout {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    width: 100%;
+    min-width: 100%;
+    flex-direction: row;
+    padding: 1rem;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .admin-sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .admin-sidebar-brand h2 {
+    font-size: 1rem;
+  }
+
+  .admin-sidebar-brand p {
+    margin: 0;
+    font-size: 0.75rem;
+  }
+
+  .admin-sidebar-nav {
+    flex-direction: row;
+    gap: 0.5rem;
+    flex: 1;
+    overflow-x: auto;
+  }
+
+  .admin-nav-item {
+    padding: 0.7rem 0.8rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .admin-nav-item.logout {
+    margin-top: 0;
+    margin-left: auto;
+  }
+
+  .admin-topbar {
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .admin-topbar-actions {
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .admin-content {
+    padding: 1.5rem;
+  }
+
+  .admin-page-card {
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+  }
+
+  .admin-form-group-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .admin-form-group-header .secondary-button {
+    margin-left: 0;
+  }
+
+  .admin-card-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .admin-card {
+    padding: 1rem;
+  }
+
+  .admin-card-small {
+    padding: 0.75rem;
+  }
+
+  .admin-form-actions {
+    flex-direction: column;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+    padding: 0.85rem 1rem;
+  }
+
+  .admin-grid-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .admin-grid-list .admin-card-small {
+    padding: 0.4rem;
+  }
+}
+
+/* ==================== LARGE PHONE RESPONSIVENESS (600px and below) ==================== */
+@media (max-width: 600px) {
+  .admin-sidebar {
+    padding: 0.75rem;
+  }
+
+  .admin-sidebar-brand h2 {
+    font-size: 0.9rem;
+  }
+
+  .admin-sidebar-nav {
+    gap: 0.35rem;
+  }
+
+  .admin-nav-item {
+    padding: 0.6rem 0.6rem;
+    font-size: 0.8rem;
+    gap: 0.4rem;
+  }
+
+  .admin-nav-item.logout {
+    font-size: 0.75rem;
+  }
+
+  .admin-topbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .admin-topbar h3 {
+    font-size: 1rem;
+  }
+
+  .admin-content {
+    padding: 1rem;
+  }
+
+  .admin-page-card {
+    padding: 1rem;
+  }
+
+  .admin-page-card h1 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .admin-page-card p {
+    font-size: 0.9rem;
+  }
+
+  .admin-form-group {
+    margin-top: 1.25rem;
+  }
+
+  .admin-form-group-header h2 {
+    font-size: 1rem;
+  }
+
+  .admin-card input,
+  .admin-card textarea {
+    padding: 0.7rem 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .admin-card label {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .admin-card textarea {
+    min-height: 80px;
+  }
+
+  .admin-image-preview {
+    max-width: 100%;
+  }
+
+  .primary-button,
+  .secondary-button {
+    padding: 0.75rem 0.9rem;
+    font-size: 0.9rem;
+  }
+
+  .admin-grid-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==================== SMALL PHONE RESPONSIVENESS (480px and below) ==================== */
+@media (max-width: 480px) {
+  .admin-layout {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    padding: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .admin-sidebar-brand {
+    width: 100%;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 0.5rem;
+  }
+
+  .admin-sidebar-brand h2 {
+    font-size: 0.85rem;
+  }
+
+  .admin-sidebar-brand p {
+    font-size: 0.7rem;
+  }
+
+  .admin-sidebar-nav {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .admin-nav-item {
+    flex: 0 1 calc(50% - 0.125rem);
+    padding: 0.5rem 0.5rem;
+    font-size: 0.75rem;
+    gap: 0.3rem;
+  }
+
+  .admin-nav-item.logout {
+    flex: 0 1 calc(50% - 0.125rem);
+    margin-top: 0;
+  }
+
+  .admin-topbar {
+    flex-direction: column;
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .admin-topbar h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+  }
+
+  .admin-topbar-actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .admin-badge {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .admin-content {
+    padding: 0.75rem;
+  }
+
+  .admin-page-card {
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+  }
+
+  .admin-page-card h1 {
+    font-size: 1.1rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .admin-page-card p {
+    font-size: 0.85rem;
+  }
+
+  .admin-form-group {
+    margin-top: 1rem;
+  }
+
+  .admin-form-group-header h2 {
+    font-size: 0.95rem;
+  }
+
+  .admin-card {
+    padding: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .admin-card-small {
+    padding: 0.6rem;
+  }
+
+  .admin-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .admin-card label {
+    font-size: 0.85rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .admin-card input,
+  .admin-card textarea {
+    padding: 0.6rem 0.7rem;
+    font-size: 0.9rem;
+    margin-top: 0.35rem;
+  }
+
+  .admin-card textarea {
+    min-height: 70px;
+  }
+
+  .admin-form-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .primary-button,
+  .secondary-button {
+    padding: 0.7rem 0.8rem;
+    font-size: 0.85rem;
+    width: 100%;
+  }
+
+  .admin-card-row {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .admin-card-remove {
+    width: 100%;
+  }
+
+  .admin-image-preview {
+    max-width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .admin-grid-list {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .admin-grid-list .admin-card-small {
+    padding: 0.35rem;
+  }
+
+  .admin-message {
+    margin-top: 0.75rem;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+}

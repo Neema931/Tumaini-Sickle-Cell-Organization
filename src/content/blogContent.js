@@ -73,18 +73,28 @@ export async function fetchBlogContent() {
   try {
     const response = await fetch(`${API_BASE_URL}/content/blog`);
     if (!response.ok) {
-      throw new Error("Failed to fetch blog content");
+      throw new Error(`Failed to fetch blog content: ${response.status}`);
     }
     const content = await response.json();
-    return mergeContent(defaultBlogContent, content);
+    console.log("Fetched blog content from server:", content);
+    
+    // Return the stored content as-is, don't merge with defaults
+    // This ensures saved changes are preserved
+    if (content && content.blogs && Array.isArray(content.blogs)) {
+      return content;
+    }
+    
+    // If server returns empty or invalid, return defaults
+    return defaultBlogContent;
   } catch (error) {
-    console.warn("Failed to fetch blog content", error);
+    console.error("Failed to fetch blog content:", error);
     return defaultBlogContent;
   }
 }
 
 export async function saveBlogContent(content) {
   try {
+    console.log("Sending blog content to server:", content);
     const response = await fetch(`${API_BASE_URL}/content/blog`, {
       method: "PUT",
       headers: {
@@ -93,13 +103,15 @@ export async function saveBlogContent(content) {
       body: JSON.stringify(content),
     });
     if (!response.ok) {
-      throw new Error("Failed to save blog content");
+      const errorText = await response.text();
+      throw new Error(`Failed to save blog content: ${response.status} - ${errorText}`);
     }
     const savedContent = await response.json();
+    console.log("Blog content saved successfully:", savedContent);
     window.dispatchEvent(new Event("blogContentUpdated"));
     return savedContent;
   } catch (error) {
-    console.warn("Failed to save blog content", error);
+    console.error("Error saving blog content:", error);
     throw error;
   }
 }

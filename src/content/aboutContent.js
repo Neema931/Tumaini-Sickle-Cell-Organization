@@ -17,7 +17,7 @@ const defaultAboutContent = {
       "Tumaini Sickle Cell Organization (TSCO) is a Kenyan-led, community-centered non-profit organization established under the Public Benefits Organization (PBO) Act of 2013, dedicated to improving the survival, health, dignity, and socio-economic wellbeing of children and families affected by sickle cell disease across the Lake Endemic Region of Western Kenya.",
       "Guided by a rights-based, equity-driven approach, TSCO integrates chronic disease management, malaria prevention, child health, nutrition, and socio-economic empowerment to build resilient communities.",
     ],
-    galleryImages: ["bloodImg", "loveImg"],
+    galleryImages: ["bloodImg"],
   },
   visionMission: {
     visionHeading: "Our Vision",

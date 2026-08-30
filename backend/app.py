@@ -8,6 +8,18 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+# Cache configuration
+@app.after_request
+def add_header(response):
+    if request.path.startswith('/api/'):
+        # API responses should not be cached aggressively
+        response.cache_control.max_age = 0
+        response.cache_control.no_cache = True
+    else:
+        # Static content can be cached
+        response.cache_control.max_age = 3600
+    return response
+
 BASE_DIR = Path(__file__).parent
 DB_PATH = BASE_DIR / "content.db"
 HOME_CONTENT_FILE = BASE_DIR / "default_home_content.json"
@@ -26,6 +38,38 @@ def load_default_content(file_path, fallback=None):
 
 DEFAULT_HOME_CONTENT = load_default_content(HOME_CONTENT_FILE, {})
 DEFAULT_EVENTS_CONTENT = load_default_content(EVENTS_CONTENT_FILE, {})
+DEFAULT_BLOG_CONTENT = {
+    "blogs": [
+        {
+            "id": 1,
+            "title": "Quarter 1 Newsletter 2026",
+            "description": "Read the latest TSCO updates from the first quarter of 2026.",
+            "cover_image": "q1Cover",
+            "pdf_url": "pdfQ12026",
+        },
+        {
+            "id": 2,
+            "title": "Quarter 2 Newsletter 2026",
+            "description": "Stay informed with events, updates, and community news.",
+            "cover_image": "q2Cover",
+            "pdf_url": "pdfQ22026",
+        },
+        {
+            "id": 3,
+            "title": "3rd Edition Newsletter 2025",
+            "description": "A special edition newsletter covering TSCO milestones.",
+            "cover_image": "thirdCover",
+            "pdf_url": "pdf2025",
+        },
+        {
+            "id": 4,
+            "title": "Quarter 1 Newsletter 2025",
+            "description": "Archive newsletter with updates from early 2025.",
+            "cover_image": "Cover",
+            "pdf_url": "pdfQ12025",
+        },
+    ]
+}
 CONTENT_KEYS = {"home", "events", "about", "blog", "contact", "gallery", "programs"}
 
 
@@ -48,9 +92,10 @@ def initialize_database():
     connection.commit()
     ensure_content_key(connection, "home", DEFAULT_HOME_CONTENT)
     ensure_content_key(connection, "events", DEFAULT_EVENTS_CONTENT)
+    ensure_content_key(connection, "blog", DEFAULT_BLOG_CONTENT)
 
     # Ensure other content keys exist with empty defaults so frontend can query them.
-    for key in CONTENT_KEYS - {"home", "events"}:
+    for key in CONTENT_KEYS - {"home", "events", "blog"}:
         ensure_content_key(connection, key, {})
     connection.close()
 
@@ -78,13 +123,19 @@ def read_content(key, default_value):
 
 
 def save_content(key, value):
-    connection = get_connection()
-    connection.execute(
-        "REPLACE INTO content (key, value) VALUES (?, ?)",
-        (key, json.dumps(value, ensure_ascii=False)),
-    )
-    connection.commit()
-    connection.close()
+    try:
+        connection = get_connection()
+        json_value = json.dumps(value, ensure_ascii=False)
+        connection.execute(
+            "REPLACE INTO content (key, value) VALUES (?, ?)",
+            (key, json_value),
+        )
+        connection.commit()
+        print(f"[DEBUG] Saved content for key '{key}': {len(json_value)} bytes")
+        connection.close()
+    except Exception as e:
+        print(f"[ERROR] Failed to save content for key '{key}': {e}")
+        raise
 
 
 # Initialize the database when this module is imported.
@@ -143,8 +194,8 @@ def generic_content(key):
     default_values = {
         "home": DEFAULT_HOME_CONTENT,
         "events": DEFAULT_EVENTS_CONTENT,
+        "blog": DEFAULT_BLOG_CONTENT,
         "about": {},
-        "blog": {},
         "contact": {},
         "gallery": {},
         "programs": {},

@@ -177,22 +177,26 @@ function Home() {
 function HomeAbout({ content }) {
   return (
     <section className="home-about">
-      {content.aboutCards.map((card, index) => (
-        <div key={index} className="home-card">
-          <div
-            className="card-image"
-            style={{
-              backgroundImage: `url(${imageMap[card.image] || card.image || hero3})`,
-            }}
-          ></div>
+      <div className="home-about-grid">
+        {content.aboutCards.map((card, index) => (
+          <article key={index} className="image-feature">
+            <div
+              className="feature-image"
+              style={{
+                backgroundImage: `url(${imageMap[card.image] || card.image || hero3})`,
+              }}
+            ></div>
 
-          <h2>{card.title}</h2>
-          <p>{card.text}</p>
-          <Link to={card.linkUrl} className="card-link">
-            {card.linkText}
-          </Link>
-        </div>
-      ))}
+            <div className="feature-copy">
+              <h2>{card.title}</h2>
+              <p>{card.text}</p>
+              <Link to={card.linkUrl} className="card-link">
+                {card.linkText}
+              </Link>
+            </div>
+          </article>
+        ))}
+      </div>
     </section>
   );
 }

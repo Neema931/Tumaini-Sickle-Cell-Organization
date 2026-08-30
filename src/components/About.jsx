@@ -8,6 +8,11 @@ import emma from "../assets/emma.jpg";
 import brenda from "../assets/brenda.jpg";
 import ayugu from "../assets/ayugu.jpg";
 import alex from "../assets/alex.jpg";
+import amref from "../assets/amref.png";
+import cdc from "../assets/cdc.png";
+import globalImg from "../assets/global.png";
+import unicef from "../assets/Unicef.png";
+import kemri from "../assets/Kemri.png";
 
 import "./TSCO.css";
 import BoardMembers from "./BoardMembers";
@@ -67,9 +72,9 @@ function About() {
         </article>
       </section>
 
-      <section className="about-content">
-        <div className="about-card has-media">
-          <div className="about-text">
+      <section className="about-content about-us-section">
+        <div className="about-us-container">
+          <div className="about-us-text">
             <h2>{content.aboutSection.heading}</h2>
             {content.aboutSection.paragraphs.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
@@ -90,8 +95,8 @@ function About() {
       </section>
 
 
-      <section className="about-content">
-        <div className="about-card">
+      <section className="about-content about-two-column">
+        <div className="about-card about-split-card about-split-blue">
           <div className="about-text">
             <h2>{content.visionMission.visionHeading}</h2>
             <p>{content.visionMission.visionText}</p>
@@ -99,10 +104,8 @@ function About() {
             <p>{content.visionMission.missionText}</p>
           </div>
         </div>
-      </section>
 
-      <section className="about-content">
-        <div className="about-card">
+        <div className="about-card about-split-card">
           <div className="about-text">
             <h2>Our Core Values</h2>
             <ul>
@@ -116,8 +119,8 @@ function About() {
         </div>
       </section>
 
-      <section className="about-content">
-        <div className="about-card">
+      <section className="about-content about-two-column">
+        <div className="about-card about-split-card about-split-blue">
           <div className="about-text">
             <h2>Strategic Pillars</h2>
             <ol className="single-column">
@@ -125,6 +128,19 @@ function About() {
                 <li key={index}>{pillar}</li>
               ))}
             </ol>
+          </div>
+        </div>
+
+        <div className="about-card about-split-card">
+          <div className="about-text">
+            <h2>Contribution to SDGs</h2>
+            <ul>
+              {content.sdgs.map((sdg, index) => (
+                <li key={index}>
+                  <strong>{sdg.goal}:</strong> {sdg.text}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -135,20 +151,12 @@ function About() {
             <h2>{content.partnerships.heading}</h2>
             <p>{content.partnerships.text}</p>
           </div>
-        </div>
-      </section>
-
-      <section className="about-content">
-        <div className="about-card">
-          <div className="about-text">
-            <h2>Contribution to SDGs</h2>
-            <ul>
-              {content.sdgs.map((sdg, index) => (
-                <li key={index}>
-                  <strong>{sdg.goal}:</strong> {sdg.text}
-                </li>
-              ))}
-            </ul>
+          <div className="partner-logo-row">
+            <img src={amref} alt="Amref Health Africa" className="partner-logo" />
+            <img src={cdc} alt="CDC" className="partner-logo" />
+            <img src={globalImg} alt="Global Fund" className="partner-logo" />
+            <img src={unicef} alt="UNICEF" className="partner-logo" />
+            <img src={kemri} alt="KEMRI" className="partner-logo" />
           </div>
         </div>
       </section>
